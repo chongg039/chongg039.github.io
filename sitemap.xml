@@ -8,6 +8,11 @@
   </url>
   
   <url>
+    <loc>https://chongg039.cn/post/fmam-start/</loc>
+    <lastmod>2018-07-12T11:19:49+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://chongg039.cn/post/2017-reddit-place/</loc>
     <lastmod>2017-04-10T23:01:33+08:00</lastmod>
   </url>
@@ -131,6 +136,12 @@
   <url>
     <loc>https://chongg039.cn/tags/es5/</loc>
     <lastmod>2016-04-18T19:26:22-07:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://chongg039.cn/tags/fmam/</loc>
+    <lastmod>2018-07-17T09:33:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
