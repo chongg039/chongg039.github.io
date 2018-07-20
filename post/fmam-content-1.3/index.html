@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>FMAM - 1.3：PH分布的闭包属性</title>
+    <link rel="stylesheet" type="text/css" href="https://chongg039.cn/css/style.css" />
+    
+    <link rel="stylesheet" type="text/css" href="https://chongg039.cn/css/sunburst.css" />
+</head>
+<body onload="PR.prettyPrint()">
+    <div class="navheader">
+        <table width="100%" summary="Navigation header">
+            <tbody>
+                <tr>
+                    <th colspan="3" align="center">Co1driver 的个人博客</th>
+                </tr>
+                <tr>
+                    <td width="90%" align="left">&nbsp;</td>
+                    <td width="5%" align="center">&nbsp;<a accesskey="h" href="https://github.com/chongg039">GITHUB</a></td>
+                    <td width="5%" align="right">&nbsp;<a accesskey="a" href="https://chongg039.cn//about">ABOUT</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h1>FMAM - 1.3：PH分布的闭包属性</h1>
+    <h4>Fri, Jul 20, 2018</h4>
+    
+
+<p>在本节中，我们展示了一组 PH 分布在一些操作下是封闭的情况（例如，“min”，“max”，“+”）。闭包属性证明了随机建模中 PH 分布在数学上的动态可操作性，这体现了他们在应用中的关键作用。首先，我们考虑采用马尔可夫链方法练习 1.1.5 , 1.1.6 和 1.1.9 。</p>
+
+<h4 id="例子1-3-1-略">例子1.3.1：略</h4>
+
+<h4 id="例子1-3-2-略">例子1.3.2：略</h4>
+
+<h4 id="练习1-3-1-略">练习1.3.1：略</h4>
+
+<h4 id="练习1-3-2-略">练习1.3.2：略</h4>
+
+<h4 id="命题1-3-1">命题1.3.1：</h4>
+
+<p>假定 \(X _ {1}\) 具有 PH 表示为 \((\vec{\alpha},T)\) 的 PH 分布，\(X _ {2}\) 具有 PH 表示为 \((\vec{\beta},T)\) 的 PH 分布，且 \(X _ {1}\) 与 \(X _ {2}\) 相互独立，那么 \(X=min\{X _ {1}, X _ {2}\}\) 具有 PH 表示为 $$(\vec{\alpha} \otimes \vec{\beta}, T \otimes I + I \otimes S) \tag{1.38}$$ 的 PH 分布。证明略。</p>
+
+<h4 id="练习1-3-3-略">练习1.3.3：略</h4>
+
+<h4 id="练习1-3-4-略">练习1.3.4：略</h4>
+
+<h4 id="命题1-3-2">命题1.3.2：</h4>
+
+<p>假定 \(X _ {1}\) 具有 PH 表示为 \((\vec{\alpha},T)\) 的 PH 分布，\(X _ {2}\) 具有 PH 表示为 \((\vec{\beta},T)\) 的PH分布，且 \(X _ {1}\) 与 \(X _ {2}\) 相互独立，那么 \(X=X _ {1} + X _ {2}\) 具有 PH 表示为
+$$
+\Biggl(
+(\vec{\alpha}, (1-\vec{\alpha}\vec{e})\vec{\beta}), \biggl(
+\begin{smallmatrix} T &amp; T^0\vec{\beta} \\
+0 &amp; S
+\end{smallmatrix}
+\biggl)
+\Biggl)
+$$
+的 PH 分布。证明略（代数证明和概率证明）。</p>
+
+<h4 id="练习1-3-5-略">练习1.3.5：略</h4>
+
+<h4 id="练习1-3-6-略">练习1.3.6：略</h4>
+
+<h4 id="命题1-3-3">命题1.3.3：</h4>
+
+<p>假定 \(X _ {1}\) 具有 PH 表示为 \((\vec{\alpha},T)\) 的 PH 分布，\(X _ {2}\) 具有 PH 表示为 \((\vec{\beta},T)\) 的PH分布，且 \(X _ {1}\) 与 \(X _ {2}\) 相互独立，那么 \(X=max\{X _ {1}, X _ {2}\}\) 具有 PH 表示为
+$$
+\Biggl(
+(\vec{\alpha} \otimes \vec{\beta}, (1-\vec{\alpha}\vec{e})\vec{\beta}, (1-\vec{\beta}\vec{e})\vec{\alpha}),
+\biggl(
+\begin{smallmatrix} T \otimes I + I \otimes S &amp; T^0 \otimes I &amp; I \otimes S^0 \\ 0 &amp; S &amp; 0 \\ 0 &amp; 0 &amp; T \end{smallmatrix}
+\biggl)
+\Biggl)
+$$
+的 PH 分布。证明略。</p>
+
+<h4 id="练习1-3-7-略">练习1.3.7：略</h4>
+
+<h4 id="练习1-3-8-略">练习1.3.8：略</h4>
+
+<h4 id="命题1-3-4">命题1.3.4：</h4>
+
+<p>假设 N 具有带参数 p 的几何分布 (0 &lt; p &lt; 1)，即 \(P\{N=n\}=p^{n-1}(1-p), n=1, 2, &hellip; \) 假定 \(\{X _ {n}, n=1, 2, &hellip; \}\)  服从同一个 PH 表示为 \((\vec{\alpha}, T)\) 的 PH 分布，其中 \(\vec{\alpha}\vec{e}=1$\)。所有随机变量是相互独立的，那么随机变量 \(Y=\sum _ {n-1}^{N}X _ {n}\) 服从 PH 表示为 $$(\vec{\alpha}, T + pT^0\vec{\alpha})$$ 的 PH 分布。证明略。</p>
+
+<h4 id="练习1-3-9-略">练习1.3.9：略</h4>
+
+<h4 id="练习1-3-10-略">练习1.3.10：略</h4>
+
+<h4 id="引理1-3-1">引理1.3.1：</h4>
+
+<p>假定 X 具有不可还原的（irreducible 翻译不准确？不可约矩阵？）的 PH 表示为 \((\vec{\alpha}, T)\) 的 PH 分布，且 \(\vec{\alpha}\vec{e}=1\) ，令 \(\vec{\theta}\) 满足 \(\vec{\theta} Q=0\) 且 \(\vec{\theta}\vec{e}=1\) ，那么有 $$\vec{\theta}=-\vec{\alpha}T^{-1}/E[X]$$ 且有 $$E[X]=1/(\vec{\theta}T^0)$$ 证明略。</p>
+
+<h4 id="命题1-3-5">命题1.3.5：</h4>
+
+<p>假定 X 具有不可还原的 PH 表示为 \((\vec{\alpha}, T)\) ，且 \(\vec{\alpha}\vec{e}=1\) 的 PH 分布，令 \(\vec{\theta}\) 满足 \(\vec{\theta} Q=0\) 且 \(\vec{\theta}\vec{e}=1\) ，那么 \((\vec{\theta}, T)\) 是均匀分布 X 的 PH 表示。证明略。</p>
+
+<h4 id="练习1-3-11-略">练习1.3.11：略</h4>
+
+<h4 id="练习1-3-12-略">练习1.3.12：略</h4>
+
+<h4 id="commentary-略">Commentary：略</h4>
+
+<h4 id="additional-exercises-and-extensions-略">Additional Exercises and Extensions：略</h4>
+
+<div class="navfooter">
+    <table width="100%" summary="Navigation footer">
+        <tbody>
+            <tr>
+                <td width="40%" align="left">&nbsp;</td>
+                <td width="20%" align="center">&nbsp;</td>
+                <td width="40%" align="right">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="40%" align="left" valign="top">
+                    <span class="copyright">
+                        Copyright 2014-2018
+                    </span>
+                    &nbsp;
+                </td>
+                <td width="20%" align="center">&nbsp;</td>
+                <td width="40%" align="right" valign="top">&nbsp;<a href="https://chongg039.cn/">HOME</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+    
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117991024-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    <script type="text/javascript" src="https://chongg039.cn/js/function.js"></script>
+    <script type="text/javascript" src="https://chongg039.cn/js/prettify.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</html>
+

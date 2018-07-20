@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>FMAM - 1.2：PH分布的定义和基本属性</title>
+    <link rel="stylesheet" type="text/css" href="https://chongg039.cn/css/style.css" />
+    
+    <link rel="stylesheet" type="text/css" href="https://chongg039.cn/css/sunburst.css" />
+</head>
+<body onload="PR.prettyPrint()">
+    <div class="navheader">
+        <table width="100%" summary="Navigation header">
+            <tbody>
+                <tr>
+                    <th colspan="3" align="center">Co1driver 的个人博客</th>
+                </tr>
+                <tr>
+                    <td width="90%" align="left">&nbsp;</td>
+                    <td width="5%" align="center">&nbsp;<a accesskey="h" href="https://github.com/chongg039">GITHUB</a></td>
+                    <td width="5%" align="right">&nbsp;<a accesskey="a" href="https://chongg039.cn//about">ABOUT</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h1>FMAM - 1.2：PH分布的定义和基本属性</h1>
+    <h4>Thu, Jul 19, 2018</h4>
+    
+
+<p>PH 分布在 Neuts（1975）中被引入来概括指数分布。在本节中，我们给出了相位分布的一个代数定义和一个概率定义，并介绍一些基本的属性。</p>
+
+<h4 id="定义1-2-1">定义1.2.1：</h4>
+
+<p>如果非负随机变量 X 的分布函数由下式给出，则它具有相位类型分布（PH分布）：</p>
+
+<p>$$F(t)=P\{X \leq t\}=1-\vec{\alpha} exp(Tt) \vec{e} \equiv 1- \vec{\alpha}(\sum _ {n=0}^\infty \frac{t^n}{n!}T^n) \vec{e},t \geq 0 \tag{1.9}$$</p>
+
+<p>其中：</p>
+
+<ol>
+<li>\(\vec{e}\) 是全为 1 的列向量；</li>
+<li>\(\vec{\alpha}\) 是 m 阶的随机行向量（substochastic vector 翻译不准确？），即 \(\vec{\alpha}\) 是行向量，\(\vec{\alpha}\) 中的所有元素都是非负的，\(\vec{\alpha} \vec{e} \leq 1\) ，其中 m 是正整数；</li>
+<li>T 是 m 阶的子发生器（subgenerator 翻译不准确？），即 T 是 \(m \times m\) 矩阵，使得 (1) 对角线所有元素都是负的；(2) 所有非对角线元素都是非负的；(3) 一行所有元素之和均为非正数，且对所有行有效；(4) T 是可逆的。</li>
+</ol>
+
+<p>我们称 T 为 PH 发生器，2 元组 \((\vec{\alpha}, T)\) 称为 m 阶相位分布的相位表示（PH表示）。</p>
+
+<h4 id="例子1-2-1-略">例子1.2.1：略</h4>
+
+<h4 id="命题1-2-1">命题1.2.1：</h4>
+
+<p>对于定义 1.2.1 中给出的 PH 表示 \((\vec{\alpha},T)\) ，在方程 1.9 中定义的函数 F(t) 是一种概率分布，且其密度函数如下给出：</p>
+
+<p>$$f(t)=\frac{dF(t)}{dt}=\vec{\alpha}exp(Tt) T^0,t \geq 0 \tag{1.11}$$</p>
+
+<p>其中 \(T^0=-T\vec{e}\) ，证明略。</p>
+
+<h4 id="练习1-2-1-略">练习1.2.1：略</h4>
+
+<h4 id="定理1-2-1">定理1.2.1：</h4>
+
+<p>在非负半直线上的概率分布集合中，PH 分布的集合是密集的。</p>
+
+<p>众所周知，一组广义的 Erlang 分布（将在例子 1.2.3 中定义）在所有非负半直线上的概率分布集合中是密集的。由于广义 Erlang 分布集是 PH 分布的一个子集，定理 1.2.1 即所得。定理 1.2.1 的详细证明可以在例如 Asmussen（2000）中找到。</p>
+
+<p>定理 1.2.1 意味着 PH 分布在非负半直线上可以近似任何概率分布，这是他们得以在随机建模中被广泛使用主要原因之一。PH 分布中与 PH 表示相关的概率解释是另一个主要原因。为了解释，我们给出了 PH 分布的概率定义，这即是 Neuts（1975）给出的 PH 分布的第一个定义。。首先，我们使用下面的例子和小练习来复习用于定义 PH 分布的连续时间马尔可夫链。</p>
+
+<h4 id="例子1-2-2-略">例子1.2.2：略</h4>
+
+<h4 id="练习1-2-2-略">练习1.2.2：略</h4>
+
+<h4 id="练习1-2-3-略">练习1.2.3：略</h4>
+
+<h4 id="定义1-2-2">定义1.2.2：</h4>
+
+<p>假设方程 1.14 中定义的连续时间的马尔可夫链 \(\{T(t),t \geq 0\}\) 将被概率为 1 吸收到状态 m+1（翻译不准确？）。一个相位型（PH型）随机变量 X 被定义为到状态 m+1 的连续时间马尔可夫链 \(\{T(t),t \geq 0\}\)$ 的吸收时间。马尔可夫链的初始分布为 $$(\vec{\alpha},1-\vec{\alpha}\vec{e})$$ 二元组 \((\vec{\alpha},T)\) 是 X 的 PH 表示。</p>
+
+<p>定义 1.2.1 和定义 1.2.2 是等价的，因为 (1) 具有吸收状态的马尔可夫链 \(\{T(t),t \geq 0\}\) 的矩阵 T 满足在定义 1.2.1 中给出的条件；(2) 在两个定义中向量 \(\vec{\alpha}\) 都是子随机向量（不准确？）；(3) 公式 1.9 和 1.18 是一致的。</p>
+
+<p>定义 1.2.2 在随机建模中很有用，因为它链接了相位类型随机变量和连续时间马尔可夫链，通常称为底层马尔可夫链。在吸收之前，底层马尔可夫链是由矩阵 T  中的转移概率支配。每个元素的瞬态状态到吸收状态的转移概率由 \(T^0\) 给出（翻译不准确？）。 因此，通过保持跟踪底层马尔可夫链的状态 \(I(t)\) ，我们可以找到分布的剩余吸收时间。事实上，剩余吸收时间也服从 PH 分布。 例如，如果 \(I(t)= 1\) ，则剩余时间具有 PH 分布，其 PH 表示为 \(((1, 0, &hellip;, 0), T)\)  。PH 分布的这个属性称为基于底层马尔可夫链状态的部分无记忆属性。定义 1.2.2 中描述的 PH 分布的概率解释是随机建模中 PH 分布应用的关键。在后面的章节，每当使用 PH 分布时，状态变量 \(I(t)\) 将是在随机的马尔可夫链的引入中用作辅助变量，在相关随机模型中使用。</p>
+
+<h4 id="练习1-2-4-略">练习1.2.4：略</h4>
+
+<h4 id="例子1-2-3-略">例子1.2.3：略</h4>
+
+<h4 id="练习1-2-5-略">练习1.2.5：略</h4>
+
+<h4 id="命题1-2-2">命题1.2.2：</h4>
+
+<p>以下属性适用于 PH 表示 \((\vec{\alpha},T)\) 的 PH 随机变量 X ：</p>
+
+<ol>
+<li>X 的 LST（Laplace-Stieltjes变换，练习1.1.8）是 $$f^*(s)=1-\vec{\alpha}\vec{e}+\vec{\alpha}(sI-T)^{-1} T^0,s \geq 0, I 为单位矩阵$$</li>
+<li>$$E[X^n]=(-1)^n n!\vec{\alpha}T^{-n}\vec{e},n=1,2,&hellip;$$</li>
+</ol>
+
+<p>我们注意到，在概率论中计算连续时刻的分布涉及到积分（如：\(E[X^n]=\int _ {0}^{\infty}x^{n}dF(x)\)）。使用 PH 分布将积分转换为矩阵计算是一种更加有效和高效的方法，这是在随机建模中使用 PH 分布的另一个优点。</p>
+
+<p>关于 PH 分布的一个基本问题是：什么样的概率分配是 PH 分布？以下定理就 LTS 给出了完整的答案，它在理论研究和计算中都很有用。</p>
+
+<h4 id="定理1-2-2-o-cinneide-1990a">定理1.2.2 (O’Cinneide (1990a))：</h4>
+
+<p>非负半直线上的概率分布是 PH 分布，当且仅当它是点的质量为零（翻译不准确？）或 (a) 它在正实数上有一个严格正的连续密度，(b) 它有一个有理的Laplace-Stieltjes 变换，唯一的极点是最大实部。</p>
+
+<p>（证明原文中未包括）</p>
+
+<h4 id="commentary-略">Commentary：略</h4>
+
+<h4 id="additional-exercises-and-extensions-略">Additional Exercises and Extensions：略</h4>
+
+<div class="navfooter">
+    <table width="100%" summary="Navigation footer">
+        <tbody>
+            <tr>
+                <td width="40%" align="left">&nbsp;</td>
+                <td width="20%" align="center">&nbsp;</td>
+                <td width="40%" align="right">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="40%" align="left" valign="top">
+                    <span class="copyright">
+                        Copyright 2014-2018
+                    </span>
+                    &nbsp;
+                </td>
+                <td width="20%" align="center">&nbsp;</td>
+                <td width="40%" align="right" valign="top">&nbsp;<a href="https://chongg039.cn/">HOME</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+    
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117991024-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    <script type="text/javascript" src="https://chongg039.cn/js/function.js"></script>
+    <script type="text/javascript" src="https://chongg039.cn/js/prettify.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</html>
+

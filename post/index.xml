@@ -7,15 +7,61 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Thu, 19 Jul 2018 17:19:48 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 20 Jul 2018 15:59:56 +0800</lastBuildDate>
     
 	<atom:link href="https://chongg039.cn/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>FMAM - 1.3：PH分布的闭包属性</title>
+      <link>https://chongg039.cn/post/fmam-content-1.3/</link>
+      <pubDate>Fri, 20 Jul 2018 15:59:56 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/post/fmam-content-1.3/</guid>
+      <description>在本节中，我们展示了一组 PH 分布在一些操作下是封闭的情况（例如，“min”，“max”，“+”）。闭包属性证明了随机建模中 PH 分布在数学上的动态可操作性，这体现了他们在应用中的关键作用。首先，我们考虑采用马尔可夫链方法练习 1.1.5 , 1.1.6 和 1.1.9 。
+例子1.3.1：略 例子1.3.2：略 练习1.3.1：略 练习1.3.2：略 命题1.3.1： 假定 \(X _ {1}\) 具有 PH 表示为 \((\vec{\alpha},T)\) 的 PH 分布，\(X _ {2}\) 具有 PH 表示为 \((\vec{\beta},T)\) 的 PH 分布，且 \(X _ {1}\) 与 \(X _ {2}\) 相互独立，那么 \(X=min\{X _ {1}, X _ {2}\}\) 具有 PH 表示为 $$(\vec{\alpha} \otimes \vec{\beta}, T \otimes I + I \otimes S) \tag{1.38}$$ 的 PH 分布。证明略。
+练习1.3.3：略 练习1.3.4：略 命题1.</description>
+    </item>
+    
+    <item>
+      <title>FMAM - 1.2：PH分布的定义和基本属性</title>
+      <link>https://chongg039.cn/post/fmam-content-1.2/</link>
+      <pubDate>Thu, 19 Jul 2018 20:11:50 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/post/fmam-content-1.2/</guid>
+      <description>PH 分布在 Neuts（1975）中被引入来概括指数分布。在本节中，我们给出了相位分布的一个代数定义和一个概率定义，并介绍一些基本的属性。
+定义1.2.1： 如果非负随机变量 X 的分布函数由下式给出，则它具有相位类型分布（PH分布）：
+$$F(t)=P\{X \leq t\}=1-\vec{\alpha} exp(Tt) \vec{e} \equiv 1- \vec{\alpha}(\sum _ {n=0}^\infty \frac{t^n}{n!}T^n) \vec{e},t \geq 0 \tag{1.9}$$
+其中：
+ \(\vec{e}\) 是全为 1 的列向量； \(\vec{\alpha}\) 是 m 阶的随机行向量（substochastic vector 翻译不准确？），即 \(\vec{\alpha}\) 是行向量，\(\vec{\alpha}\) 中的所有元素都是非负的，\(\vec{\alpha} \vec{e} \leq 1\) ，其中 m 是正整数； T 是 m 阶的子发生器（subgenerator 翻译不准确？），即 T 是 \(m \times m\) 矩阵，使得 (1) 对角线所有元素都是负的；(2) 所有非对角线元素都是非负的；(3) 一行所有元素之和均为非正数，且对所有行有效；(4) T 是可逆的。  我们称 T 为 PH 发生器，2 元组 \((\vec{\alpha}, T)\) 称为 m 阶相位分布的相位表示（PH表示）。</description>
+    </item>
+    
+    <item>
+      <title>FMAM - 1.1：指数分布</title>
+      <link>https://chongg039.cn/post/fmam-content-1.1/</link>
+      <pubDate>Wed, 18 Jul 2018 17:01:14 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/post/fmam-content-1.1/</guid>
+      <description>本章节定义了指数分布和与指数分布相关联的一些基本属性。
+定义1.1.1： 如果一个非负随机变量Ｘ的概率分布函数（即累积分布函数 CDF）满足如下形式：
+$$F(t)=P\{X \leq t\}=1-exp(-\lambda t) \equiv 1-\sum _ {n=0}^{\infty}\frac{(-\lambda)^n t^n}{n!}, t \geq 0$$
+则称非负随机变量Ｘ服从指数分布。其中 \(\lambda \) 是正实数，将Ｘ称为参数为 \(\lambda \) 的指数随机变量。
+取分布函数 F(t) 的导数，即得到指数分布的概率密度函数：
+$$f(t)=\frac{dF(t)}{dt}=\lambda exp(- \lambda t), t \geq 0$$
+练习1.1.1：略 练习1.1.2：略 练习1.1.3：略 命题1.1.1： 对参数为 \(\lambda \) 的指数随机变量X有：
+$$E[X]=\frac{1}{\lambda}$$
+$$Var(X)\equiv E[(X-E[X])^2]=E[X^2]-(E[X])^2=\frac{1}{\lambda^2}$$
+$$cv(X)\equiv \frac{\sqrt {Var(X)}}{E[X]}=\sqrt{Var(\frac{X}{E[X]})}=1$$
+我们注意到：
+ X 均值是由 \(1/\lambda \) 给出的，这提供了一个简单的估算 \(\lambda \)的方法； 所有指数分布均服从 \(cv(X)=1\) ，这限制了指数分布的适用范围。  指数分布的唯一参数参数 \(\lambda \) 可以明确解释不同的情况。例如，在可靠性原理中 \(\lambda \) 被解释为失败率（见练习1.1.10），而它代表泊松过程中的到达率（参见第2章第2.1节）。
+注意：在文献中，随机变量的数学期望也称为平均值，期望值。在本书中，我们将主要使用“均值”和“期望”，使用哪个取决于上下文和感兴趣的领域。
+从指数分布和条件概率的定义来看，很容易发现当 \(t \geq 0,s \geq 0 \) 时有： $$ P\{X&amp;gt;t+s|X&amp;gt;s\}=P\{X&amp;gt;t\} $$ 这被称作无记忆性。假设 \(X\) 表示时间，直观来说，无记忆性是指在给定 \(X&amp;gt;s \) 条件下，剩余时间 \(X-s\) 与已经经过的时间 \(s\) 无关（译者注：原文这里有些啰嗦，无记忆性可以看预备知识）。</description>
+    </item>
+    
+    <item>
       <title>FMAM - 预备内容：指数分布和Erlang分布 - Chapter 1 </title>
       <link>https://chongg039.cn/post/fmam-prepare-2/</link>
-      <pubDate>Thu, 19 Jul 2018 17:19:48 +0800</pubDate>
+      <pubDate>Tue, 17 Jul 2018 17:19:48 +0800</pubDate>
       
       <guid>https://chongg039.cn/post/fmam-prepare-2/</guid>
       <description>泊松分布是离散变量的随机分布，发生的次数之间是离散的。指数分布则针对连续型随机变量定义，即时间必须是连续的。
@@ -32,27 +78,25 @@
 爱尔朗分布（Erlang Distribution）是一种连续型概率分布，该分布与指数分布一样多用来表示独立随机事件发生的时间间隔。相比于指数分布，爱尔朗分布能更好地对现实数据进行拟合（更适用于多个串行过程，或无记忆性假设不显著的情况下）。除非退化为指数分布，爱尔朗分布不具有无记忆性（或马尔可夫性质），因此对其进行分析相对困难一些。一般通过将爱尔朗过程分解为多个指数过程的技巧来对爱尔朗分布进行分析。
 遵循爱尔朗分布的随机变量可以被分解多个同参数指数分布随机变量之和，该性质使得爱尔朗分布被广泛用于排队论中。
 爱尔朗分布有两个参数，阶数（stage）\(k\) 和均值 \(\mu\) （也有用 \(\lambda ={\frac {1}{\mu }}\) 来代替的）。具有阶数 \(k\) 的爱尔朗过程被称为k阶爱尔朗（k-stage Erlang），对应的随机变量可被视为k个独立同参数指数分布随机变量之和。
-依据上下文环境不同，均值参数 \(\mu\) 可以指整个爱尔朗分布的均值 \(\mu _{0}\) 也可以指每个指数分布的均值 \(\mu _{i}\) 。两者的关系是： $$\mu _{i}={\frac {\mu _{0}}{k}}$$ 。</description>
+依据上下文环境不同，均值参数 \(\mu\) 可以指整个爱尔朗分布的均值 \(\mu _ {0}\) 也可以指每个指数分布的均值 \(\mu _ {i}\) 。两者的关系是： $$\mu _ {i}={\frac {\mu _ {0}}{k}}$$</description>
     </item>
     
     <item>
       <title>FMAM - 预备内容：从泊松分布到泊松过程 - Chapter 1</title>
       <link>https://chongg039.cn/post/fmam-prepare-1/</link>
-      <pubDate>Tue, 17 Jul 2018 09:33:33 +0800</pubDate>
+      <pubDate>Mon, 16 Jul 2018 09:33:33 +0800</pubDate>
       
       <guid>https://chongg039.cn/post/fmam-prepare-1/</guid>
       <description>泊松分布 泊松分布由二项分布演变而来。二项分布：
 事件 A 在一次实验中发生的概率为 P ，将这个实验独立地重复 n 次，即做 n 次独立重复的伯努利实验，在这 n 次实验中事件A发生的次数记为 x ，概率有：
-$$P(x=k)=C_{n}^{k}p^{k}(1-p)^{n-k}$$，记为 \(X\sim B(n,p)\) ，期望 \(E=pn\)
+$$P(x=k)=C _ {n}^{k}p^{k}(1-p)^{n-k}$$，记为 \(X\sim B(n,p)\) ，期望 \(E=pn\)
 认为在 n 趋于无穷大时，p 为无穷小，期望值不变为一常数，记 \(E=pn=\lambda\)
 即：$$p=\frac{\lambda}{n}$$，则当 \(n \to +\infty\) 时，P 将趋于泊松分布：$$P(x=k)= e^{-\lambda}\frac{\lambda^{k}}{k!}$$
 期望和方差都是 \(\lambda\) ，\(\lambda\) 表示一段时间内事件发生的次数。
 泊松分布实例：
  一本书里，印刷错误的字的个数 一段时间内的次品率 某医院平均每小时出生的婴儿数 某网站每分钟的访问次数  独立增量过程 亦称可加过程（additive process)，是在不相交时段上增量相互独立的随机过程。
-考虑实值过程 $$ X_{t}, t \in T $$
-如果对于任意参数 $$ t{0} &amp;lt; t{1} &amp;lt; &amp;hellip; t_{n} $$
-随机变量 $$ X{t{0}},X{t{1}}-X{t{0}},&amp;hellip;X{t{n}}-X{t{n-1}} $$ 相互独立，则称其为独立增量过程。
-若进一步假设 $$ X{t{k}}-X{t{k-1}} $$ 的分布只与差</description>
+考虑实值过程 $$ X _ {t}, t \in T $$
+如果对于任意参数 $$ t _ {0} &amp;lt; t _ {1} &amp;lt; &amp;hellip; t _ {n} $$</description>
     </item>
     
     <item>
