@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>FMAM - 1.2：PH分布的定义和基本属性</title>
+    <title>FMAM - 1.2：PH 分布的定义和基本属性</title>
     <link rel="stylesheet" type="text/css" href="https://chongg039.cn/css/style.css" />
     
     <link rel="stylesheet" type="text/css" href="https://chongg039.cn/css/sunburst.css" />
@@ -23,7 +23,7 @@
         </table>
     </div>
 
-    <h1>FMAM - 1.2：PH分布的定义和基本属性</h1>
+    <h1>FMAM - 1.2：PH 分布的定义和基本属性</h1>
     <h4>Thu, Jul 19, 2018</h4>
     
 
@@ -33,27 +33,31 @@
 
 <p>如果非负随机变量 X 的分布函数由下式给出，则它具有相位类型分布（PH分布）：</p>
 
-<p>$$F(t)=P\{X \leq t\}=1-\vec{\alpha} exp(Tt) \vec{e} \equiv 1- \vec{\alpha}(\sum _ {n=0}^\infty \frac{t^n}{n!}T^n) \vec{e},t \geq 0 \tag{1.9}$$</p>
+<p>$$
+F(t)=P\{X \leq t\}=1-\pmb{\alpha} exp(Tt) \pmb{e} \equiv 1- \pmb{\alpha}(\sum _ {n=0}^\infty \frac{t^n}{n!}T^n) \pmb{e},t \geq 0 \tag{1.9}
+$$</p>
 
 <p>其中：</p>
 
 <ol>
-<li>\(\vec{e}\) 是全为 1 的列向量；</li>
-<li>\(\vec{\alpha}\) 是 m 阶的随机行向量（substochastic vector 翻译不准确？），即 \(\vec{\alpha}\) 是行向量，\(\vec{\alpha}\) 中的所有元素都是非负的，\(\vec{\alpha} \vec{e} \leq 1\) ，其中 m 是正整数；</li>
+<li>\(\pmb{e}\) 是全为 1 的列向量；</li>
+<li>\(\pmb{\alpha}\) 是 m 阶的随机行向量（substochastic pmbtor 翻译不准确？），即 \(\pmb{\alpha}\) 是行向量，\(\pmb{\alpha}\) 中的所有元素都是非负的，\(\pmb{\alpha} \pmb{e} \leq 1\) ，其中 m 是正整数；</li>
 <li>T 是 m 阶的子发生器（subgenerator 翻译不准确？），即 T 是 \(m \times m\) 矩阵，使得 (1) 对角线所有元素都是负的；(2) 所有非对角线元素都是非负的；(3) 一行所有元素之和均为非正数，且对所有行有效；(4) T 是可逆的。</li>
 </ol>
 
-<p>我们称 T 为 PH 发生器，2 元组 \((\vec{\alpha}, T)\) 称为 m 阶相位分布的相位表示（PH表示）。</p>
+<p>我们称 T 为 PH 发生器，2 元组 \((\pmb{\alpha}, T)\) 称为 m 阶相位分布的相位表示（PH表示）。</p>
 
 <h4 id="例子1-2-1-略">例子1.2.1：略</h4>
 
 <h4 id="命题1-2-1">命题1.2.1：</h4>
 
-<p>对于定义 1.2.1 中给出的 PH 表示 \((\vec{\alpha},T)\) ，在方程 1.9 中定义的函数 F(t) 是一种概率分布，且其密度函数如下给出：</p>
+<p>对于定义 1.2.1 中给出的 PH 表示 \((\pmb{\alpha},T)\) ，在方程 1.9 中定义的函数 F(t) 是一种概率分布，且其密度函数如下给出：</p>
 
-<p>$$f(t)=\frac{dF(t)}{dt}=\vec{\alpha}exp(Tt) T^0,t \geq 0 \tag{1.11}$$</p>
+<p>$$
+f(t)=\frac{dF(t)}{dt}=\pmb{\alpha}exp(Tt) T^0,t \geq 0 \tag{1.11}
+$$</p>
 
-<p>其中 \(T^0=-T\vec{e}\) ，证明略。</p>
+<p>其中 \(T^0=-T\pmb{e}\) ，证明略。</p>
 
 <h4 id="练习1-2-1-略">练习1.2.1：略</h4>
 
@@ -73,9 +77,13 @@
 
 <h4 id="定义1-2-2">定义1.2.2：</h4>
 
-<p>假设方程 1.14 中定义的连续时间的马尔可夫链 \(\{T(t),t \geq 0\}\) 将被概率为 1 吸收到状态 m+1（翻译不准确？）。一个相位型（PH型）随机变量 X 被定义为到状态 m+1 的连续时间马尔可夫链 \(\{T(t),t \geq 0\}\)$ 的吸收时间。马尔可夫链的初始分布为 $$(\vec{\alpha},1-\vec{\alpha}\vec{e})$$ 二元组 \((\vec{\alpha},T)\) 是 X 的 PH 表示。</p>
+<p>假设方程 1.14 中定义的连续时间的马尔可夫链 \(\{T(t),t \geq 0\}\) 将被概率为 1 吸收到状态 m+1（翻译不准确？）。一个相位型（PH型）随机变量 X 被定义为到状态 m+1 的连续时间马尔可夫链 \(\{T(t),t \geq 0\}\)$ 的吸收时间。马尔可夫链的初始分布为
+$$
+(\pmb{\alpha},1-\pmb{\alpha}\pmb{e})
+$$
+二元组 \((\pmb{\alpha},T)\) 是 X 的 PH 表示。</p>
 
-<p>定义 1.2.1 和定义 1.2.2 是等价的，因为 (1) 具有吸收状态的马尔可夫链 \(\{T(t),t \geq 0\}\) 的矩阵 T 满足在定义 1.2.1 中给出的条件；(2) 在两个定义中向量 \(\vec{\alpha}\) 都是子随机向量（不准确？）；(3) 公式 1.9 和 1.18 是一致的。</p>
+<p>定义 1.2.1 和定义 1.2.2 是等价的，因为 (1) 具有吸收状态的马尔可夫链 \(\{T(t),t \geq 0\}\) 的矩阵 T 满足在定义 1.2.1 中给出的条件；(2) 在两个定义中向量 \(\pmb{\alpha}\) 都是子随机向量（不准确？）；(3) 公式 1.9 和 1.18 是一致的。</p>
 
 <p>定义 1.2.2 在随机建模中很有用，因为它链接了相位类型随机变量和连续时间马尔可夫链，通常称为底层马尔可夫链。在吸收之前，底层马尔可夫链是由矩阵 T  中的转移概率支配。每个元素的瞬态状态到吸收状态的转移概率由 \(T^0\) 给出（翻译不准确？）。 因此，通过保持跟踪底层马尔可夫链的状态 \(I(t)\) ，我们可以找到分布的剩余吸收时间。事实上，剩余吸收时间也服从 PH 分布。 例如，如果 \(I(t)= 1\) ，则剩余时间具有 PH 分布，其 PH 表示为 \(((1, 0, &hellip;, 0), T)\)  。PH 分布的这个属性称为基于底层马尔可夫链状态的部分无记忆属性。定义 1.2.2 中描述的 PH 分布的概率解释是随机建模中 PH 分布应用的关键。在后面的章节，每当使用 PH 分布时，状态变量 \(I(t)\) 将是在随机的马尔可夫链的引入中用作辅助变量，在相关随机模型中使用。</p>
 
@@ -87,11 +95,11 @@
 
 <h4 id="命题1-2-2">命题1.2.2：</h4>
 
-<p>以下属性适用于 PH 表示 \((\vec{\alpha},T)\) 的 PH 随机变量 X ：</p>
+<p>以下属性适用于 PH 表示 \((\pmb{\alpha},T)\) 的 PH 随机变量 X ：</p>
 
 <ol>
-<li>X 的 LST（Laplace-Stieltjes变换，练习1.1.8）是 $$f^*(s)=1-\vec{\alpha}\vec{e}+\vec{\alpha}(sI-T)^{-1} T^0,s \geq 0, I 为单位矩阵$$</li>
-<li>$$E[X^n]=(-1)^n n!\vec{\alpha}T^{-n}\vec{e},n=1,2,&hellip;$$</li>
+<li>X 的 LST（Laplace-Stieltjes变换，练习1.1.8）是$$f^*(s)=1-\pmb{\alpha}\pmb{e}+\pmb{\alpha}(sI-T)^{-1} T^0,s \geq 0, I 为单位矩阵$$</li>
+<li>$$E[X^n]=(-1)^n n!\pmb{\alpha}T^{-n}\pmb{e},n=1,2,&hellip;$$</li>
 </ol>
 
 <p>我们注意到，在概率论中计算连续时刻的分布涉及到积分（如：\(E[X^n]=\int _ {0}^{\infty}x^{n}dF(x)\)）。使用 PH 分布将积分转换为矩阵计算是一种更加有效和高效的方法，这是在随机建模中使用 PH 分布的另一个优点。</p>
