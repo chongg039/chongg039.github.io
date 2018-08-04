@@ -36,20 +36,18 @@ $$
 P=
 \biggl(
     \begin{matrix}
-        T &amp; \pmb{T ^ {0}} <br />
+        T &amp; \pmb{T ^ {0}} \\
         0 &amp; 1<br />
     \end{matrix}
 \biggl)
 $$
-吸收到状态 \(m+1\) 的时间表示为 \(X\) ，我们将其定义为离散时间的 PH 随机变量。给出初始概率向量 \((\pmb{\alpha}, 1-\pmb(\alpha e})\) ，很容易得到
+吸收到状态 \(m+1\) 的时间表示为 \(X\) ，我们将其定义为离散时间的 PH 随机变量。给出初始概率向量 \((\pmb{\alpha}, 1-\pmb{\alpha e})\) ，很容易得到
 $$
 P\{X=n\}=
-\left{
-    \begin{array}{<strong>lr</strong>}
-    1 - \pmb{\alpha e}, \qquad if \quad n=0; <br />
-    \pmb{\alpha} T ^ {n-1} \pmb{T ^ 0},\qquad if \quad n=1, 2, &hellip;
-    \end{array}
-\right.
+\begin{cases}
+    1 - \pmb{\alpha e} &amp; if \quad n=0; <br />
+    \pmb{\alpha} T ^ {n-1} \pmb{T ^ 0} &amp; if \quad n=1, 2, &hellip;
+\end{cases}
 $$</p>
 
 <h4 id="练习1-7-1-略">练习1.7.1：略</h4>
@@ -98,6 +96,26 @@ $$</p>
 
 <p>Neuts (1995) 提供了大量与 PH 分布相关的练习和应用。Neuts (1995) 中的第四章和第五章对理解 PH 分布和他们的应用尤其有帮助。</p>
 
+    <div id="disqus_thread"></div>
+<script>
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "coldriver" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
 <div class="navfooter">
     <table width="100%" summary="Navigation footer">
         <tbody>

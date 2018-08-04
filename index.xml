@@ -19,8 +19,8 @@
       
       <guid>https://chongg039.cn/post/fmam-content-1.7/</guid>
       <description>第 1.2, 1.3, 1.4, 1.5 和 1.6 节涵盖了 PH 分布和多元 PH 分布的基本理论。在本节中，我们将讨论概括和一些概括 PH 分布的理论问题。
-1.7.1 离散的 PH 分布 考虑具有 m + 1 个状态的离散时间马尔可夫链，其概率矩阵为 $$ P= \biggl( \begin{matrix} T &amp;amp; \pmb{T ^ {0}} 0 &amp;amp; 1
-\end{matrix} \biggl) $$ 吸收到状态 \(m+1\) 的时间表示为 \(X\) ，我们将其定义为离散时间的 PH 随机变量。给出初始概率向量 \((\pmb{\alpha}, 1-\pmb(\alpha e})\) ，很容易得到 $$ P\{X=n\}= \left{ \begin{array}{lr} 1 - \pmb{\alpha e}, \qquad if \quad n=0; \pmb{\alpha} T ^ {n-1} \pmb{T ^ 0},\qquad if \quad n=1, 2, &amp;hellip; \end{array} \right.</description>
+1.7.1 离散的 PH 分布 考虑具有 m + 1 个状态的离散时间马尔可夫链，其概率矩阵为 $$ P= \biggl( \begin{matrix} T &amp;amp; \pmb{T ^ {0}} \\ 0 &amp;amp; 1
+\end{matrix} \biggl) $$ 吸收到状态 \(m+1\) 的时间表示为 \(X\) ，我们将其定义为离散时间的 PH 随机变量。给出初始概率向量 \((\pmb{\alpha}, 1-\pmb{\alpha e})\) ，很容易得到 $$ P\{X=n\}= \begin{cases} 1 - \pmb{\alpha e} &amp;amp; if \quad n=0; \pmb{\alpha} T ^ {n-1} \pmb{T ^ 0} &amp;amp; if \quad n=1, 2, &amp;hellip; \end{cases} $$</description>
     </item>
     
     <item>
@@ -347,19 +347,19 @@ var functionName = function(arg0, arg1, arg2){
     </item>
     
     <item>
-      <title>about</title>
+      <title>about me</title>
       <link>https://chongg039.cn/about/</link>
       <pubDate>Sat, 22 Aug 2015 06:42:21 -0700</pubDate>
       
       <guid>https://chongg039.cn/about/</guid>
-      <description>coldriver，nodejs玩家，最近转型Go
-仍就读于蓉城某非著名985院校计算机专业，创萌工作室现任负责人，保研无望又不安于找工作，最近准备搞点事情
-师从isomker， tesths两位不大不小的牛人，工作室有一帮同甘共苦的小伙伴，时间紧凑，不过生活也算是滋润
-有强烈的技术情结，重度开源患者，还未成型的全栈攻城尸。喜欢运动爱冒险，愿意探索新奇的语言和事物
-如果你喜欢这里，可以订阅一下就是不知道下一篇什么时候更新。如果有兴趣也可以通过微信，Twitter 和我交流，共同学习进步
-我们有好用的 VPS，用的是 Vultr 日本的云服务器。如果你也想使用他家的，你可以通过这里注册，这样我们都能获得优惠。如果你想和我们共用，没问题。
-对我或者本站有意见和建议也可以通过下方的邮箱和我联系，希望你生活愉快！
-这里是我的简历</description>
+      <description>Co1driver，本科毕业于蓉城某辣鸡 985 院校计算机专业，前创萌工作室负责人，本校研究生在读
+工作室期间师从 isomker， tesths 两位不大不小的牛人，从前端转后端，导致各种语言、框架、工具都会一些
+这个博客从考研开始就有些荒废了，现在准备重新拾起来，写一点研究生期间学习的感悟。如果有兴趣也可以通过微信，Twitter 和我交流
+博客托管在 Github 上，自己用 Hugo 写了个简单的模板用着，图片放在 Flickr 的图床里，可能访问会有些慢。下面的地址经过 base64 简单处理，请解码后查看
+对我或者本站有意见和建议也可以通过邮件和我联系，希望你生活愉快！
+Wechat：aHR0cHM6Ly9jMS5zdGF0aWNmbGlja3IuY29tLzMvMjgzNS8zMjc0MzcyNzE0NF9mN2U5ZjdkOTBiX3EuanBnCg==
+Twitter：aHR0cHM6Ly9jMS5zdGF0aWNmbGlja3IuY29tLzMvMjkzMy8zMzQ1NzQ5OTUwMV8wNzkzNjhlMTJmX3EuanBnCg==
+Gmail：Y2hvbmdnMDM5QGdtYWlsLmNvbQo=</description>
     </item>
     
   </channel>
