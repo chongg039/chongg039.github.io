@@ -82,13 +82,10 @@ $$ F(t)=P\{X \leq t\}=1-\pmb{\alpha} exp(Tt) \pmb{e} \equiv 1- \pmb{\alpha}(\sum
 $$ F(t)=P\{X \leq t\}=1-exp(-\lambda t) \equiv 1-\sum _ {n=0}^{\infty}\frac{(-\lambda)^n t^n}{n!}, t \geq 0 $$
 则称非负随机变量Ｘ服从指数分布。其中 \(\lambda \) 是正实数，将Ｘ称为参数为 \(\lambda \) 的指数随机变量。
 取分布函数 F(t) 的导数，即得到指数分布的概率密度函数：
-$$f(t)=\frac{dF(t)}{dt}=\lambda exp(- \lambda t), t \geq 0$$
-练习1.1.1：略 练习1.1.2：略 练习1.1.3：略 命题1.1.1： 对参数为 \(\lambda \) 的指数随机变量X有：
-$$ E[X]=\frac{1}{\lambda} $$
-$$ Var(X)\equiv E[(X-E[X])^2]=E[X^2]-(E[X])^2=\frac{1}{\lambda^2} $$
-$$ cv(X)\equiv \frac{\sqrt {Var(X)}}{E[X]}=\sqrt{Var(\frac{X}{E[X]})}=1 $$
-我们注意到：
- X 均值是由 \(1/\lambda \) 给出的，这提供了一个简单的估算 \(\lambda \)的方法； 所有指数分布均服从 \(cv(X)=1\) ，这限制了指数分布的适用范围。  指数分布的唯一参数参数 \(\lambda \) 可以明确解释不同的情况。例如，在可靠性原理中 \(\lambda \) 被解释为失败率（见练习1.</description>
+$$ f(t)=\frac{dF(t)}{dt}=\lambda exp(- \lambda t), t \geq 0 $$
+练习1.1.1： 式子 $$ \int _ {0} ^ {\infty} \lambda e ^ {- \lambda t} dt=1 $$ 使用了分部积分法，试着从概率上解释（不使用任何计算）为什么积分的结果是 1 。
+图 1.1 绘制了 \(\lambda = 1\) 和 \(\lambda = 5\) 时的指数分布的概率密度函数，这两者表现出了类似“指数”的形状。
+练习1.1.2： 分别绘制 \(\lambda = 0.</description>
     </item>
     
     <item>
