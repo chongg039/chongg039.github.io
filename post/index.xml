@@ -79,7 +79,7 @@ PH分布的参数估计是指为一个来自样本 \({y _ {1}, y _ {2}, &amp;hel
 定义1.2.1： 如果非负随机变量 X 的分布函数由下式给出，则它具有相位类型分布（PH分布）：
 $$ F(t)=P\{X \leq t\}=1-\pmb{\alpha} exp(Tt) \pmb{e} \equiv 1- \pmb{\alpha}(\sum _ {n=0}^\infty \frac{t^n}{n!}T^n) \pmb{e},t \geq 0 \tag{1.9} $$
 其中：
- \(\pmb{e}\) 是全为 1 的列向量； \(\pmb{\alpha}\) 是 m 阶的随机行向量（substochastic pmbtor 翻译不准确？），即 \(\pmb{\alpha}\) 是行向量，\(\pmb{\alpha}\) 中的所有元素都是非负的，\(\pmb{\alpha} \pmb{e} \leq 1\) ，其中 m 是正整数； T 是 m 阶的子发生器（subgenerator 翻译不准确？），即 T 是 \(m \times m\) 矩阵，使得 (1) 对角线所有元素都是负的；(2) 所有非对角线元素都是非负的；(3) 一行所有元素之和均为非正数，且对所有行有效；(4) T 是可逆的。  我们称 T 为 PH 发生器，2 元组 \((\pmb{\alpha}, T)\) 称为 m 阶相位分布的相位表示（PH表示）。</description>
+ \(\pmb{e}\) 是全为 1 的列向量； \(\pmb{\alpha}\) 是 m 阶的随机行向量（substochastic pmbtor 翻译不准确？），即 \(\pmb{\alpha}\) 是行向量，\(\pmb{\alpha}\) 中的所有元素都是非负的，\(\pmb{\alpha} \pmb{e} \leq 1\) ，其中 m 是正整数； T 是 m 阶的子生成矩阵（subgenerator 翻译不准确？），即 T 是 \(m \times m\) 矩阵，使得 (1) 对角线所有元素都是负的；(2) 所有非对角线元素都是非负的；(3) 一行所有元素之和均为非正数，且对所有行有效；(4) T 是可逆的。  我们称 T 为 PH 发生器，2 元组 \((\pmb{\alpha}, T)\) 称为 m 阶相位分布的相位表示（PH表示）。</description>
     </item>
     
     <item>
