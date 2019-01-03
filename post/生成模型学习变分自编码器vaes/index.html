@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="https://chongg039.cn/css/style.css" />
+    
+    <link rel="stylesheet" type="text/css" href="https://chongg039.cn/css/sunburst.css" />
+</head>
+<body onload="PR.prettyPrint()">
+    <div class="navheader">
+        <table width="100%" summary="Navigation header">
+            <tbody>
+                <tr>
+                    <th colspan="3" align="center">Co1driver 的个人博客</th>
+                </tr>
+                <tr>
+                    <td width="90%" align="left">&nbsp;</td>
+                    <td width="5%" align="center">&nbsp;<a accesskey="h" href="https://github.com/chongg039">GITHUB</a></td>
+                    <td width="5%" align="right">&nbsp;<a accesskey="a" href="https://chongg039.cn//about">ABOUT</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h1></h1>
+    <h4>Mon, Jan 1, 0001</h4>
+    
+
+<h3 id="生成模型学习-变分自编码器">生成模型学习：变分自编码器</h3>
+
+<h4 id="自动编码器ae-autoencoder">自动编码器AE（AutoEncoder）</h4>
+
+<p><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/28/Autoencoder_structure.png/350px-Autoencoder_structure.png" alt="" /></p>
+
+<p>AE是一种前馈神经网络，主要用于数据的降维或者特征的抽取，也作为数据压缩、图像模糊或平滑处理的一种手段。中间的隐层可以学习到数据之间的某些特征，而当隐藏层节点数小于输入输出节点数时，就不可避免地要丢失一些信息。</p>
+
+<p>与一般的前馈网络不同，其他前馈网络多关注Output Layer和Loss，但AE主要关注Hidden Layer，而且一般也只有一层隐藏层。</p>
+
+<p>现在自动编码器也常被用于生成模型当中，贴两篇文章的观点：</p>
+
+<p>什么是自动编码器<a href="https://zhuanlan.zhihu.com/p/27549418">https://zhuanlan.zhihu.com/p/27549418</a></p>
+
+<blockquote>
+<p>我们之前讲过GAN，它与GAN相比有着一些好处，同时也有着一些缺点。我们先来讲讲其跟GAN相比有着哪些优点。</p>
+
+<p>第一点，我们使用GAN来生成图片有个很不好的缺点就是我们生成图片使用的随机高斯噪声，这意味着我们并不能生成任意我们指定类型的图片，也就是说我们没办法决定使用哪种随机噪声能够产生我们想要的图片，除非我们能够把初始分布全部试一遍。但是使用自动编码器我们就能够通过输出图片的编码过程得到这种类型图片的编码之后的分布，相当于我们是知道每种图片对应的噪声分布，我们就能够通过选择特定的噪声来生成我们想要生成的图片。</p>
+
+<p>第二点，这既是生成网络的优点同时又有着一定的局限性，这就是生成网络通过对抗过程来区分“真”的图片和“假”的图片，然而这样得到的图片只是尽可能像真的，但是这并不能保证图片的内容是我们想要的，换句话说，有可能生成网络尽可能的去生成一些背景图案使得其尽可能真，但是里面没有实际的物体。</p>
+</blockquote>
+
+<p>关于生成模型的一点小思考<a href="https://zhuanlan.zhihu.com/p/25939348">https://zhuanlan.zhihu.com/p/25939348</a></p>
+
+<blockquote>
+<p>我们知道，autoencoder能够在保持数据的可恢复性的基础上对原始数据进行压缩，也就是说，它能够对数据进行编码。如果我们随机产生一些编码，然后执行decoder，它能生成跟原始数据类似的样本出来吗？</p>
+
+<p>如果这个想法可行的话，那autoencoder也是一类生成模型了。</p>
+
+<p>……</p>
+
+<p>为什么autoencoder不能对随机的输入产生像样的样本？VAE也是autoencoder的结构，这表明不是结构的问题。</p>
+
+<p>不是结构的问题，那是什么问题呢？</p>
+
+<p>其实这个问题很好回答，是目标函数。生成模型的目标函数要么是似然函数，要么是分布相似性的度量，两者都是衡量生成样本的分布质量的指标。而autoencoder的目标函数是重构误差，也就是，它不管样本分布是怎样的，只要能够比较好地压缩并重构样本就行了</p>
+</blockquote>
+
+<p>所以以后一般谈到的生成模型主要指VAEs和GANs。</p>
+
+<h4 id="变分自编码器variational-autoencoder">变分自编码器Variational AutoEncoder</h4>
+
+    <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "coldriver" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+<div class="navfooter">
+    <table width="100%" summary="Navigation footer">
+        <tbody>
+            <tr>
+                <td width="40%" align="left">&nbsp;</td>
+                <td width="20%" align="center">&nbsp;</td>
+                <td width="40%" align="right">&nbsp;</td>
+            </tr>
+            <tr>
+                <td width="40%" align="left" valign="top">
+                    <span class="copyright">
+                        Copyright 2014-2019
+                    </span>
+                    &nbsp;
+                </td>
+                <td width="20%" align="center">&nbsp;</td>
+                <td width="40%" align="right" valign="top">&nbsp;<a href="https://chongg039.cn/">HOME</a></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+    
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-117991024-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    <script type="text/javascript" src="https://chongg039.cn/js/function.js"></script>
+    <script type="text/javascript" src="https://chongg039.cn/js/prettify.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+</html>
+

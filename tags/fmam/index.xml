@@ -39,12 +39,7 @@ PH分布的参数估计是指为一个来自样本 \({y _ {1}, y _ {2}, &amp;hel
       <pubDate>Thu, 26 Jul 2018 10:30:01 +0800</pubDate>
       
       <guid>https://chongg039.cn/post/fmam-content-1.4/</guid>
-      <description>1.4PH分布：PH表示
-1.3节说明了 PH 表示在 PH 分布应用中的重要性。它还显示给定 PH 分布的 PH 表示并不是唯一的。在本节中，我们将进一步研究PH表示及其相关属性。我们研究算法以找到 PH 分布的简单等价的表示（例如，Coxian 表示）。
-例子1.4.1：略 练习1.4.1：略 练习1.4.2：略 命题1.4.1： 如果 PH 表示为 \(\pmb{\alpha}, T\) 是不可约（翻译不准确？）的，那么可以找到一个更小阶数（order，意思分析在练习1.4.2中，后续补充）的 PH 表示。证明略。
-练习1.4.3：略 定理1.4.1： 一个 m 阶 PH 分布的 PH 随机变量的变异系数至少是 \(1/\sqrt{m}\)，且 m 阶 Erlang 分布是唯一能达到下限的分布。
-练习1.4.4：略 定理1.4.2： 一个 m 阶的 PH 分布的 PH 表示 majorizes （基本不知道啥意思）相同意义的 m 阶 Erlang 分布。
-练习1.4.5：略 练习1.4.6：略 定理1.4.3： 令 T 为一个 （上三角或下三角）PH 发生器，它的对角线元素为 $$ \{-\lambda _ {1}, -\lambda _ {2}, &amp;hellip;, -\lambda _ {m}\} $$ 且满足 $$ \lambda _ {1} \geq \lambda _ {2} \geq &amp;hellip; \geq \lambda _ {m} $$ 那么任何 PH 分布 \(\pmb{\alpha}, T\) 就具有等效的 m 阶 Coxian 表示 \(\pmb{\beta}, S(\lambda)\) ，即 T is PH-majorized by S(λ) 。</description>
+      <description>注：本书中 &amp;quot;order&amp;quot; 译作 “阶“，原因如下： 在 &amp;quot;Stat Trek&amp;quot; 上 &amp;quot;Matrix Order&amp;quot; 的释义为： The number of rows and columns that a matrix has is called its order or its dimension. By convention, rows are listed first; and columns, second. Thus, we would say that the order (or dimension) of the matrix below is 3 x 4, meaning that it has 3 rows and 4 columns. 矩阵具有的行数和列数 称为其 顺序 或 维度 。按照惯例，首先列出行，再给出列。因此，我们可以说下面矩阵的顺序（或维度）是3 x 4，这意味着它有 3 行 4 列。 本文中主要研究方阵，因此将 &amp;quot;the order of the matrix is n&amp;quot; 译作 ”n 阶方阵”  1.</description>
     </item>
     
     <item>
@@ -54,8 +49,8 @@ PH分布的参数估计是指为一个来自样本 \({y _ {1}, y _ {2}, &amp;hel
       
       <guid>https://chongg039.cn/post/fmam-content-1.3/</guid>
       <description>在本节中，我们展示了一组 PH 分布在一些操作下是封闭的情况（例如，“min”，“max”，“+”）。闭包属性证明了随机建模中 PH 分布在数学上的动态可操作性，这体现了他们在应用中的关键作用。首先，我们考虑采用马尔可夫链方法练习 1.1.5 , 1.1.6 和 1.1.9 。
-例子1.3.1：略 例子1.3.2：略 练习1.3.1：略 练习1.3.2：略 命题1.3.1： 假定 \(X _ {1}\) 具有 PH 表示为 \((\pmb{\alpha},T)\) 的 PH 分布，\(X _ {2}\) 具有 PH 表示为 \((\pmb{\beta},T)\) 的 PH 分布，且 \(X _ {1}\) 与 \(X _ {2}\) 相互独立，那么 \(X=min\{X _ {1}, X _ {2}\}\) 具有 PH 表示为 $$(\pmb{\alpha} \otimes \pmb{\beta}, T \otimes I + I \otimes S) \tag{1.38}$$ 的 PH 分布。证明略。
-练习1.3.3：略 练习1.3.4：略 命题1.</description>
+例子1.3.1： 假定 \(X _ {1} \) 和 \(X _ {2}\) 是分别具有参数 \(\lambda _ {1} \) 和 \(\lambda _ {2} \) 的相互独立的指数随机变量，显示 \(min\{X _ {1}, X _ {2}\} \) ，\(max\{X _ {1}, x _ {2}\}\) 和 \(X _ {1} + X _ {2}\) 服从 PH 分布，并找出对应的 PH 表示。
+回想一个和 \(X _ {1}\) 相关的两阶段连续时间马尔可夫链，令 \(I _ {1}(t)\) 为 \(t\) 时刻的底层马尔可夫链的阶段。那么两阶段底层马尔可夫链 \(\{I _ {1}(t), t \geq 0\}\) 的无穷小生成矩阵由下面给出 $$ Q _ {1} = \begin{matrix}1 \\ 2 \end{matrix}\begin{pmatrix}-\lambda _ {1} &amp;amp; \lambda _ {1} \\ 0 &amp;amp; 0\end{pmatrix} $$ 其中阶段 2 是吸收阶段。同样地，\(I _ {2}(t)\) 由和 \(X _ {2}\) 相关联的两阶段底层马尔可夫链定义。两条马尔可夫链 \(\{I _ {1}(t), t \geq 0\}\) 和 \(\{I _ {2}(t), t \geq 0\}\) 是相互独立的。</description>
     </item>
     
     <item>

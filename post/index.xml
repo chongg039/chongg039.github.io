@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Fri, 03 Aug 2018 08:31:59 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 03 Jan 2019 20:09:57 +0800</lastBuildDate>
     
 	<atom:link href="https://chongg039.cn/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>我的第一台 kindle</title>
+      <link>https://chongg039.cn/post/my-kindle/</link>
+      <pubDate>Thu, 03 Jan 2019 20:09:57 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/post/my-kindle/</guid>
+      <description>说来惭愧，一直想入手一个 kindle 但有点舍不得，怕买来成了泡面盖子。一直等到了 KPW4 的发售，张大妈上推送了一个拼多多的链接，800+，带原装保护壳也才850。这岂不是白送？果断下单，也算是为信仰充值了吧。
+下面是个简短的开箱。
+使用体验：总体来说体验还是不错的，180余克的体重，纯平的屏幕设计，细腻的屏幕，多级的背光以及不算慢的翻页体验，让我对这一款产品还是比较满意的。但是这样一款几年更新一代的产品竟然还在用 Micro USB 的接口，算是唯一美中不足之处吧。
+至于使用方式，我主要是用来看一些技术上的书籍，减少自己看手机的时间。看双页的论文是不要想了，在6寸的屏幕上表现简直是灾难。书的获取方式、导入方式有需求的朋友请自行 Google ，我就不再这里传播了，希望以后能尽量支持正版。</description>
+    </item>
     
     <item>
       <title>FMAM - 1.7：Additional Topics</title>
@@ -50,12 +62,7 @@ PH分布的参数估计是指为一个来自样本 \({y _ {1}, y _ {2}, &amp;hel
       <pubDate>Thu, 26 Jul 2018 10:30:01 +0800</pubDate>
       
       <guid>https://chongg039.cn/post/fmam-content-1.4/</guid>
-      <description>1.4PH分布：PH表示
-1.3节说明了 PH 表示在 PH 分布应用中的重要性。它还显示给定 PH 分布的 PH 表示并不是唯一的。在本节中，我们将进一步研究PH表示及其相关属性。我们研究算法以找到 PH 分布的简单等价的表示（例如，Coxian 表示）。
-例子1.4.1：略 练习1.4.1：略 练习1.4.2：略 命题1.4.1： 如果 PH 表示为 \(\pmb{\alpha}, T\) 是不可约（翻译不准确？）的，那么可以找到一个更小阶数（order，意思分析在练习1.4.2中，后续补充）的 PH 表示。证明略。
-练习1.4.3：略 定理1.4.1： 一个 m 阶 PH 分布的 PH 随机变量的变异系数至少是 \(1/\sqrt{m}\)，且 m 阶 Erlang 分布是唯一能达到下限的分布。
-练习1.4.4：略 定理1.4.2： 一个 m 阶的 PH 分布的 PH 表示 majorizes （基本不知道啥意思）相同意义的 m 阶 Erlang 分布。
-练习1.4.5：略 练习1.4.6：略 定理1.4.3： 令 T 为一个 （上三角或下三角）PH 发生器，它的对角线元素为 $$ \{-\lambda _ {1}, -\lambda _ {2}, &amp;hellip;, -\lambda _ {m}\} $$ 且满足 $$ \lambda _ {1} \geq \lambda _ {2} \geq &amp;hellip; \geq \lambda _ {m} $$ 那么任何 PH 分布 \(\pmb{\alpha}, T\) 就具有等效的 m 阶 Coxian 表示 \(\pmb{\beta}, S(\lambda)\) ，即 T is PH-majorized by S(λ) 。</description>
+      <description>注：本书中 &amp;quot;order&amp;quot; 译作 “阶“，原因如下： 在 &amp;quot;Stat Trek&amp;quot; 上 &amp;quot;Matrix Order&amp;quot; 的释义为： The number of rows and columns that a matrix has is called its order or its dimension. By convention, rows are listed first; and columns, second. Thus, we would say that the order (or dimension) of the matrix below is 3 x 4, meaning that it has 3 rows and 4 columns. 矩阵具有的行数和列数 称为其 顺序 或 维度 。按照惯例，首先列出行，再给出列。因此，我们可以说下面矩阵的顺序（或维度）是3 x 4，这意味着它有 3 行 4 列。 本文中主要研究方阵，因此将 &amp;quot;the order of the matrix is n&amp;quot; 译作 ”n 阶方阵”  1.</description>
     </item>
     
     <item>
@@ -65,8 +72,8 @@ PH分布的参数估计是指为一个来自样本 \({y _ {1}, y _ {2}, &amp;hel
       
       <guid>https://chongg039.cn/post/fmam-content-1.3/</guid>
       <description>在本节中，我们展示了一组 PH 分布在一些操作下是封闭的情况（例如，“min”，“max”，“+”）。闭包属性证明了随机建模中 PH 分布在数学上的动态可操作性，这体现了他们在应用中的关键作用。首先，我们考虑采用马尔可夫链方法练习 1.1.5 , 1.1.6 和 1.1.9 。
-例子1.3.1：略 例子1.3.2：略 练习1.3.1：略 练习1.3.2：略 命题1.3.1： 假定 \(X _ {1}\) 具有 PH 表示为 \((\pmb{\alpha},T)\) 的 PH 分布，\(X _ {2}\) 具有 PH 表示为 \((\pmb{\beta},T)\) 的 PH 分布，且 \(X _ {1}\) 与 \(X _ {2}\) 相互独立，那么 \(X=min\{X _ {1}, X _ {2}\}\) 具有 PH 表示为 $$(\pmb{\alpha} \otimes \pmb{\beta}, T \otimes I + I \otimes S) \tag{1.38}$$ 的 PH 分布。证明略。
-练习1.3.3：略 练习1.3.4：略 命题1.</description>
+例子1.3.1： 假定 \(X _ {1} \) 和 \(X _ {2}\) 是分别具有参数 \(\lambda _ {1} \) 和 \(\lambda _ {2} \) 的相互独立的指数随机变量，显示 \(min\{X _ {1}, X _ {2}\} \) ，\(max\{X _ {1}, x _ {2}\}\) 和 \(X _ {1} + X _ {2}\) 服从 PH 分布，并找出对应的 PH 表示。
+回想一个和 \(X _ {1}\) 相关的两阶段连续时间马尔可夫链，令 \(I _ {1}(t)\) 为 \(t\) 时刻的底层马尔可夫链的阶段。那么两阶段底层马尔可夫链 \(\{I _ {1}(t), t \geq 0\}\) 的无穷小生成矩阵由下面给出 $$ Q _ {1} = \begin{matrix}1 \\ 2 \end{matrix}\begin{pmatrix}-\lambda _ {1} &amp;amp; \lambda _ {1} \\ 0 &amp;amp; 0\end{pmatrix} $$ 其中阶段 2 是吸收阶段。同样地，\(I _ {2}(t)\) 由和 \(X _ {2}\) 相关联的两阶段底层马尔可夫链定义。两条马尔可夫链 \(\{I _ {1}(t), t \geq 0\}\) 和 \(\{I _ {2}(t), t \geq 0\}\) 是相互独立的。</description>
     </item>
     
     <item>
@@ -305,7 +312,8 @@ $$P(x=k)=C _ {n}^{k}p^{k}(1-p)^{n-k}$$，记为 \(X\sim B(n,p)\) ，期望 \(E=p
       <guid>https://chongg039.cn/post/build-ubuntu-environment/</guid>
       <description>&lt;blockquote&gt;
 &lt;p&gt;先说说我为啥要干这事儿。
-前段时间迪哥要我们用node搞一个最小化 MEAN 产品，没想到只是在搭建开发环境上windows就各种不兼容，出现了许多奇奇怪怪的bug，再加上国内关于node的开发教程确实相对比较少，没有好的学习资源。搞了virtualbox虚拟机，但是内存和性能又开始捉急。干脆换到ubuntu，一步到位，特此记录下过程。&lt;/p&gt;</description>
+前段时间迪哥要我们用node搞一个最小化 MEAN 产品，没想到只是在搭建开发环境上windows就各种不兼容，出现了许多奇奇怪怪的bug，再加上国内关于node的开发教程确实相对比较少，没有好的学习资源。搞了virtualbox虚拟机，但是内存和性能又开始捉急。干脆换到ubuntu，一步到位，特此记录下过程。&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
     
     <item>
@@ -334,13 +342,31 @@ var functionName = function(arg0, arg1, arg2){
       <guid>https://chongg039.cn/post/hello-world/</guid>
       <description>&lt;h2 id=&#34;我为什么建博客&#34;&gt;我为什么建博客&lt;/h2&gt;
 
-&lt;p&gt;大二本科加入创萌工作室学习前端，整个学习阶段对于笔记以及感悟的整理从印象，有道云转移到Quip，感觉最好还是有一个独立博客更为方便。在爬了两个星期的坑后使用Hexo+huno主题以及一些开源插件完成了整个博客的大致创建。
-&lt;/br&gt;
-&lt;/br&gt;
-博客主要用于私人的学习笔记以及感悟随笔，以供各位交流学习，若无特殊说明欢迎转载，但请注明出处。博客中转载文章的著作权归原作者所有。
-&lt;/br&gt;
-&lt;/br&gt;
-欢迎订阅我的博客，访问我的Github，互相学习，共同进步。&lt;/p&gt;</description>
+&lt;p&gt;大二本科加入创萌工作室学习前端，整个学习阶段对于笔记以及感悟的整理从印象，有道云转移到Quip，感觉最好还是有一个独立博客更为方便。在爬了两个星期的坑后使用Hexo+huno主题以及一些开源插件完成了整个博客的大致创建。&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://chongg039.cn/post/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E5%8F%98%E5%88%86%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8vaes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://chongg039.cn/post/%E7%94%9F%E6%88%90%E6%A8%A1%E5%9E%8B%E5%AD%A6%E4%B9%A0%E5%8F%98%E5%88%86%E8%87%AA%E7%BC%96%E7%A0%81%E5%99%A8vaes/</guid>
+      <description> 生成模型学习：变分自编码器 自动编码器AE（AutoEncoder） AE是一种前馈神经网络，主要用于数据的降维或者特征的抽取，也作为数据压缩、图像模糊或平滑处理的一种手段。中间的隐层可以学习到数据之间的某些特征，而当隐藏层节点数小于输入输出节点数时，就不可避免地要丢失一些信息。
+与一般的前馈网络不同，其他前馈网络多关注Output Layer和Loss，但AE主要关注Hidden Layer，而且一般也只有一层隐藏层。
+现在自动编码器也常被用于生成模型当中，贴两篇文章的观点：
+什么是自动编码器https://zhuanlan.zhihu.com/p/27549418
+ 我们之前讲过GAN，它与GAN相比有着一些好处，同时也有着一些缺点。我们先来讲讲其跟GAN相比有着哪些优点。
+第一点，我们使用GAN来生成图片有个很不好的缺点就是我们生成图片使用的随机高斯噪声，这意味着我们并不能生成任意我们指定类型的图片，也就是说我们没办法决定使用哪种随机噪声能够产生我们想要的图片，除非我们能够把初始分布全部试一遍。但是使用自动编码器我们就能够通过输出图片的编码过程得到这种类型图片的编码之后的分布，相当于我们是知道每种图片对应的噪声分布，我们就能够通过选择特定的噪声来生成我们想要生成的图片。
+第二点，这既是生成网络的优点同时又有着一定的局限性，这就是生成网络通过对抗过程来区分“真”的图片和“假”的图片，然而这样得到的图片只是尽可能像真的，但是这并不能保证图片的内容是我们想要的，换句话说，有可能生成网络尽可能的去生成一些背景图案使得其尽可能真，但是里面没有实际的物体。
+ 关于生成模型的一点小思考https://zhuanlan.zhihu.com/p/25939348
+ 我们知道，autoencoder能够在保持数据的可恢复性的基础上对原始数据进行压缩，也就是说，它能够对数据进行编码。如果我们随机产生一些编码，然后执行decoder，它能生成跟原始数据类似的样本出来吗？
+如果这个想法可行的话，那autoencoder也是一类生成模型了。
+……
+为什么autoencoder不能对随机的输入产生像样的样本？VAE也是autoencoder的结构，这表明不是结构的问题。
+不是结构的问题，那是什么问题呢？
+其实这个问题很好回答，是目标函数。生成模型的目标函数要么是似然函数，要么是分布相似性的度量，两者都是衡量生成样本的分布质量的指标。而autoencoder的目标函数是重构误差，也就是，它不管样本分布是怎样的，只要能够比较好地压缩并重构样本就行了
+ 所以以后一般谈到的生成模型主要指VAEs和GANs。
+变分自编码器Variational AutoEncoder </description>
     </item>
     
   </channel>
