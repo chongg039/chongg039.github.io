@@ -1,5 +1,6 @@
 body {
     margin: 0.5in auto;
+    padding: 0 20px;
     max-width: 1260px;
     background: white;
     font-family: "Gill Sans MT","Gill Sans","My Gill Sans","Microsoft YaHei",sans-serif;
@@ -45,17 +46,16 @@ a.active {
     text-decoration: underline;
 }
 ul.dotLeaders {
+    /* max-width: 200em; */
     padding: 0;
     overflow-x: hidden;
     list-style: none;
 }
-ul.dotLeaders li:before {
+ul.dotLeaders li::before {
     float: left;
     width: 0;
     white-space: nowrap;
     content:
- ". . . . . . . . . . . . . . . . . . . . "
- ". . . . . . . . . . . . . . . . . . . . "
  ". . . . . . . . . . . . . . . . . . . . "
  ". . . . . . . . . . . . . . . . . . . . "
  ". . . . . . . . . . . . . . . . . . . . "
