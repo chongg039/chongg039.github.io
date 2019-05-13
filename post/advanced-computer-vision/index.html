@@ -175,9 +175,9 @@ $$</p>
 <li><p>使用一阶有限差分计算梯度的幅值和方向：梯度表示灰度值变化的程度和方向，方法是通过点乘一个 Sobel 算子得到不同方向的梯度值
 $$
 \begin{align}
-x, y 方向的梯度&amp;： g_x(m, n), g_y(m, n) \<br />
-梯度的值&amp;： G(m, n) = \sqrt{g_x^2 + g_y^2} \<br />
-梯度方向&amp;： \theta = arctan \frac{g_y}{g_x}
+x, y 方向的梯度 &amp;： g_x(m, n), g_y(m, n)
+\\梯度的值 &amp;： G(m, n) = \sqrt{g_x^2 + g_y^2}
+\\梯度方向 &amp;： \theta = arctan \frac{g_y}{g_x}
 \end{align}
 $$</p></li>
 
@@ -265,8 +265,8 @@ $$</p>
 <p>方向的分配通过求每个极值点的梯度实现。
 $$
 \begin{align}
-梯度幅值&amp;：m(x, y) = \sqrt{[L(x+1, y) - L(x-1, y)]^2 + [L(x, y+1) - L(x, y-1)]^2} \<br />
-梯度方向&amp;：\theta(x, y) = arctan \frac{L(x, y+1) - L(x, y-1)}{L(x+1, y) - L(x-1, y)}
+梯度幅值&amp;：m(x, y) = \sqrt{[L(x+1, y) - L(x-1, y)]^2 + [L(x, y+1) - L(x, y-1)]^2}
+\\ 梯度方向&amp;：\theta(x, y) = arctan \frac{L(x, y+1) - L(x, y-1)}{L(x+1, y) - L(x-1, y)}
 \end{align}
 $$
 但是，分配给关键点的方向并不直接使用关键点的梯度方向，而是计算以关键点为中心的邻域内所有点的梯度方向，并归一化到 36 个方向内（每个方向 10 度），统计落在每个方向内的点的个数，生成一个梯度直方图，并进行以下步骤：</p>
