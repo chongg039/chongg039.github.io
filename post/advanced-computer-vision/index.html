@@ -103,7 +103,7 @@ $$</p>
 <p>$$
 E(u, v) =
 \left[\begin{array}{cc}
-u &amp; v<br />
+u &amp; v
 \end{array}\right]
 M\left[\begin{array}{c}
 u<br />
@@ -333,10 +333,13 @@ $$
 </body>
     <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-      tex2jax: { 
-        inlineMath: [ ['$','$'], ['\\(','\\)'] ],
-        processEscapes: true
-      }
+        CommonHTML: { linebreaks: { automatic: true } },
+        "HTML-CSS": { linebreaks: { automatic: true } },
+        SVG: { linebreaks: { automatic: true } }, 
+        tex2jax: { 
+            inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+            processEscapes: true
+        }
     });
     </script>
     
