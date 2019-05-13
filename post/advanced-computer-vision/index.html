@@ -54,7 +54,7 @@
 E(u, v) = \sum_{x, y} w(x, y) [I(x+u, y+v) - I(x, y)]^2
 $$</p>
 
-<p>其中 w(x, y) 是窗口函数（矩阵），常用的有 (0, 1) 函数和高斯函数，I(x, y) 表示灰度强度值。下面要用到泰勒展开式处理这个函数。</p>
+<p>其中 $w(x, y)$ 是窗口函数（矩阵），常用的有 (0, 1) 函数和高斯函数，$I(x, y)$ 表示灰度强度值。下面要用到泰勒展开式处理这个函数。</p>
 
 <p>二维泰勒展开式为：</p>
 
@@ -62,8 +62,9 @@ $$</p>
 f(x+u, y+v) = f(x, y) + uf_x(x, y) + vf_y(x, y) + &hellip;
 $$</p>
 
-<p>抛开 $w(x, y)$ ，先处理 $\sum[&hellip;]^2$ 这部分：
-$$
+<p>抛开 $w(x, y)$ ，先处理 $\sum[&hellip;]^2$ 这部分：</p>
+
+<p>$$
 \sum[I(x+u, y+v) - I(x, y)]^2 = \sum[I(x, y) + uI_x + vI_y - I(x, y)]^2 <br />
 =\sum(u^2I_x^2 + 2uvI_xI_y + v^2I_y^2) <br />
 =\sum\bigg(
@@ -95,9 +96,11 @@ u<br />
 v
 \end{array}
 \right]
-$$
-所以可以简化为：
-$$
+$$</p>
+
+<p>所以可以简化为：</p>
+
+<p>$$
 E(u, v) =
 \left[\begin{array}{cc}
 u &amp; v<br />
@@ -105,9 +108,8 @@ u &amp; v<br />
 M\left[\begin{array}{c}
 u<br />
 v
-\end{array}\right] \</p>
-
-<p>其中 \quad M =\sum_{x, y}w(x, y)
+\end{array}\right] <br />
+其中 \quad M =\sum_{x, y}w(x, y)
 \left[\begin{array}{cc}
 I_x^2 &amp; I_xI_y<br />
 I_xI_y &amp; I_y^2
