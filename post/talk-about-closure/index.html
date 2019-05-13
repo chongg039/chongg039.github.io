@@ -27,12 +27,12 @@
     <h1>说说es5中的闭包</h1>
     <h4>Mon, Apr 18, 2016</h4>
     <ul>
-<li><strong>匿名函数</strong>：下面是最常见的一种<strong>函数表达式</strong>的书写形式
-<code>
-var functionName = function(arg0, arg1, arg2){
+<li><p><strong>匿名函数</strong>：下面是最常见的一种<strong>函数表达式</strong>的书写形式</p>
+
+<pre><code>var functionName = function(arg0, arg1, arg2){
 //函数体
 }
-</code></li>
+</code></pre></li>
 </ul>
 
 <p>即：创建一个函数，并将其复制给变量<code>functionName</code>，这种情况下创建的函数叫做匿名函数(anonymous function)，<strong>因为</strong><code>function</code><strong>后面没有标识符</strong>，其<code>name</code>属性是空字符串。</p>
@@ -65,44 +65,44 @@ var functionName = function(arg0, arg1, arg2){
 <li><p>闭包会携带它函数的作用域，因此会比其他函数占用更多内存，<strong>过度使用闭包会导致内存占用过多</strong></p></li>
 
 <li><p>注意这种作用域链机制带来的一个<strong>副作用：闭包只能取得包含函数中的任何变量的最后一个值。</strong>
-&gt; （因为   闭包保存的是整个变量对象而不是某个特殊变量）</p></li>
-</ul>
+&gt; （因为   闭包保存的是整个变量对象而不是某个特殊变量）</p>
 
 <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
-    &lt;head&gt;
-        &lt;title&gt;Closure Example&lt;/title&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;script type=&quot;text/javascript&quot;&gt;
+&lt;head&gt;
+    &lt;title&gt;Closure Example&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;script type=&quot;text/javascript&quot;&gt;
 
 //下面这个函数
-            function createFunctions(){
-                var result = new Array();
+        function createFunctions(){
+            var result = new Array();
                 
                 
-                for (var i=0; i &lt; 10; i++){
-                    result[i] = function(){
-                        return i;
-                    };
-                }
-                
-                return result;
+            for (var i=0; i &lt; 10; i++){
+                result[i] = function(){
+                    return i;
+                };
             }
+                
+            return result;
+        }
 //上面这个函数
 
-            var funcs = createFunctions();
+        var funcs = createFunctions();
             
-            //every function outputs 10
-            for (var i=0; i &lt; funcs.length; i++){
-                document.write(funcs[i]() + &quot;&lt;br /&gt;&quot;);
-            }
+        //every function outputs 10
+        for (var i=0; i &lt; funcs.length; i++){
+            document.write(funcs[i]() + &quot;&lt;br /&gt;&quot;);
+        }
 
-        &lt;/script&gt;
+    &lt;/script&gt;
      
-    &lt;/body&gt;
+&lt;/body&gt;
 &lt;/html&gt;
-</code></pre>
+</code></pre></li>
+</ul>
 
 <p>上面这个函数理应返回一个函数数组，每个函数都返回自己索引值（0~9）。<strong>但是！</strong>因为每个函数的作用域链都保存着<code>createFunctions()</code>函数的活动对象，所以<strong>他们引用的是同一个变量</strong><code>i</code>。<strong>当</strong><code>createFunctions()</code><strong>函数返回后，得到变量</strong><code>i</code><strong>的值为10。</strong>此时，<strong>每个函数都引用着保存变量</strong><code>i</code><strong>的同一个变量对象，所以每个函数内部的</strong><code>i</code><strong>值都为10。</strong></p>
 
