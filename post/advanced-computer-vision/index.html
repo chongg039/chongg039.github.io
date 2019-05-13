@@ -99,19 +99,18 @@ $$</p>
 
 <p>$$
 E(u, v) =
-\left[\begin{array}{cc}
+\begin{bmatrix}
 u &amp; v
-\end{array}\right]
-M\left[\begin{array}{c}
-u<br />
+\end{bmatrix}
+M\begin{bmatrix}
+u\\<br />
 v
-\end{array}\right] <br />
+\end{bmatrix} \quad
 其中 \quad M =\sum_{x, y}w(x, y)
-\left[\begin{array}{cc}
-I_x^2 &amp; I_xI_y<br />
+\begin{bmatrix}
+I_x^2 &amp; I_xI_y\\<br />
 I_xI_y &amp; I_y^2
-\end{array}
-\right]
+\end{bmatrix}
 $$</p>
 
 <p>但是 Harris 不是直接使用 $E(u, v)$ 的值判断角点存在与否，而是使用了一个技巧，通过对窗口中每个像素 x 方向和 y 方向上的梯度进行统计分析，每个像素的梯度坐标可以表示为 $(I_x, I_y)$ 。下面先来看一张图：</p>
@@ -135,8 +134,10 @@ R 的含义是：若两个特征值中较小的值都很大，说明存在角点
 
 <p>但直接计算 M 的特征值比较耗时，对矩阵 M ，可以得到：
 $$
-det|M| = \lambda_1\lambda_2 <br />
-trace(M) = \lambda_1 + \lambda_2
+\begin{align}
+det|M| &amp; = \lambda_1\lambda_2 \<br />
+trace(M) &amp; = \lambda_1 + \lambda_2
+\end{align}
 $$
 这样 R 就可以重新定义为：
 $$
@@ -144,8 +145,11 @@ R = det|M| - k * trace(M) = \lambda_1\lambda_2 - k(\lambda_1 + \lambda_2)^2 \qua
 $$
 根据矩阵 M ，R 也可以这样写：
 $$
-R = det|M| - k * trace(M) <br />
-= g(I_x^2)g(I_y^2) - [g(I_xI_y)]^2 - k[g(I_x^2) + g(I_y^2)]^2 \\quad 将\sum w(x, y) 简记为 g() ，可以认为 g 是一个高斯滤波器
+\begin{align}
+R &amp; = det|M| - k * trace(M)
+\\&amp; = g(I_x^2)g(I_y^2) - [g(I_xI_y)]^2 - k[g(I_x^2) + g(I_y^2)]^2
+\\&amp; 将\sum w(x, y) 简记为 g() ，可以认为 g 是一个高斯滤波器
+\end{align}
 $$</p>
 
 <p>下面要做的就是对 R 设置一个阈值判断角点的存在性，再使用非极大值抑制精确角点区域的范围就可以了。这就是 Harris 角点检测的基本思路，总结一下是：</p>
@@ -170,9 +174,11 @@ $$</p>
 
 <li><p>使用一阶有限差分计算梯度的幅值和方向：梯度表示灰度值变化的程度和方向，方法是通过点乘一个 Sobel 算子得到不同方向的梯度值
 $$
-x, y 方向的梯度： g_x(m, n), g_y(m, n) <br />
-梯度的值： G(m, n) = \sqrt{g_x^2 + g_y^2} <br />
-梯度方向： \theta = arctan \frac{g_y}{g_x}
+\begin{align}
+x, y 方向的梯度&amp;： g_x(m, n), g_y(m, n) \<br />
+梯度的值&amp;： G(m, n) = \sqrt{g_x^2 + g_y^2} \<br />
+梯度方向&amp;： \theta = arctan \frac{g_y}{g_x}
+\end{align}
 $$</p></li>
 
 <li><p>非极大值抑制：高斯滤波有可能放大了边缘，通过过滤非最大值来使边缘宽度尽可能为1像素。看下面这张图：</p></li>
@@ -258,8 +264,10 @@ $$</p>
 
 <p>方向的分配通过求每个极值点的梯度实现。
 $$
-梯度幅值：m(x, y) = \sqrt{[L(x+1, y) - L(x-1, y)]^2 + [L(x, y+1) - L(x, y-1)]^2} <br />
-梯度方向：\theta(x, y) = arctan \frac{L(x, y+1) - L(x, y-1)}{L(x+1, y) - L(x-1, y)}
+\begin{align}
+梯度幅值&amp;：m(x, y) = \sqrt{[L(x+1, y) - L(x-1, y)]^2 + [L(x, y+1) - L(x, y-1)]^2} \<br />
+梯度方向&amp;：\theta(x, y) = arctan \frac{L(x, y+1) - L(x, y-1)}{L(x+1, y) - L(x-1, y)}
+\end{align}
 $$
 但是，分配给关键点的方向并不直接使用关键点的梯度方向，而是计算以关键点为中心的邻域内所有点的梯度方向，并归一化到 36 个方向内（每个方向 10 度），统计落在每个方向内的点的个数，生成一个梯度直方图，并进行以下步骤：</p>
 
