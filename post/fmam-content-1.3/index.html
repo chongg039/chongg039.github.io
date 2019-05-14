@@ -161,7 +161,7 @@ T \otimes I + I \otimes S &amp; (-T \pmb{e}) \otimes I &amp; I \otimes (-S \pmb{
 $$</p>
 
 <ol>
-<li><p>同样 $min\{X<em>{1}, X</em>{2}\}$ 是马尔可夫链 $\{I(t), t \geq 0\}$ 的初始分布为 $(\pmb{\alpha} \otimes \pmb{\beta}, 0, 0, 0, 0, 0) 时，直到其进入子集 $\{(1, 3), (2, 3), (3, 1), (3, 2), (3, 3)\}$ 中任何一个阶段的时间。因此，$min\{X _ {1}, X _ {2}\}$ 具有 PH 表示为 $(\pmb{\alpha} \otimes \pmb{\beta}, T \otimes I + I \otimes S)$ 的 PH 分布。</p></li>
+<li><p>同样 $min\{X _ {1}, X _ {2}\}$ 是马尔可夫链 $\{I(t), t \geq 0\}$ 的初始分布为 $(\pmb{\alpha} \otimes \pmb{\beta}, 0, 0, 0, 0, 0) 时，直到其进入子集 $\{(1, 3), (2, 3), (3, 1), (3, 2), (3, 3)\}$ 中任何一个阶段的时间。因此，$min\{X _ {1}, X _ {2}\}$ 具有 PH 表示为 $(\pmb{\alpha} \otimes \pmb{\beta}, T \otimes I + I \otimes S)$ 的 PH 分布。</p></li>
 
 <li><p>对于 $X _ {1} + X _ {2}$ ，我们在时刻零时初始化 $X _ {1}$ 对应的底层马尔可夫链 $\{I _ {1}(t), t \geq 0\}$ 。一旦  $\{I _ {1}(t), t \geq 0\}$ 进入其吸收阶段 3 ，我们初始化 $X _ {2}$ 对应的底层马尔可夫链 $\{I _ {2}(t), t \geq 0\}$ .那么 $X _ {1} + X _ {2}$ 就是直到第二个底层马尔可夫链进入其吸收阶段的时间，并具有以下 PH 表示的 PH 分布</p></li>
 </ol>
@@ -170,7 +170,7 @@ $$</p>
 \left(
 (\pmb{\alpha}, 0),  \quad
 \begin{pmatrix}
-T &amp; (-T \pmb{e}) \pmb{\beta} \<br />
+T &amp; (-T \pmb{e}) \pmb{\beta} \\<br />
 0 &amp; S
 \end{pmatrix}</p>
 
@@ -179,9 +179,9 @@ T &amp; (-T \pmb{e}) \pmb{\beta} \<br />
 <p>\left(
 (1, 0, 0, 0),  \quad
 \begin{pmatrix}
--2 &amp; 2 &amp; 0 &amp; 0 \<br />
-5 &amp; -10 &amp; 1 &amp; 4 \<br />
-0 &amp; 0 &amp; -1 &amp; 1 \<br />
+-2 &amp; 2 &amp; 0 &amp; 0 \\<br />
+5 &amp; -10 &amp; 1 &amp; 4 \\<br />
+0 &amp; 0 &amp; -1 &amp; 1 \\<br />
 0 &amp; 0 &amp; 3 &amp; -4
 \end{pmatrix}
 \right)
