@@ -81,7 +81,7 @@ $$</p>
 <p>与这两个 PH 表示相关联的底层马尔可夫链由 $\{I _ {1}(t), t \geq 0\}$ 和 ({I _ {2}(t), t \geq 0}) 给出。两条马尔可夫链都具有阶段 $\{1, 2, 3\}$ 。我们定义马尔可夫链 $\{I(t) = (I _ {1}(t), I _ {2}(t)), t \geq 0\}$ 具有阶段 $\{(1, 1), (1, 2), (1, 3), (2, 1), (2, 2), (2, 3), (3, 1), (3, 2), (3, 3)\}$ ，且其无穷小生成矩阵为</p>
 
 <p>$$
-\begin{matrix} &amp;&amp;&amp;&amp; (1, 1) &amp;&amp; (1, 2) &amp;&amp; (2, 1) &amp;&amp; (2, 2) &amp;&amp; (3, 1) &amp;&amp; (3, 2) &amp;&amp; (1, 3) &amp;&amp; (2, 3) &amp;&amp; (3, 3)\end{matrix} \\\
+\begin{matrix} &amp;&amp;&amp;&amp; (1, 1) &amp;&amp; (1, 2) &amp;&amp; (2, 1) &amp;&amp; (2, 2) &amp;&amp; (3, 1) &amp;&amp; (3, 2) &amp;&amp; (1, 3) &amp;&amp; (2, 3) &amp;&amp; (3, 3) \end{matrix} \\\
 \begin{matrix}
 (1, 1) \\\ (1, 2) \\\ (2, 1) \\\ (2, 2) \\\ (3, 1) \\\ (3, 2) \\\ (1, 3) \\\ (2, 3) \\\ (3, 3)
 \end{matrix}
@@ -128,17 +128,14 @@ T \otimes I + I \otimes S =
 
 <h1 id="end-pmatrix">\end{pmatrix}</h1>
 
-<p>\begin{array}{cccc}
-\mbox{}&amp;
-\begin{array}{cccc}(1, 1)&amp;(1, 2)&amp;(2, 1)&amp;(2, 2) \end{array} \<br />
-\begin{array}{c}(1, 1)$1, 2)$2, 1)$2, 2)\end{array}&amp;
-\begin{array}{cccc}
--2-1&amp;0+1&amp;2+0&amp;0+0 \<br />
-0+3&amp;-2-4&amp;0+0&amp;2+0 \<br />
-5+0&amp;0+0&amp;-10-1&amp;0+1 \<br />
+<p>\begin{matrix} &amp;&amp;&amp;&amp; (1, 1) &amp;&amp; (1, 2) &amp;&amp; (2, 1) &amp;&amp; (2, 2) \end{matrix} \<br />
+\begin{matrix}(1, 1) \\\ (1, 2) \\\ (2, 1) \\\ (2, 2) \end{matrix}
+\begin{pmatrix}
+-2-1&amp;0+1&amp;2+0&amp;0+0 \\<br />
+0+3&amp;-2-4&amp;0+0&amp;2+0 \\<br />
+5+0&amp;0+0&amp;-10-1&amp;0+1 \\<br />
 0+0&amp;5+0&amp;0+3&amp;-10-4
-\end{array}
-\end{array}
+\end{pmatrix}
 $$</p>
 
 <p>这是式子 1.33 中给出的无穷小生成矩阵的左上方子矩阵，注意单位矩阵 $I$ 的规模大小取决于向下文。</p>
