@@ -32,25 +32,25 @@
   </url>
   
   <url>
-    <loc>https://chongg039.cn/categories/summary/</loc>
-    <lastmod>2019-05-12T19:10:25+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://chongg039.cn/tags/summary/</loc>
     <lastmod>2019-05-12T19:10:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://chongg039.cn/categories/cv/</loc>
-    <lastmod>2019-05-12T19:09:40+08:00</lastmod>
+    <loc>https://chongg039.cn/categories/summary/</loc>
+    <lastmod>2019-05-12T19:10:25+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chongg039.cn/tags/cv/</loc>
+    <lastmod>2019-05-12T19:09:40+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://chongg039.cn/categories/cv/</loc>
     <lastmod>2019-05-12T19:09:40+08:00</lastmod>
     <priority>0</priority>
   </url>
