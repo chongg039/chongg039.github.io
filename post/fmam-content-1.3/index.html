@@ -167,16 +167,14 @@ $$</p>
 </ol>
 
 <p>$$
-\left(
+\begin{pmatrix}
 (\pmb{\alpha}, 0),
 \begin{bmatrix}
 T &amp; (-T \pmb{e}) \pmb{\beta} \\<br />
 0 &amp; S
-\end{bmatrix}</p>
-
-<h1 id="right">\right)</h1>
-
-<p>\left(
+\end{bmatrix}
+\end{pmatrix}=
+\begin{pmatrix}
 (1, 0, 0, 0),
 \begin{bmatrix}
 -2 &amp; 2 &amp; 0 &amp; 0 \\<br />
@@ -184,7 +182,7 @@ T &amp; (-T \pmb{e}) \pmb{\beta} \\<br />
 0 &amp; 0 &amp; -1 &amp; 1 \\<br />
 0 &amp; 0 &amp; 3 &amp; -4
 \end{bmatrix}
-\right)
+\end{pmatrix}
 $$</p>
 
 <p>注意矩阵 $(-T \pmb{e})\pmb{\beta}$ 的第 $(i, j)$ 个元素是马尔可夫链 $\{I _ {1}(t), t \geq 0\}$ 从它的瞬态阶段 $i$ 开始进入其吸收阶段和马尔可夫链 $\{I _ {2}(t), t \geq 0\}$ 在它的瞬态阶段 $j$ 初始化时的转换率。</p>
@@ -290,9 +288,9 @@ $$</p>
 \pmb{\alpha} = (0, 0.2, 0.8, 0), \quad
 T =
 \begin{pmatrix}
--20 &amp; 0 &amp; 0 &amp; 15 \<br />
-20 &amp; -20 &amp; 0 &amp; 0 \<br />
-0 &amp; 0.5 &amp; -1 &amp; 0.5 \<br />
+-20 &amp; 0 &amp; 0 &amp; 15 \\<br />
+20 &amp; -20 &amp; 0 &amp; 0 \\<br />
+0 &amp; 0.5 &amp; -1 &amp; 0.5 \\<br />
 0 &amp; 0 &amp; 0 &amp; -1
 \end{pmatrix}
 \tag{1.49}
@@ -312,16 +310,16 @@ $$</p>
 
 <p>均匀分布一词来自于更新过程理论 (the theory of renewal process，见Ross(2010)) ，这是具有相同分布函数 $F(t)$ 的独立的随机变量的事件的到达时间的计数过程。函数 $F _ {e} (t)$ 是更新过程在任意时刻的剩余时间的分布。</p>
 
-<p>一个 PH 更新过程是具有 m 阶的 PH 到达时间为 $(\pmb{\alpha}, T)$ 的更新过程。令 $\{I(t), t \geq 0\}$ 是一个和 $(\pmb{\alpha}, T)$ 相关联的底层马尔可夫链，从更新过程的角度来看，一旦底层马尔可夫链吸收到状态 $m+1$ ，它将在 \{\pmb{\alpha}\} 的一个瞬态阶段重新初始化。因此对于更新过程而言，吸收阶段 \{m + 1\} 是不可见的。我们定义 \{I _ {r} (t)\} 为底层马尔可夫链在时刻 \{t\} 所处的阶段，很容易看出 \{\{I _ {r} (t), t \geq 0\}\} 是状态空间为 \{\{1, 2, &hellip;, m\}\} 的马尔可夫链。对 \{\{I _ {r} (t), t \geq 0\}\} 来说，它的阶段可以通过两种方式从 \{i\} 到达 \{j\} ：</p>
+<p>一个 PH 更新过程是具有 m 阶的 PH 到达时间为 $(\pmb{\alpha}, T)$ 的更新过程。令 $\{I(t), t \geq 0\}$ 是一个和 $(\pmb{\alpha}, T)$ 相关联的底层马尔可夫链，从更新过程的角度来看，一旦底层马尔可夫链吸收到状态 $m+1$ ，它将在 $\pmb{\alpha}$ 的一个瞬态阶段重新初始化。因此对于更新过程而言，吸收阶段 $m + 1$ 是不可见的。我们定义 $I _ {r} (t)$ 为底层马尔可夫链在时刻 $t$ 所处的阶段，很容易看出 $\{I _ {r} (t), t \geq 0\}$ 是状态空间为 $\{1, 2, &hellip;, m\}$ 的马尔可夫链。对 $\{I _ {r} (t), t \geq 0\}$ 来说，它的阶段可以通过两种方式从 $i$ 到达 $j$ ：</p>
 
 <ol>
-<li>当 \{i \not = j\} 时，\{I (t)\} 从 \{i\} 转换到 \{j\} ，转移率为 \{i _ {i, j}\}</li>
-<li>\{I(t)\} 从 \{i\} 转移到吸收阶段 $m+1$ 并立即在阶段 \{j\} 中重新初始化，转移率为 \{(\pmb{T} ^ {0}) _ {i}(\pmb{\alpha}) _ {j}\}</li>
+<li>当 $i \not = j$ 时，$I (t)$ 从 $i$ 转换到 $j$ ，转移率为 $i _ {i, j}$</li>
+<li>$I(t)$ 从 $i$ 转移到吸收阶段 $m+1$ 并立即在阶段 $j$ 中重新初始化，转移率为 $(\pmb{T} ^ {0}) _ {i}(\pmb{\alpha}) _ {j}$</li>
 </ol>
 
-<p>那么 \{\{I _ {r} (t), t \geq 0\}\} 从 \{i\} 到 \{j\} 的总转移率由 \{t _ {i, j} + (\pmb{T} ^ {0}) _ {i}(\pmb{\alpha}) _ {j}\} 给出。若用矩阵表示， \{\{I _ {r} (t), t \geq 0\}\} 的无穷小生成矩阵为 \{T + \pmb{T} ^ {0} \pmb{\alpha}\} 。</p>
+<p>那么 $\{I _ {r} (t), t \geq 0\}$ 从 $i$ 到 $j$ 的总转移率由 $t _ {i, j} + (\pmb{T} ^ {0}) _ {i}(\pmb{\alpha}) _ {j}$ 给出。若用矩阵表示， $\{I _ {r} (t), t \geq 0\}$ 的无穷小生成矩阵为 $T + \pmb{T} ^ {0} \pmb{\alpha}$ 。</p>
 
-<p>对于 PH 表示 \{(\pmb{\alpha}, T)\} ，定义 \{Q = T + \pmb{T} ^ {0} \pmb{\alpha}\} ，若 \{Q\} 是不可简化的（irreducible ，翻译不准确？），则称 \{(\pmb{\alpha}, T)\} 是一个不可简化的 PH 表示。</p>
+<p>对于 PH 表示 $(\pmb{\alpha}, T)$ ，定义 $Q = T + \pmb{T} ^ {0} \pmb{\alpha}$ ，若 $Q$ 是不可简化的（irreducible ，翻译不准确？），则称 $(\pmb{\alpha}, T)$ 是一个不可简化的 PH 表示。</p>
 
 <h4 id="引理1-3-1">引理1.3.1：</h4>
 
