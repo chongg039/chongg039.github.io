@@ -151,19 +151,21 @@ $$
 
 <p>给马尔可夫链 $\{I(t), t \geq 0\}$ 一个初始分布 $(\pmb{\alpha}, 1-\pmb{\alpha e})$ ，$I(t)$ 的概率分布由 $(\pmb{\alpha}, 1-\pmb{\alpha e})P(t)$ 给出，即
 $$
+\begin{align}
 (\pmb{\alpha, 1-\pmb{\alpha e}})exp
 \bigg(
 \begin{pmatrix}T &amp; \pmb{T ^ 0} \\ 0 &amp; 0\end{pmatrix}
 t
-\bigg) \<br />
-= (\pmb{\alpha, 1-\pmb{\alpha e}}) \sum _ {n=0} ^ {\infty} \frac{t ^ n}{n!}
+\bigg)
+&amp;= (\pmb{\alpha, 1-\pmb{\alpha e}}) \sum _ {n=0} ^ {\infty} \frac{t ^ n}{n!}
 \begin{pmatrix}T &amp; \pmb{T ^ 0} \\ 0 &amp; 0
-\end{pmatrix} ^ {n} \\
-= (\pmb{\alpha, 1-\pmb{\alpha e}})
-\begin{pmatrix}\sum _ {n=0} ^ {\infty} &amp; \sum _ {n=1} ^ {\infty} \frac{t ^ n}{n!}T ^ {n-1}\pmb{T ^ 0} \\ 0 &amp; 1 \end{pmatrix} \<br />
-= (\pmb{\alpha, 1-\pmb{\alpha e}})
-\begin{pmatrix}exp(Tt) &amp; \pmb{e} - exp(Tt) \pmb{e} \\ 0 &amp; 1\end{pmatrix} \<br />
-= (\pmb{\alpha} exp(Tt), 1-\pmb{\alpha} exp(Tt) \pmb{e})
+\end{pmatrix} ^ {n}<br />
+\\ &amp;= (\pmb{\alpha, 1-\pmb{\alpha e}})
+\begin{pmatrix}\sum _ {n=0} ^ {\infty} &amp; \sum _ {n=1} ^ {\infty} \frac{t ^ n}{n!}T ^ {n-1}\pmb{T ^ 0} \\ 0 &amp; 1 \end{pmatrix}
+\\ &amp;= (\pmb{\alpha, 1-\pmb{\alpha e}})
+\begin{pmatrix}exp(Tt) &amp; \pmb{e} - exp(Tt) \pmb{e} \\ 0 &amp; 1\end{pmatrix}
+\\ &amp;= (\pmb{\alpha} exp(Tt), 1-\pmb{\alpha} exp(Tt) \pmb{e})
+\end{align}
 $$
 上式最后一行的第二个给出了马尔可夫链在时刻 $t$ 时处在状态 $m+1$ 的概率，即概率 $P\{X \leq t\}$ 。因此有
 $$
