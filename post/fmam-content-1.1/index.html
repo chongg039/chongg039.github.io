@@ -35,14 +35,10 @@
 <p>如果一个非负随机变量Ｘ的概率分布函数（即累积分布函数 CDF）满足如下形式：</p>
 
 <p>$$
-\begin{align}
-F(t) &amp;=P{X \leq t}
-\\ &amp;=1-exp(-\lambda t)
-\\ &amp;\equiv 1-\sum _ {n=0}^{\infty}\frac{(-\lambda)^n t^n}{n!}, \quad t \geq 0
-\end{align}
+F(t)=P\{X \leq t\}=1-exp(-\lambda t) \equiv 1-\sum _ {n=0}^{\infty}\frac{(-\lambda)^n t^n}{n!}, t \geq 0
 $$</p>
 
-<p>则称非负随机变量Ｘ服从指数分布。其中 \(\lambda \) 是正实数，将Ｘ称为参数为 \(\lambda \) 的指数随机变量。</p>
+<p>则称非负随机变量Ｘ服从指数分布。其中 $\lambda$ 是正实数，将Ｘ称为参数为 $\lambda $ 的指数随机变量。</p>
 
 <p>取分布函数 F(t) 的导数，即得到指数分布的概率密度函数：</p>
 
@@ -199,7 +195,12 @@ $$</p>
 
 <p>拉普拉斯变换 (Laplace-Stieltjes transform, LST) 是研究和应用概率分布中重要的工具，概率分布函数的 LSTs 和随机变量之间存在一对一的关系（<strong>译注</strong>：这里译者认为应该是“随机变量的 LSTs 和概率分布函数之间存在一一对应关系”，原文是这么写的与上下文表示不符合，有待纠正）。对于一个参数为 \(\lambda \) 指数随机变量 \(X\) ，当 \(s \geq 0\) 时有
 $$
-f ^ {<em>} (s) \equiv E[e ^ {-sX}] \equiv \int _ {0} ^ {\infty} e ^ {-st} dP\{X &lt; t\} = \int _ {0} ^ {\infty} e ^ {-st} \lambda e ^ {- \lambda t} dt = \lambda \int _ {0} ^ {\infty} e ^ {-(\lambda + s)t} dt = \frac{\lambda}{\lambda + s}
+\begin{align}
+f ^ {<em>} (s) &amp;\equiv E[e ^ {-sX}]
+\\ &amp;\equiv \int _ {0} ^ {\infty} e ^ {-st} dP\{X&lt;t\}
+\\ &amp;= \int _ {0} ^ {\infty} e ^ {-st} \lambda e ^ {- \lambda t} dt
+\\ &amp;= \lambda \int _ {0} ^ {\infty} e ^ {-(\lambda + s)t} dt \\ &amp;= \frac{\lambda}{\lambda + s}
+\end{align}
 $$
 函数 \(f ^ {</em>} (s)\) 被称为随机变量 \(X\) 的 LST 变换，那么任何随机变量经由上式的 LST 变换后都能找到一个参数为 \(lambda\) 的指数分布。</p>
 
