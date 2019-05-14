@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Sun, 12 May 2019 19:09:40 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 12 May 2019 19:10:25 +0800</lastBuildDate>
     
 	<atom:link href="https://chongg039.cn/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>summary</title>
+      <link>https://chongg039.cn/tags/summary/</link>
+      <pubDate>Sun, 12 May 2019 19:10:25 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/tags/summary/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>CV</title>
