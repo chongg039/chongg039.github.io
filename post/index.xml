@@ -7,10 +7,35 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Sun, 12 May 2019 19:10:25 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 20 Oct 2019 15:51:31 +0800</lastBuildDate>
     
 	<atom:link href="https://chongg039.cn/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[CXX学习笔记]指针和引用</title>
+      <link>https://chongg039.cn/post/cxx-pointer-reference/</link>
+      <pubDate>Sun, 20 Oct 2019 15:51:31 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/post/cxx-pointer-reference/</guid>
+      <description> 联系 C++底层中引用是通过指针实现的，在实现层面上引用就是指针，指向同一对象的内存地址。
+所有对引用的操作就是对原始对象的操作。
+区别  引用只是别名，不是实体类型，因此编译器不为引用分配单独的内存空间，而指针有自己的内存空间，因此某种程度上指针不能被引用取代； 引用必须被初始化且不能为空，但可以有未初始化的空指针； 引用一旦初始化就不能更换目标，即不能被初始化多次，指针可以更改指向的对象； 可以有指针数组，不能有引用数组，因为引用没有被分配内存； 当引用作为函数的形参时，因为函数形参和实参是同一个对象，避免了复制对象的开销； 若对引用型参数做const修饰，则不会调用拷贝构造函数，提高效率； 若引用作为函数的返回结果，需要保证函数返回后被引用的目标一直有效，即不能返回函数内部的局部对象的引用（因为离开作用域后会被析构掉）。  </description>
+    </item>
+    
+    <item>
+      <title>机器学习课程知识点</title>
+      <link>https://chongg039.cn/post/machine_learning_course/</link>
+      <pubDate>Fri, 17 May 2019 16:26:13 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/post/machine_learning_course/</guid>
+      <description>概率论与贝叶斯 $$ P(A|B) = \frac{P(B|A)P(A)}{P(B)} $$
+其中：
+ $P(A)$ 是先验概率，即事件发生前的预判概率。可以是基于历史数据的统计，可以由背景常识得出，也可以是人的主观观点给出，一般都是单独事件概率； $P(A|B)$ 是后验概率，即事件发生后求的反向条件概率，或者说基于先验概率求得的反向条件概率，形式与条件概率相同，一般是我们要求解的目标； $P(B|A)$ 是条件概率，又叫似然概率，即一个事件发生后另一个事件发生的概率，一般是通过历史数据统计得到。一般不把它叫做先验概率，但从定义上也符合先验定义； $P(B)$ 实际上也是先验概率，需要时往往用全概率公式计算得到，在贝叶斯的很多应用中不重要（因为只要最大后验不求绝对值）。  共轭先验：在贝叶斯统计理论中，如果某个随机变量 $\theta$ 的后验概率 $p(\theta|x)$ 和其先验概 $p(\theta)$ 属于同一个分布簇的，那么称 $p(\theta|x)$ 和 $p(\theta)$ 为共轭分布，同时，也称 $p(\theta)$ 为似然函数 $p(x|\theta)$ 的共轭先验。
+高斯分布、似然函数、极大似然函数、极大似然法
+贝叶斯曲线拟合
+1维高斯分布的贝叶斯推断</description>
+    </item>
     
     <item>
       <title>2019 年中总结</title>

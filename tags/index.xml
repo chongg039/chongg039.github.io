@@ -7,10 +7,19 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Sun, 12 May 2019 19:10:25 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 17 May 2019 16:26:13 +0800</lastBuildDate>
     
 	<atom:link href="https://chongg039.cn/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Machine Learning， course</title>
+      <link>https://chongg039.cn/tags/machine-learning-course/</link>
+      <pubDate>Fri, 17 May 2019 16:26:13 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/tags/machine-learning-course/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>summary</title>
@@ -85,7 +94,7 @@
     </item>
     
     <item>
-      <title>Go</title>
+      <title>go</title>
       <link>https://chongg039.cn/tags/go/</link>
       <pubDate>Mon, 13 Mar 2017 18:51:20 +0800</pubDate>
       

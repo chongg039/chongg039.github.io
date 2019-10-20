@@ -3,56 +3,68 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://chongg039.cn/post/cxx-pointer-reference/</loc>
+    <lastmod>2019-10-20T15:51:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chongg039.cn/</loc>
+    <lastmod>2019-10-20T15:51:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chongg039.cn/post/</loc>
+    <lastmod>2019-10-20T15:51:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chongg039.cn/categories/</loc>
+    <lastmod>2019-05-17T16:26:13+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chongg039.cn/tags/machine-learning-course/</loc>
+    <lastmod>2019-05-17T16:26:13+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chongg039.cn/categories/mechine-learning/</loc>
+    <lastmod>2019-05-17T16:26:13+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chongg039.cn/tags/</loc>
+    <lastmod>2019-05-17T16:26:13+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chongg039.cn/post/machine_learning_course/</loc>
+    <lastmod>2019-05-17T16:26:13+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://chongg039.cn/post/2019-mid-term-summary/</loc>
     <lastmod>2019-05-12T19:10:25+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://chongg039.cn/categories/</loc>
+    <loc>https://chongg039.cn/tags/summary/</loc>
     <lastmod>2019-05-12T19:10:25+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chongg039.cn/</loc>
-    <lastmod>2019-05-12T19:10:25+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chongg039.cn/post/</loc>
-    <lastmod>2019-05-12T19:10:25+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chongg039.cn/tags/</loc>
-    <lastmod>2019-05-12T19:10:25+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chongg039.cn/categories/summary/</loc>
     <lastmod>2019-05-12T19:10:25+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://chongg039.cn/tags/summary/</loc>
-    <lastmod>2019-05-12T19:10:25+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chongg039.cn/categories/cv/</loc>
     <lastmod>2019-05-12T19:09:40+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chongg039.cn/tags/cv/</loc>
     <lastmod>2019-05-12T19:09:40+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -63,7 +75,6 @@
   <url>
     <loc>https://chongg039.cn/tags/casp/</loc>
     <lastmod>2019-01-17T14:25:08+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -79,7 +90,6 @@
   <url>
     <loc>https://chongg039.cn/tags/kindle/</loc>
     <lastmod>2019-01-03T20:09:57+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -93,14 +103,13 @@
   </url>
   
   <url>
-    <loc>https://chongg039.cn/post/fmam-content-1.6/</loc>
+    <loc>https://chongg039.cn/tags/fmam/</loc>
     <lastmod>2018-08-02T22:02:09+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://chongg039.cn/tags/fmam/</loc>
+    <loc>https://chongg039.cn/post/fmam-content-1.6/</loc>
     <lastmod>2018-08-02T22:02:09+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -151,19 +160,16 @@
   <url>
     <loc>https://chongg039.cn/tags/blog/</loc>
     <lastmod>2017-03-22T22:51:09+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chongg039.cn/tags/cloudflare/</loc>
     <lastmod>2017-03-22T22:51:09+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chongg039.cn/tags/https/</loc>
     <lastmod>2017-03-22T22:51:09+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -174,7 +180,6 @@
   <url>
     <loc>https://chongg039.cn/tags/go/</loc>
     <lastmod>2017-03-13T18:51:20+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -183,20 +188,18 @@
   </url>
   
   <url>
+    <loc>https://chongg039.cn/tags/aqi/</loc>
+    <lastmod>2017-03-04T16:27:52+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://chongg039.cn/post/aqi-server-in-go/</loc>
     <lastmod>2017-03-04T16:27:52+08:00</lastmod>
   </url>
   
   <url>
-    <loc>https://chongg039.cn/tags/aqi/</loc>
-    <lastmod>2017-03-04T16:27:52+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://chongg039.cn/tags/server/</loc>
     <lastmod>2017-03-04T16:27:52+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -212,25 +215,21 @@
   <url>
     <loc>https://chongg039.cn/tags/%E5%B7%A5%E4%BD%9C%E5%AE%A4/</loc>
     <lastmod>2016-12-31T16:59:03-07:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chongg039.cn/tags/%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2016-12-31T16:59:03-07:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chongg039.cn/tags/crawler/</loc>
     <lastmod>2016-12-08T12:09:31-07:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chongg039.cn/tags/nodejs/</loc>
     <lastmod>2016-12-08T12:09:31-07:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -241,7 +240,11 @@
   <url>
     <loc>https://chongg039.cn/tags/8021x/</loc>
     <lastmod>2016-11-12T15:15:27-07:00</lastmod>
-    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://chongg039.cn/tags/linux/</loc>
+    <lastmod>2016-11-12T15:15:27-07:00</lastmod>
   </url>
   
   <url>
@@ -250,15 +253,8 @@
   </url>
   
   <url>
-    <loc>https://chongg039.cn/tags/linux/</loc>
-    <lastmod>2016-11-12T15:15:27-07:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://chongg039.cn/tags/vultr/</loc>
     <lastmod>2016-10-03T20:32:20-07:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -269,13 +265,11 @@
   <url>
     <loc>https://chongg039.cn/tags/ubuntu/</loc>
     <lastmod>2016-10-02T15:43:36-07:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chongg039.cn/tags/%E7%96%91%E9%9A%BE%E6%9D%82%E7%97%87/</loc>
     <lastmod>2016-10-02T15:43:36-07:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -286,7 +280,6 @@
   <url>
     <loc>https://chongg039.cn/tags/ngrok/</loc>
     <lastmod>2016-09-18T09:37:45-07:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -307,13 +300,11 @@
   <url>
     <loc>https://chongg039.cn/tags/es5/</loc>
     <lastmod>2016-04-18T19:26:22-07:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://chongg039.cn/tags/javascript/</loc>
     <lastmod>2016-04-18T19:26:22-07:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
