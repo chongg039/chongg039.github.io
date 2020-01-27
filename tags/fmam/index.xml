@@ -20,7 +20,7 @@
       <guid>https://chongg039.cn/post/fmam-content-1.6/</guid>
       <description>在概率论、随机建模和统计学中，概率分布的参数估计是一个基本问题。有关参数估计的参考资料的数量是巨大的。在本节中，我们主要讨论 PH 分布的参数估计。
 PH分布的参数估计是指为一个来自样本 ${y _ {1}, y _ {2}, &amp;hellip;, y _ {n}}$ 的 PH 随机变量 Y 找到一个 m 阶的 PH 表示 $(\alpha, T)$。样本中，$y _ {k}$ 被称为样本点，n 被称作样本大小。我们假定样本点是独立收集的，那么我们定义 ${Y _ {1}, Y _ {2}, &amp;hellip;, Y _ {n}}$ 是独立同分布的随机变量 (i.i.d.r.v.s) ，它们具有和 Y 一样的分布。样本点 $y _ {k}$ 是 $Y _ {k}$ 的一个实现（可能翻译不准确？）。同样的，我们定义 $\{I(t), t \geq 0 \}$ 作为与 Y 相关的底层马尔可夫链 (the underlying Markov chain) 。
-例子1.6.1：略 命题1.6.1 (Asmussen et al.</description>
+例子1.6.1：略 命题1.6.1 (Asmussen et al. (1996)) ： 对于 $y &amp;gt; 0$ ，我们有 $$ E _ {(\pmb{\alpha}, T)}[B _ i | Y=y] = \frac{\alpha _ {i}b _ {i}(y | T)}{\pmb{\alpha}\pmb{b}(y | T)}, i=1, 2, &amp;hellip;, m $$</description>
     </item>
     
     <item>
@@ -39,7 +39,7 @@ PH分布的参数估计是指为一个来自样本 ${y _ {1}, y _ {2}, &amp;hell
       <pubDate>Thu, 26 Jul 2018 10:30:01 +0800</pubDate>
       
       <guid>https://chongg039.cn/post/fmam-content-1.4/</guid>
-      <description>注：本书中 &amp;quot;order&amp;quot; 译作 “阶“，原因如下： 在 &amp;quot;Stat Trek&amp;quot; 上 &amp;quot;Matrix Order&amp;quot; 的释义为： The number of rows and columns that a matrix has is called its order or its dimension. By convention, rows are listed first; and columns, second. Thus, we would say that the order (or dimension) of the matrix below is 3 x 4, meaning that it has 3 rows and 4 columns. 矩阵具有的行数和列数 称为其 顺序 或 维度 。按照惯例，首先列出行，再给出列。因此，我们可以说下面矩阵的顺序（或维度）是3 x 4，这意味着它有 3 行 4 列。 本文中主要研究方阵，因此将 &amp;quot;the order of the matrix is n&amp;quot; 译作 ”n 阶方阵”  1.</description>
+      <description>注：本书中 &amp;#34;order&amp;#34; 译作 “阶“，原因如下： 在 &amp;#34;Stat Trek&amp;#34; 上 &amp;#34;Matrix Order&amp;#34; 的释义为： The number of rows and columns that a matrix has is called its order or its dimension. By convention, rows are listed first; and columns, second. Thus, we would say that the order (or dimension) of the matrix below is 3 x 4, meaning that it has 3 rows and 4 columns. 矩阵具有的行数和列数 称为其 顺序 或 维度 。按照惯例，首先列出行，再给出列。因此，我们可以说下面矩阵的顺序（或维度）是3 x 4，这意味着它有 3 行 4 列。 本文中主要研究方阵，因此将 &amp;#34;the order of the matrix is n&amp;#34; 译作 ”n 阶方阵” 1.</description>
     </item>
     
     <item>

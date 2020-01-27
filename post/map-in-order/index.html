@@ -27,21 +27,13 @@
     <h1>解决 Go 中遍历 map 的随机化问题</h1>
     <h4>Mon, Mar 13, 2017</h4>
     <p>在 air-server 中有一个函数，支持解析 URL 的 query 并返回字段中城市的数据，如：</p>
-
 <pre><code>GET /aqi/cities?1=成都&amp;2=北京&amp;3=杭州&amp;4=西安
-</code></pre>
-
-<p>客户端希望的返回值应该是按照输入顺序，即 1，2，3，4 返回的，但实际多次测试后得到的结果总会是不一样的顺序。想了想应该是 query 解析的结果，即<code>r.URL.Query()</code>为 map 的原因。</p>
-
+</code></pre><p>客户端希望的返回值应该是按照输入顺序，即 1，2，3，4 返回的，但实际多次测试后得到的结果总会是不一样的顺序。想了想应该是 query 解析的结果，即<code>r.URL.Query()</code>为 map 的原因。</p>
 <p>查询后得知，Go 对 map 的实现是在底层的 hashmap，因此对 key-value 的插入和对 map 的遍历而言两者的 key 访问顺序不同。实践后也证明在使用 range 遍历 map 时得到的 key 的顺序被随机化了，Go
 官方也提到过不希望开发者依赖 range 遍历的 key 次序。</p>
-
 <pre><code>When iterating over a map with a range loop, the iteration order is not specified and is not guaranteed to be the same from one iteration to the next. Since Go 1 the runtime randomizes map iteration order, as programmers relied on the stable iteration order of the previous implementation.
-</code></pre>
-
-<p>但我们的业务逻辑往往不可避免的使用顺序的 key-value，怎么解决这个问题呢。
+</code></pre><p>但我们的业务逻辑往往不可避免的使用顺序的 key-value，怎么解决这个问题呢。
 有作者给出了一个方法，即单独维护一个有序的 key 表，根据对应的 key 遍历原始的 map。下面是</p>
-
 <pre><code>func ReturnDataOfCities(w http.ResponseWriter, r *http.Request) {
 	q := r.URL.Query()
 
@@ -81,14 +73,9 @@
 		panic(err)
 	}
 }
-</code></pre>
-
-<p>至此达到了我们的要求。</p>
-
+</code></pre><p>至此达到了我们的要求。</p>
 <p>参考文章：</p>
-
 <p><a href="https://blog.golang.org/go-maps-in-action">Go-maps-in-action</a></p>
-
 <p><a href="http://blog.csdn.net/slvher/article/details/44779081">遍历map时的key随机化问题及解决方法</a></p>
     <div id="disqus_thread"></div>
 <script type="application/javascript">
@@ -121,7 +108,7 @@
             <tr>
                 <td width="40%" align="left" valign="top">
                     <span class="copyright">
-                        Copyright 2014-2019
+                        Copyright 2014-2020
                     </span>
                     &nbsp;
                 </td>

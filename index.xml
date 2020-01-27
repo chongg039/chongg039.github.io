@@ -7,10 +7,26 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Sun, 20 Oct 2019 15:51:31 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 20 Oct 2019 19:46:49 +0800</lastBuildDate>
     
 	<atom:link href="https://chongg039.cn/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>天池全球数据智能大赛（赛场二）第7名解决方案</title>
+      <link>https://chongg039.cn/post/yield-prediction-competition/</link>
+      <pubDate>Sun, 20 Oct 2019 19:46:49 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/post/yield-prediction-competition/</guid>
+      <description>第一次正儿八经组队参加的比赛，虽然没能拿到奖金但也取得了一个比较满意的成绩（初赛23复赛7），这里记录一下当时的解决思路。
+首先这是一个农作物产量预测的比赛，属于比较传统的回归分析，这种类型的比赛只要做好 EDA ，一般都能取得不错的成绩，而不是说设计了一个多么精妙的网络结构。事实上官方提供的数据集最大的问题就是少，而且样本分布严重不均，这也成为了赛后受大家诟病的一个主要方面。
+探索性数据分析（EDA） EDA of train data 取以下数值型天气特征并分析之间的相关性：
+{ &amp;#34;日照时数（单位：h)&amp;#34;: &amp;#34;day_sun_hour&amp;#34;, &amp;#34;日平均风速(单位：m/s)&amp;#34;: &amp;#34;day_mean_wind&amp;#34;, &amp;#34;日降水量（mm）&amp;#34;: &amp;#34;day_rain&amp;#34;, &amp;#34;日平均温度（单位：℃）&amp;#34;: &amp;#34;day_mean_temperature&amp;#34;, &amp;#34;日相对湿度（单位：%）&amp;#34;: &amp;#34;day_relative_humidity&amp;#34;, &amp;#34;日平均气压（单位：hPa）&amp;#34;: &amp;#34;day_mean_pressure&amp;#34;, &amp;#34;日最高温度（单位：℃）&amp;#34;: &amp;#34;day_high_temp&amp;#34;, &amp;#34;日最低温度（单位：℃）&amp;#34;: &amp;#34;day_low_temp&amp;#34; } 以2017年区县id为16的地区为例：
+可以得出：
+ 一个地区一年的日平均温度、日最高温度和日最低温度呈正相关； 以平均温度为例，日平均气压与日平均温度呈负相关。  取以下类别型天气特征并处理：
+{ &amp;#34;02时风向&amp;#34;: &amp;#34;day_02_wind&amp;#34;, &amp;#34;08时风向&amp;#34;: &amp;#34;day_08_wind&amp;#34;, &amp;#34;14时风向&amp;#34;: &amp;#34;day_14_wind&amp;#34;, &amp;#34;20时风向&amp;#34;: &amp;#34;day_20_wind&amp;#34; } 做连续特征的话，依据下面的映射表映射到数值特征上：
+{ &amp;#34;N&amp;#34;: 0, &amp;#34;NNE&amp;#34;: 22.5, &amp;#34;NE&amp;#34;: 45, &amp;#34;ENE&amp;#34;: 67.5, &amp;#34;E&amp;#34;: 90, &amp;#34;ESE&amp;#34;: 112.5, &amp;#34;SE&amp;#34;: 135, &amp;#34;SSE&amp;#34;: 157.5, &amp;#34;S&amp;#34;: 180, &amp;#34;SSW&amp;#34;: 202.5, &amp;#34;SW&amp;#34;: 225, &amp;#34;WSW&amp;#34;: 247.</description>
+    </item>
     
     <item>
       <title>[CXX学习笔记]基础知识</title>
@@ -22,7 +38,7 @@
 所有对引用的操作就是对原始对象的操作。
 区别  引用只是别名，不是实体类型，因此编译器不为引用分配单独的内存空间，而指针有自己的内存空间，因此某种程度上指针不能被引用取代； 引用必须被初始化且不能为空，但可以有未初始化的空指针； 引用一旦初始化就不能更换目标，即不能被初始化多次，指针可以更改指向的对象； 可以有指针数组，不能有引用数组，因为引用没有被分配内存； 当引用作为函数的形参时，因为函数形参和实参是同一个对象，避免了复制对象的开销； 若对引用型参数做const修饰，则不会调用拷贝构造函数，提高效率； 若引用作为函数的返回结果，需要保证函数返回后被引用的目标一直有效，即不能返回函数内部的局部对象的引用（因为离开作用域后会被析构掉）。  数组和指针 C++不记录数组本身的大小，因此一定注意不要越界访问。
 数组作为形参传递时会退化为同类型的指针：
-int data[] = {1, 2, 3, 4, 5}; int size1 = sizeof(data); // 20 int *data2 = data; int size2 = sizeof(data2); // 4 int GetSize(int data[]) { return sizeof(data); } int size3 = GetSize(data); // 4  sizeof使用与陷阱 https://www.cnblogs.com/chio/archive/2007/06/11/778934.html
+int data[] = {1, 2, 3, 4, 5}; int size1 = sizeof(data); // 20 int *data2 = data; int size2 = sizeof(data2); // 4  int GetSize(int data[]) { return sizeof(data); } int size3 = GetSize(data); // 4 sizeof使用与陷阱 https://www.cnblogs.com/chio/archive/2007/06/11/778934.html
 左值和右值 c++中的变化 https://www.cnblogs.com/catch/p/3500678.html
 右值引用和std::move https://blog.csdn.net/luotuo44/article/details/46779063
 http://shaoyuan1943.github.io/2016/03/26/explain-move-forward/
@@ -132,8 +148,7 @@ $$ f(x+u, y+v) = f(x, y) + uf_x(x, y) + vf_y(x, y) + &amp;hellip; $$
       
       <guid>https://chongg039.cn/post/fmam-content-1.7/</guid>
       <description>第 1.2, 1.3, 1.4, 1.5 和 1.6 节涵盖了 PH 分布和多元 PH 分布的基本理论。在本节中，我们将讨论概括和一些概括 PH 分布的理论问题。
-1.7.1 离散的 PH 分布 考虑具有 m + 1 个状态的离散时间马尔可夫链，其概率矩阵为 $$ P= \biggl( \begin{matrix} T &amp;amp; \pmb{T ^ {0}} \\ 0 &amp;amp; 1
-\end{matrix} \biggl) $$ 吸收到状态 $m+1$ 的时间表示为 $X$ ，我们将其定义为离散时间的 PH 随机变量。给出初始概率向量 $(\pmb{\alpha}, 1-\pmb{\alpha e})$ ，很容易得到 $$ P\{X=n\}= \begin{cases} 1 - \pmb{\alpha e} &amp;amp; if \quad n=0; \\
+1.7.1 离散的 PH 分布 考虑具有 m + 1 个状态的离散时间马尔可夫链，其概率矩阵为 $$ P= \biggl( \begin{matrix} T &amp;amp; \pmb{T ^ {0}} \\ 0 &amp;amp; 1 \end{matrix} \biggl) $$ 吸收到状态 $m+1$ 的时间表示为 $X$ ，我们将其定义为离散时间的 PH 随机变量。给出初始概率向量 $(\pmb{\alpha}, 1-\pmb{\alpha e})$ ，很容易得到 $$ P\{X=n\}= \begin{cases} 1 - \pmb{\alpha e} &amp;amp; if \quad n=0; \\\
 \pmb{\alpha} T ^ {n-1} \pmb{T ^ 0} &amp;amp; if \quad n=1, 2, &amp;hellip; \end{cases} $$</description>
     </item>
     
@@ -145,7 +160,7 @@ $$ f(x+u, y+v) = f(x, y) + uf_x(x, y) + vf_y(x, y) + &amp;hellip; $$
       <guid>https://chongg039.cn/post/fmam-content-1.6/</guid>
       <description>在概率论、随机建模和统计学中，概率分布的参数估计是一个基本问题。有关参数估计的参考资料的数量是巨大的。在本节中，我们主要讨论 PH 分布的参数估计。
 PH分布的参数估计是指为一个来自样本 ${y _ {1}, y _ {2}, &amp;hellip;, y _ {n}}$ 的 PH 随机变量 Y 找到一个 m 阶的 PH 表示 $(\alpha, T)$。样本中，$y _ {k}$ 被称为样本点，n 被称作样本大小。我们假定样本点是独立收集的，那么我们定义 ${Y _ {1}, Y _ {2}, &amp;hellip;, Y _ {n}}$ 是独立同分布的随机变量 (i.i.d.r.v.s) ，它们具有和 Y 一样的分布。样本点 $y _ {k}$ 是 $Y _ {k}$ 的一个实现（可能翻译不准确？）。同样的，我们定义 $\{I(t), t \geq 0 \}$ 作为与 Y 相关的底层马尔可夫链 (the underlying Markov chain) 。
-例子1.6.1：略 命题1.6.1 (Asmussen et al.</description>
+例子1.6.1：略 命题1.6.1 (Asmussen et al. (1996)) ： 对于 $y &amp;gt; 0$ ，我们有 $$ E _ {(\pmb{\alpha}, T)}[B _ i | Y=y] = \frac{\alpha _ {i}b _ {i}(y | T)}{\pmb{\alpha}\pmb{b}(y | T)}, i=1, 2, &amp;hellip;, m $$</description>
     </item>
     
     <item>
@@ -164,7 +179,7 @@ PH分布的参数估计是指为一个来自样本 ${y _ {1}, y _ {2}, &amp;hell
       <pubDate>Thu, 26 Jul 2018 10:30:01 +0800</pubDate>
       
       <guid>https://chongg039.cn/post/fmam-content-1.4/</guid>
-      <description>注：本书中 &amp;quot;order&amp;quot; 译作 “阶“，原因如下： 在 &amp;quot;Stat Trek&amp;quot; 上 &amp;quot;Matrix Order&amp;quot; 的释义为： The number of rows and columns that a matrix has is called its order or its dimension. By convention, rows are listed first; and columns, second. Thus, we would say that the order (or dimension) of the matrix below is 3 x 4, meaning that it has 3 rows and 4 columns. 矩阵具有的行数和列数 称为其 顺序 或 维度 。按照惯例，首先列出行，再给出列。因此，我们可以说下面矩阵的顺序（或维度）是3 x 4，这意味着它有 3 行 4 列。 本文中主要研究方阵，因此将 &amp;quot;the order of the matrix is n&amp;quot; 译作 ”n 阶方阵”  1.</description>
+      <description>注：本书中 &amp;#34;order&amp;#34; 译作 “阶“，原因如下： 在 &amp;#34;Stat Trek&amp;#34; 上 &amp;#34;Matrix Order&amp;#34; 的释义为： The number of rows and columns that a matrix has is called its order or its dimension. By convention, rows are listed first; and columns, second. Thus, we would say that the order (or dimension) of the matrix below is 3 x 4, meaning that it has 3 rows and 4 columns. 矩阵具有的行数和列数 称为其 顺序 或 维度 。按照惯例，首先列出行，再给出列。因此，我们可以说下面矩阵的顺序（或维度）是3 x 4，这意味着它有 3 行 4 列。 本文中主要研究方阵，因此将 &amp;#34;the order of the matrix is n&amp;#34; 译作 ”n 阶方阵” 1.</description>
     </item>
     
     <item>
@@ -267,9 +282,7 @@ $$P(x=k)=C _ {n}^{k}p^{k}(1-p)^{n-k}$$，记为 $X\sim B(n,p)$ ，期望 $E=pn$
       
       <guid>https://chongg039.cn/post/2017-reddit-place/</guid>
       <description>&lt;p&gt;愚人节当天，我因为打球扭伤了自己的脚踝。那两天躺在床上无聊之余翻到了霍老师的一篇文章：&lt;/p&gt;
-
 &lt;p&gt;&lt;a href=&#34;http://mp.weixin.qq.com/s/Pz0NZ2t9fd_-RNFj1rT0hA&#34;&gt;《参与这场线上大战之后，我觉得人类未来还是有希望的》&lt;/a&gt;     (公众号：歪理邪说)&lt;/p&gt;
-
 &lt;p&gt;这篇文章让我产生了极大的兴趣，立刻忍着疼痛抱来了电脑，登上了 Reddit 参与了这场线上大战。&lt;/p&gt;</description>
     </item>
     
@@ -280,9 +293,7 @@ $$P(x=k)=C _ {n}^{k}p^{k}(1-p)^{n-k}$$，记为 $X\sim B(n,p)$ ，期望 $E=pn$
       
       <guid>https://chongg039.cn/post/all-https/</guid>
       <description>&lt;p&gt;跟风，响应 Web 世界的号召，决定把博客全站换成 HTTPS 访问，并记录下遇到的一些问题。&lt;/p&gt;
-
 &lt;h3 id=&#34;github-page&#34;&gt;Github Page&lt;/h3&gt;
-
 &lt;p&gt;原来博客是部署在云服务器上，后来觉得没有这个必要，也不想花精力在维护上面，就重新把博客放回了 Github Page 。因此下面的文字并不针对自有服务器的博客用户进行说明。&lt;/p&gt;</description>
     </item>
     
@@ -293,11 +304,8 @@ $$P(x=k)=C _ {n}^{k}p^{k}(1-p)^{n-k}$$，记为 $X\sim B(n,p)$ ，期望 $E=pn$
       
       <guid>https://chongg039.cn/post/map-in-order/</guid>
       <description>&lt;p&gt;在 air-server 中有一个函数，支持解析 URL 的 query 并返回字段中城市的数据，如：&lt;/p&gt;
-
 &lt;pre&gt;&lt;code&gt;GET /aqi/cities?1=成都&amp;amp;2=北京&amp;amp;3=杭州&amp;amp;4=西安
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;客户端希望的返回值应该是按照输入顺序，即 1，2，3，4 返回的，但实际多次测试后得到的结果总会是不一样的顺序。想了想应该是 query 解析的结果，即&lt;code&gt;r.URL.Query()&lt;/code&gt;为 map 的原因。&lt;/p&gt;</description>
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;客户端希望的返回值应该是按照输入顺序，即 1，2，3，4 返回的，但实际多次测试后得到的结果总会是不一样的顺序。想了想应该是 query 解析的结果，即&lt;code&gt;r.URL.Query()&lt;/code&gt;为 map 的原因。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -307,9 +315,7 @@ $$P(x=k)=C _ {n}^{k}p^{k}(1-p)^{n-k}$$，记为 $X\sim B(n,p)$ ，期望 $E=pn$
       
       <guid>https://chongg039.cn/post/aqi-server-in-go/</guid>
       <description>&lt;p&gt;学习Go之后第一个项目，是编写一个API服务器，提供城市AQI的JSON数据。&lt;/p&gt;
-
 &lt;p&gt;既然要实现这个功能，要解决的问题一个是数据源，一个是Server。&lt;/p&gt;
-
 &lt;p&gt;先说说数据源，如果仅仅和我们初步设想的一样，仅仅为我们的一款应用提供即时数据，那样只是做一个第三方数据的中转便可。不过为了以后可以针对性的做数据分析，还是需要将数据爬下来存在数据库。&lt;/p&gt;</description>
     </item>
     
@@ -320,7 +326,6 @@ $$P(x=k)=C _ {n}^{k}p^{k}(1-p)^{n-k}$$，记为 $X\sim B(n,p)$ ，期望 $E=pn$
       
       <guid>https://chongg039.cn/post/why-i-choose-go/</guid>
       <description>&lt;p&gt;是的，我开始接触go语言了，如去年年底所说的那样。&lt;/p&gt;
-
 &lt;p&gt;先说说我为什么不继续用Node，并不是因为这门语言不好。事实上，NodeJS作为一个争议颇多的“全栈”语言，才带我真正走进了编程世界。它的异步，并发，非阻塞，以及丰富的npm库，无一不证明了它在解决传统服务器端编程的很多非常棒的思想。&lt;/p&gt;</description>
     </item>
     
@@ -331,11 +336,8 @@ $$P(x=k)=C _ {n}^{k}p^{k}(1-p)^{n-k}$$，记为 $X\sim B(n,p)$ ，期望 $E=pn$
       
       <guid>https://chongg039.cn/post/2016-summary/</guid>
       <description>&lt;p&gt;年底了，总结一下这一年。&lt;/p&gt;
-
 &lt;h4 id=&#34;工作室&#34;&gt;工作室&lt;/h4&gt;
-
 &lt;p&gt;这一年有大半时间都是在创萌工作室度过的，也见证了创萌从当时的三五个人到现在的规模。&lt;/p&gt;
-
 &lt;p&gt;工作室的巨总和迪哥算是我的导师。迪哥带着我从前端转向了nodejs，教会我如何作为一名全栈工程师来思考问题。而巨总眼界比较开阔，给我的更多是学习方法和技术趋势的指导。&lt;/p&gt;</description>
     </item>
     
@@ -346,7 +348,6 @@ $$P(x=k)=C _ {n}^{k}p^{k}(1-p)^{n-k}$$，记为 $X\sim B(n,p)$ ，期望 $E=pn$
       
       <guid>https://chongg039.cn/post/mockland-uestc/</guid>
       <description>&lt;p&gt;学校高层做了个公众号，把信息门户弄到微信上的浏览器上。本着干掉学校高层的一贯行事风格，觉得是时候搞一个正规的公众号来抢学校生意了。&lt;/p&gt;
-
 &lt;p&gt;结果没想到并不是很顺利，信息门户登录有两个重定向页面，自己也对模拟请求服务器不是很熟悉，一步一步好歹是扒到了想要的数据，也浪费了好长时间。先拿出来了个命令行版本，还停留在 es5，准备熬过去考试月后全部重构成 es6，再加上流程控制，放到公众号上造福社会。&lt;/p&gt;</description>
     </item>
     
@@ -357,7 +358,6 @@ $$P(x=k)=C _ {n}^{k}p^{k}(1-p)^{n-k}$$，记为 $X\sim B(n,p)$ ，期望 $E=pn$
       
       <guid>https://chongg039.cn/post/linux-server-staticip-8021x/</guid>
       <description>&lt;p&gt;终于布好工作室的服务器了。&lt;/p&gt;
-
 &lt;p&gt;我写了个脚本一键部署静态ip和802.1x拨号：&lt;a href=&#34;https://gist.github.com/chongg039/3310467e329e00de3b6b04aaae646f3c&#34;&gt;ubuntu-server.sh&lt;/a&gt;，不想看我啰嗦的可以直接拿过来改改就能用。&lt;/p&gt;</description>
     </item>
     
@@ -368,9 +368,7 @@ $$P(x=k)=C _ {n}^{k}p^{k}(1-p)^{n-k}$$，记为 $X\sim B(n,p)$ ，期望 $E=pn$
       
       <guid>https://chongg039.cn/post/vultr-ss-serverspeed/</guid>
       <description>&lt;p&gt;接手工作室后，tesths 便把原来那个已经配置好的ss账号连同服务器一块给销了。平时ss又十分必要，就向他讨要了具体的方法，自己搭了一个。这里也是把方法贴出来。&lt;/p&gt;
-
 &lt;h3 id=&#34;配置vultr主机&#34;&gt;配置vultr主机&lt;/h3&gt;
-
 &lt;p&gt;V家的主机算得上是性价比较高的一款了，而且有日本和新加坡的线路，相对来说延迟比较稳定。截止我购买的时候是每个新用户有20刀的返利，还是比较划算的。&lt;/p&gt;</description>
     </item>
     
@@ -382,10 +380,11 @@ $$P(x=k)=C _ {n}^{k}p^{k}(1-p)^{n-k}$$，记为 $X\sim B(n,p)$ ，期望 $E=pn$
       <guid>https://chongg039.cn/post/ubuntu-keyboard-error/</guid>
       <description>&lt;p&gt;很悲催的键盘错位了，就这个系统有问题，以前也没遇到过。简而言之就是@和“互换，#打不出来等。问题不大，但是影响输入体验。
 工作室的小伙伴都说我这电脑只有我会用。。。&lt;/p&gt;
-
-&lt;p&gt;之前在网上搜到的解决办法是在终端输入：
-&amp;gt;sudo dpkg-reconfigure keyboard-configuration
-//需要安装keyboard-configuration&lt;/p&gt;</description>
+&lt;p&gt;之前在网上搜到的解决办法是在终端输入：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;sudo dpkg-reconfigure keyboard-configuration
+//需要安装keyboard-configuration&lt;/p&gt;
+&lt;/blockquote&gt;</description>
     </item>
     
     <item>
@@ -425,15 +424,12 @@ $$P(x=k)=C _ {n}^{k}p^{k}(1-p)^{n-k}$$，记为 $X\sim B(n,p)$ ，期望 $E=pn$
       
       <guid>https://chongg039.cn/post/talk-about-closure/</guid>
       <description>&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;匿名函数&lt;/strong&gt;：下面是最常见的一种&lt;strong&gt;函数表达式&lt;/strong&gt;的书写形式&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var functionName = function(arg0, arg1, arg2){
-//函数体
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;匿名函数&lt;/strong&gt;：下面是最常见的一种&lt;strong&gt;函数表达式&lt;/strong&gt;的书写形式&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;即：创建一个函数，并将其复制给变量&lt;code&gt;functionName&lt;/code&gt;，这种情况下创建的函数叫做匿名函数(anonymous function)，&lt;strong&gt;因为&lt;/strong&gt;&lt;code&gt;function&lt;/code&gt;&lt;strong&gt;后面没有标识符&lt;/strong&gt;，其&lt;code&gt;name&lt;/code&gt;属性是空字符串。&lt;/p&gt;</description>
+&lt;pre&gt;&lt;code&gt;var functionName = function(arg0, arg1, arg2){
+    //函数体
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;即：创建一个函数，并将其复制给变量&lt;code&gt;functionName&lt;/code&gt;，这种情况下创建的函数叫做匿名函数(anonymous function)，&lt;strong&gt;因为&lt;/strong&gt;&lt;code&gt;function&lt;/code&gt;&lt;strong&gt;后面没有标识符&lt;/strong&gt;，其&lt;code&gt;name&lt;/code&gt;属性是空字符串。&lt;/p&gt;</description>
     </item>
     
     <item>
@@ -443,7 +439,6 @@ $$P(x=k)=C _ {n}^{k}p^{k}(1-p)^{n-k}$$，记为 $X\sim B(n,p)$ ，期望 $E=pn$
       
       <guid>https://chongg039.cn/post/hello-world/</guid>
       <description>&lt;h2 id=&#34;我为什么建博客&#34;&gt;我为什么建博客&lt;/h2&gt;
-
 &lt;p&gt;大二本科加入创萌工作室学习前端，整个学习阶段对于笔记以及感悟的整理从印象，有道云转移到Quip，感觉最好还是有一个独立博客更为方便。在爬了两个星期的坑后使用Hexo+huno主题以及一些开源插件完成了整个博客的大致创建。&lt;/p&gt;</description>
     </item>
     

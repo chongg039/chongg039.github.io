@@ -19,15 +19,12 @@
       
       <guid>https://chongg039.cn/post/talk-about-closure/</guid>
       <description>&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;strong&gt;匿名函数&lt;/strong&gt;：下面是最常见的一种&lt;strong&gt;函数表达式&lt;/strong&gt;的书写形式&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;var functionName = function(arg0, arg1, arg2){
-//函数体
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;匿名函数&lt;/strong&gt;：下面是最常见的一种&lt;strong&gt;函数表达式&lt;/strong&gt;的书写形式&lt;/li&gt;
 &lt;/ul&gt;
-
-&lt;p&gt;即：创建一个函数，并将其复制给变量&lt;code&gt;functionName&lt;/code&gt;，这种情况下创建的函数叫做匿名函数(anonymous function)，&lt;strong&gt;因为&lt;/strong&gt;&lt;code&gt;function&lt;/code&gt;&lt;strong&gt;后面没有标识符&lt;/strong&gt;，其&lt;code&gt;name&lt;/code&gt;属性是空字符串。&lt;/p&gt;</description>
+&lt;pre&gt;&lt;code&gt;var functionName = function(arg0, arg1, arg2){
+    //函数体
+    }
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;即：创建一个函数，并将其复制给变量&lt;code&gt;functionName&lt;/code&gt;，这种情况下创建的函数叫做匿名函数(anonymous function)，&lt;strong&gt;因为&lt;/strong&gt;&lt;code&gt;function&lt;/code&gt;&lt;strong&gt;后面没有标识符&lt;/strong&gt;，其&lt;code&gt;name&lt;/code&gt;属性是空字符串。&lt;/p&gt;</description>
     </item>
     
   </channel>
