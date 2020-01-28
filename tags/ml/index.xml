@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Sun, 20 Oct 2019 19:46:49 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 22 Oct 2019 19:46:49 +0800</lastBuildDate>
     
 	<atom:link href="https://chongg039.cn/tags/ml/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>天池全球数据智能大赛（赛场二）第7名解决方案</title>
       <link>https://chongg039.cn/post/yield-prediction-competition/</link>
-      <pubDate>Sun, 20 Oct 2019 19:46:49 +0800</pubDate>
+      <pubDate>Tue, 22 Oct 2019 19:46:49 +0800</pubDate>
       
       <guid>https://chongg039.cn/post/yield-prediction-competition/</guid>
       <description>第一次正儿八经组队参加的比赛，虽然没能拿到奖金但也取得了一个比较满意的成绩（初赛23复赛7），这里记录一下当时的解决思路。
