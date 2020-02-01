@@ -7,10 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Wed, 29 Jan 2020 19:51:25 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 01 Feb 2020 10:02:22 +0800</lastBuildDate>
     
 	<atom:link href="https://chongg039.cn/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>右值引用、移动构造和移动语义std::move</title>
+      <link>https://chongg039.cn/post/rvalue-reference-and-move-ctor/</link>
+      <pubDate>Sat, 01 Feb 2020 10:02:22 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/post/rvalue-reference-and-move-ctor/</guid>
+      <description>前段时间在读Effective C++，当时对书中提到的移动构造函数一知半解。最近在做项目的时候遇到并重新思考了一下这个问题，在这里写一下自己的浅见。这里假设你已经理解并能熟练运用copy constructor以及copy assignment了。
+左值与右值 介绍这个的文章很多，这也是理解什么时候调用拷贝构造、什么时候调用移动构造的一个比较关键的地方。
+左值（lvalue） 左值（左值引用）是一个可被赋值的对象，通常出现在赋值表达式等号的左侧。有文章将左值定义为非临时的对象，即可以在后面被使用、被引用，如：
+int i = 0; std::string s{&amp;#34;hello&amp;#34;}; 这里的i和s都是左值，后面都可以使用这两个非临时对象。
+右值（rvalue） 与之对应，右值不可以被赋值，通常是一个临时对象。如上面的0、&amp;quot;hello&amp;quot;就是右值，只在当前语句中生效，脱离了当前语句的话一般不能在下面的句子中获取到，一般也不具备实际意义。
+这里需要注意几点：
+  C++11前，最多可以用一个常量引用绑定一个右值在下文使用，但这样绑定的右值不能被修改：
+const int &amp;amp;i = 1; // can not be changed ``
+  右值本身不是不能修改的，如上文所说，临时对象都是右值，那么调用一个临时对象的setter方法即可修改这个临时对象：
+T().set_value(); ``
+  这里比较需要注意的是，临时对象都是右值，准确的说是一个“将亡值”，这对于返回值为non-trivial对象的函数有关键性的意义。
+左值和右值的符号表示 函数传参时，&amp;amp;表示接受一个左值，为了与之区分，&amp;amp;&amp;amp;表示接受一个右值，看下面这个重载函数：
+void RecvValue(int &amp;amp;i) { std::cout &amp;lt;&amp;lt; &amp;#34;get a lvalue&amp;#34;; } void RecvValue(int &amp;amp;&amp;amp;i) { std::cout &amp;lt;&amp;lt; &amp;#34;get a rvalue&amp;#34;; } void Wapper(int &amp;amp;&amp;amp;i) { // 注意这种情况，调用的是第一个  // 因为临时对象在参数传递时会变成命名对象（左值）  RecvValue(i); } 一般也称一个T &amp;amp;&amp;amp;t为一个右值引用。</description>
+    </item>
     
     <item>
       <title>2019 年终总结</title>
