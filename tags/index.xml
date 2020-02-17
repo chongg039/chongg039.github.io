@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Sat, 01 Feb 2020 10:02:22 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 06 Feb 2020 19:43:22 +0800</lastBuildDate>
     
 	<atom:link href="https://chongg039.cn/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>cxx</title>
       <link>https://chongg039.cn/tags/cxx/</link>
-      <pubDate>Sat, 01 Feb 2020 10:02:22 +0800</pubDate>
+      <pubDate>Thu, 06 Feb 2020 19:43:22 +0800</pubDate>
       
       <guid>https://chongg039.cn/tags/cxx/</guid>
       <description></description>
@@ -112,7 +112,7 @@
     </item>
     
     <item>
-      <title>Go</title>
+      <title>go</title>
       <link>https://chongg039.cn/tags/go/</link>
       <pubDate>Mon, 13 Mar 2017 18:51:20 +0800</pubDate>
       
