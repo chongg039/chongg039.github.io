@@ -7,10 +7,26 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Thu, 06 Feb 2020 19:43:22 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 17 Feb 2020 17:01:20 +0800</lastBuildDate>
     
 	<atom:link href="https://chongg039.cn/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[设计模式系列]单例模式</title>
+      <link>https://chongg039.cn/post/design-pattern-series-1/</link>
+      <pubDate>Mon, 17 Feb 2020 17:01:20 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/post/design-pattern-series-1/</guid>
+      <description>开一个新坑，记录一下设计模式的学习和使用经过。因为最近在写一个项目，首先接触到的和思考的就是单例模式，就从这里写起吧。
+出发点 有时候不论是出于易用性考虑还是效率上的考虑，我们希望某些资源仅被初始化一次，但是其他所有的实例都可以使用它。大部分情况下这类资源是不会被改动的，当然也会有意外，一旦涉及到改动可能有需要考虑线程安全的问题。
+听起来是不是和static全局对象的作用很相似？不过如果你能记起Effective C++中的内容，就会知道静态全局变量的初始化顺序是完全看编译器的心情的。虽然同一个编译单元内的静态全局变量初始化顺序是一定的，但若是不同编译单元内的静态全局变量产生了相互依赖，结果可能就会变得不可预料。
+但我们可以通过一个静态的方法，获取只初始化一次的实例对象。这就是单例模式的实现方式。
+需要定义的方法和成员变量  既然是需要访问这个全局实例，一定是通过一个静态的类方法获取这个实例的指针或者引用； 单例类不能有公有的构造函数，那么一个共有的析构函数也就变得没有意义； 显然单例类不能有任何公有的拷贝和赋值的行为； 单例类应该需要有一个指向全局唯一实例的指针，为了让静态方法能够获取到这个实例指针，该指针也应该是静态的。  暂时就想到这么多，下面再来思考单例类实例化的时机。是的，单例类要有一个全局唯一的实例，且又不能在外部显示实例化，那就只有一个方法，将构造函数声明为私有的或者保护的，并在某些时刻调用它。
+根据调用单例类实例化的时机，可将其分为懒汉版单例模式（Lazy Singleton）和饿汉版单例模式（Eager Singleton）。
+Lazy Singleton 顾名思义，什么是懒汉，就是不到万不得已不进行实例的初始化操作，也就是第一次调用GetInstance获取实例对象时才进行初始化：
+// 单例模式 class Singleton { public: static Singleton *GetInstance(); // 禁止拷贝和赋值, delete需要在public中实现  Singleton(const Singleton &amp;amp;) = delete; Singleton &amp;amp;operator=(const Singleton &amp;amp;) = delete; private: Singleton(); ~Singleton(); static Singleton *instance; }; Singleton *Singleton::instance = nullptr; Singleton *Singleton::GetInstance() { if (instance == nullptr) { instance = new Singleton(); } return instance; } Singleton::Singleton() { std::cout &amp;lt;&amp;lt; &amp;#34;singleton ctor&amp;#34; &amp;lt;&amp;lt; std::endl; } Singleton::~Singleton() { std::cout &amp;lt;&amp;lt; &amp;#34;singleton dtor&amp;#34; &amp;lt;&amp;lt; std::endl; } 然后我们在main函数中观察一下实例化的时机：</description>
+    </item>
     
     <item>
       <title>使用传值和std::move代替传引用可能是更明智的做法</title>
