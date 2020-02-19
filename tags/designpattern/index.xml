@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Mon, 17 Feb 2020 17:01:20 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 19 Feb 2020 15:41:09 +0800</lastBuildDate>
     
 	<atom:link href="https://chongg039.cn/tags/designpattern/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[设计模式系列]工厂模式</title>
+      <link>https://chongg039.cn/post/design-pattern-series-2/</link>
+      <pubDate>Wed, 19 Feb 2020 15:41:09 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/post/design-pattern-series-2/</guid>
+      <description>这一节再来讨论一下工厂模式，主要分为三种：简单工厂模式、工厂方法模式和抽象工厂模式。其实说实话我觉得工厂模式比单例模式还要直观一点，因为这就是多态基类实例化子类的方式，自然而然就能想到。
+考虑以下这个实例，一份完整的数学选择题应该会包含如下几个部分：
+ 题干部分(stem) 小问部分(sub_stem) 选项部分(option) 解答过程(solution)  在进行设计时，需要对这四个部分抽象出相同的特性。那么这四个部分不论怎么变化，首先都是“语句(sentence)”（这里并不是指字符串的意思）。那么我们就可以在Sentence基类的基础上讨论工厂方法的实现方式。
+// 基类, 不能被实例化 class Sentence { public: virtual ~Sentence() = default; virtual void ShowMsg() = 0; }; // 题干 class Stem : public Sentence { public: void ShowMsg() override { std::cout &amp;lt;&amp;lt; &amp;#34;this is a stem&amp;#34; &amp;lt;&amp;lt; std::endl; }; }; // 小问 class SubStem : public Sentence { public: void ShowMsg() override { std::cout &amp;lt;&amp;lt; &amp;#34;this is a sub_stem&amp;#34; &amp;lt;&amp;lt; std::endl; }; }; // 选项 class Option : public Sentence { public: void ShowMsg() override { std::cout &amp;lt;&amp;lt; &amp;#34;this is an option&amp;#34; &amp;lt;&amp;lt; std::endl; }; }; // 解答过程 class Solution : public Sentence { public: void ShowMsg() override { std::cout &amp;lt;&amp;lt; &amp;#34;this is a solution&amp;#34; &amp;lt;&amp;lt; std::endl; }; }; 简单工厂模式(Simple Factory) 简单工厂模式就是多态，C++中基类的指针或引用都可以调用子类的虚函数达到多态的效果，看例子：</description>
+    </item>
     
     <item>
       <title>[设计模式系列]单例模式</title>
