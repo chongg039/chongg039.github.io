@@ -7,10 +7,23 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Wed, 19 Feb 2020 15:41:09 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 20 Feb 2020 10:32:08 +0800</lastBuildDate>
     
 	<atom:link href="https://chongg039.cn/categories/c++/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[设计模式系列]建造者模式和原型模式</title>
+      <link>https://chongg039.cn/post/design-pattern-series-3/</link>
+      <pubDate>Thu, 20 Feb 2020 10:32:08 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/post/design-pattern-series-3/</guid>
+      <description>本篇再来学习一下GOF中提到的创建型模式的最后两种：建造者模式(Builder Pattern)和原型模式(Prototype Pattern)。
+建造者模式(Builder Pattern) Builder模式的作用是将一个复杂对象的构建与它的表示分离，使得同样的构建过程可以创建不同的表示。和抽象工厂模式有类似之处，建造者模式也是用来创建大而复杂的对象，只不过更强调按照某种顺序一步步构建的这个过程，并且通过相同的创建过程可以获得不同的最终对象。
+一般而言建造者模式由一个Builder基类和一个具体的Director类构成。与抽象工厂模式不同的另一点在于Builder一般不直接返回一个对象，只是规定了所有属性的接口和初始化顺序，具体的对象生成工作交由Director中的一个方法来完成。
+考虑上篇文章那个例子，我们要为Stem、SubStem、Option和Solution生成要保存的信息，假设每个里面都需要按顺序初始化下面两个部分：
+// InfoBuilder class InfoBuilder { public: virtual ~InfoBuilder() = default; // 构建Entity部分  virtual void BuildEntityPart() = 0; // 构建Relation部分  virtual void BuildRelationPart() = 0; }; // 题干信息Builder class StemInfoBuilder : public InfoBuilder { public: void BuildEntityPart() override; void BuildRelationPart() override; }; // 小问信息Builder class SubStemInfoBuilder : public InfoBuilder { public: void BuildEntityPart() override; void BuildRelationPart() override; }; // InfoDirector class InfoDirector { public: explicit InfoDirector(InfoBuilder *info_builder); ~InfoDirector(); void Construct(); private: InfoBuilder *info_builder_; }; void StemInfoBuilder::BuildEntityPart() { std::cout &amp;lt;&amp;lt; &amp;#34;now build entity part for stem&amp;#34; &amp;lt;&amp;lt; std::endl; } void StemInfoBuilder::BuildRelationPart() { std::cout &amp;lt;&amp;lt; &amp;#34;now build relation part for stem&amp;#34; &amp;lt;&amp;lt; std::endl; } void SubStemInfoBuilder::BuildEntityPart() { std::cout &amp;lt;&amp;lt; &amp;#34;now build entity part for sub_stem&amp;#34; &amp;lt;&amp;lt; std::endl; } void SubStemInfoBuilder::BuildRelationPart() { std::cout &amp;lt;&amp;lt; &amp;#34;now build relation part for sub_stem&amp;#34; &amp;lt;&amp;lt; std::endl; } InfoDirector::InfoDirector(InfoBuilder *info_builder) : info_builder_(info_builder) {} InfoDirector::~InfoDirector() { if (info_builder_) { delete info_builder_; info_builder_ = nullptr; } } void InfoDirector::Construct() { info_builder_-&amp;gt;BuildEntityPart(); info_builder_-&amp;gt;BuildRelationPart(); } 注意我这个析构函数使用了delete，也就是代表指针指向的一定是堆上new出来的资源，不能是构造出来的对象再取地址。即：</description>
+    </item>
     
     <item>
       <title>[设计模式系列]工厂模式</title>
