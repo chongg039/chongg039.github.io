@@ -73,26 +73,30 @@ trust_host_root_certs: false
 <p>文章基本是对<a href="https://imququ.com/post/self-hosted-ngrokd.html">Jerry Qu</a>方法的一次操作纪录，没什么原创性，但是可以学到很多知识（也省去了私人开发项目购买服务器的钱&hellip;）。总之以后本机开发的项目就不用劳心费神的再放到服务器上辛辛苦苦的去调试了。</p>
 <p>这也算是一次成功的实践，也不用麻烦的去捣鼓路由器。</p>
 <p>补充：发现了一个集成好了的东西：<a href="www.ngrok.cc">sunny-ngrok</a> ，有时间大家可以研究一下。</p>
-    <div id="disqus_thread"></div>
-<script type="application/javascript">
-    var disqus_config = function () {
     
     
-    
-    };
-    (function() {
-        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
-            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
-            return;
-        }
-        var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "coldriver" + '.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
+<div id="gitalk-container"></div>
+<link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<script>
+  const gitalk = new Gitalk({
+    clientID: '36c8fa6e09d08297a270',
+    clientSecret: 'af0175944284956d288d14b389fbc89be8df7f1e',
+    repo: 'chongg039.github.io',
+    owner: 'chongg039',
+    admin: ['chongg039'],
+    id: location.pathname, 
+    distractionFreeMode: false 
+  });
+  (function() {
+    if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+      document.getElementById('gitalk-container').innerHTML = 'Gitalk comments not available by default when the website is previewed locally.';
+      return;
+    }
+    gitalk.render('gitalk-container');
+  })();
 </script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+
 <div class="navfooter">
     <table width="100%" summary="Navigation footer">
         <tbody>

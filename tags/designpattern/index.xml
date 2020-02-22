@@ -7,10 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Thu, 20 Feb 2020 10:32:08 +0800</lastBuildDate>
+    <lastBuildDate>Sat, 22 Feb 2020 11:01:40 +0800</lastBuildDate>
     
 	<atom:link href="https://chongg039.cn/tags/designpattern/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[设计模式系列]装饰模式与组合模式</title>
+      <link>https://chongg039.cn/post/design-pattern-series-5/</link>
+      <pubDate>Sat, 22 Feb 2020 11:01:40 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/post/design-pattern-series-5/</guid>
+      <description>这篇来学习一下装饰模式与组合模式，也是结构型模式中的内容。
+装饰模式(Decorator Pattern) 顾名思义，装饰模式就是往一个现有的产品上添加功能部件，增加一些新的额外职责，将这个被嵌入的对象称为职责。注意这不是对所有的类都进行添加，而是对某些实例化的对象进行添加。并且，所有的装饰应该继承同一个装饰接口。
+组合模式(Composite Pattern) </description>
+    </item>
+    
+    <item>
+      <title>[设计模式系列]桥接模式与适配器模式</title>
+      <link>https://chongg039.cn/post/design-pattern-series-4/</link>
+      <pubDate>Fri, 21 Feb 2020 21:04:39 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/post/design-pattern-series-4/</guid>
+      <description>这篇文章进入GOF中的结构型模式篇幅。
+Bridge模式 桥接模式号称设计模式中最难理解的模式，同时用好了能够很大程度上降低模块之间的耦合程度。因为本质上桥接模式实现了抽象化(Abstraction)与实现化(Implementation)的解耦，将继承关系转变为了组合关系，减少了代码编写量。
+说得通俗一点，就是一个实现中若涉及多个不同层次的继承关系，如果不将其合理解耦，则会产生很多设计上冗余的代码。cabinriver写的这篇文章中举了一个非常棒的例子，我也暂时没有想到更合适的，就在这里重复一下，方便学习记录。感谢他的工作。
+一台电脑可能有不同的制造商，每台电脑又可以安装多种不同的操作系统。电脑上在生产一台电脑时，需要生产出安装了不同操作系统的电脑。那么我们就应该将操作系统这个继承体系分离出去：
+// 操作系统 class OS { public: virtual ~OS() = default; virtual void Run() = 0; }; class Linux : public OS { public: void Run() override; }; class Windows : public OS { public: void Run() override; }; // 不同品牌的电脑 class Computer { public: virtual ~Computer() = default; virtual void Install(OS *os) = 0; }; class Dell : public Computer { public: void Install(OS *os) override; }; class Apple : public Computer { public: void Install(OS *os) override; }; void Linux::Run() { std::cout &amp;lt;&amp;lt; &amp;#34;Linux running.</description>
+    </item>
     
     <item>
       <title>[设计模式系列]建造者模式和原型模式</title>
