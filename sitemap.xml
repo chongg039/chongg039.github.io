@@ -48,12 +48,22 @@
   </url>
   
   <url>
-    <loc>https://chongg039.cn/tags/os/</loc>
-    <lastmod>2020-02-20T20:32:11+08:00</lastmod>
+    <loc>https://chongg039.cn/tags/knowledge/</loc>
+    <lastmod>2020-02-20T20:32:59+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chongg039.cn/tags/network/</loc>
+    <lastmod>2020-02-20T20:32:59+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://chongg039.cn/post/os-base/</loc>
+    <lastmod>2020-02-20T20:32:11+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chongg039.cn/tags/os/</loc>
     <lastmod>2020-02-20T20:32:11+08:00</lastmod>
   </url>
   
@@ -129,6 +139,11 @@
   
   <url>
     <loc>https://chongg039.cn/post/cxx-base/</loc>
+    <lastmod>2019-10-20T15:51:31+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chongg039.cn/tags/c&#43;&#43;/</loc>
     <lastmod>2019-10-20T15:51:31+08:00</lastmod>
   </url>
   

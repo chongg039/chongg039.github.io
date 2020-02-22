@@ -38,7 +38,7 @@ Bridge模式 桥接模式号称设计模式中最难理解的模式，同时用�
     </item>
     
     <item>
-      <title>Network Base</title>
+      <title>[基础知识]计算机网络</title>
       <link>https://chongg039.cn/post/network-base/</link>
       <pubDate>Thu, 20 Feb 2020 20:32:59 +0800</pubDate>
       
@@ -47,7 +47,7 @@ Bridge模式 桥接模式号称设计模式中最难理解的模式，同时用�
     </item>
     
     <item>
-      <title>操作系统常用知识</title>
+      <title>[基础知识]操作系统</title>
       <link>https://chongg039.cn/post/os-base/</link>
       <pubDate>Thu, 20 Feb 2020 20:32:11 +0800</pubDate>
       
@@ -202,7 +202,7 @@ void RecvValue(int &amp;amp;i) { std::cout &amp;lt;&amp;lt; &amp;#34;get a lvalu
     </item>
     
     <item>
-      <title>[CXX学习笔记]基础知识</title>
+      <title>[基础知识]C&#43;&#43;基础知识汇总</title>
       <link>https://chongg039.cn/post/cxx-base/</link>
       <pubDate>Sun, 20 Oct 2019 15:51:31 +0800</pubDate>
       
