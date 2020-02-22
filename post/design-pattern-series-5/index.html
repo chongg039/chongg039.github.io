@@ -26,10 +26,153 @@
 
     <h1>[设计模式系列]装饰模式与组合模式</h1>
     <h4>Sat, Feb 22, 2020</h4>
-    <p>这篇来学习一下装饰模式与组合模式，也是结构型模式中的内容。</p>
+    <p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/tk9RQCq5eQo.jpg#center" alt="tk9RQCq5eQo"></p>
+<p>这篇来学习一下装饰模式与组合模式，也是结构型模式中的内容。</p>
 <h3 id="装饰模式decorator-pattern">装饰模式(Decorator Pattern)</h3>
 <p>顾名思义，装饰模式就是往一个现有的产品上添加功能部件，增加一些新的额外职责，将这个被嵌入的对象称为职责。注意这不是对所有的类都进行添加，而是对某些实例化的对象进行添加。并且，所有的装饰应该继承同一个装饰接口。</p>
+<p>与Bridge模式很相似，侧重的也是单一职责与组合代替继承。考虑和之前相同的例子，对于题干Stem和解题过程，可以将抽取实体和关系的行为与其分离，作为行为装饰在具体的对象中。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// sentence基类，将装饰行为与其分离
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Sentence</span>
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">virtual</span> <span style="color:#f92672">~</span>Sentence() <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
+
+    <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ShowDecorate</span>() <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+};
+
+<span style="color:#75715e">// stem子类实例
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Stem</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> Sentence
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">void</span> ShowDecorate() <span style="color:#66d9ef">override</span>;
+};
+
+<span style="color:#75715e">// solution子类实例
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Solution</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> Sentence
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">void</span> ShowDecorate() <span style="color:#66d9ef">override</span>;
+};
+
+<span style="color:#75715e">// 装饰行为基类
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Decorator</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> Sentence
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">explicit</span> Decorator(Sentence <span style="color:#f92672">*</span>sentence);
+
+    <span style="color:#f92672">~</span>Decorator() <span style="color:#66d9ef">override</span>;
+
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ShowDecorate</span>() <span style="color:#66d9ef">override</span>;
+
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+    Sentence <span style="color:#f92672">*</span>sentence_;
+};
+
+<span style="color:#75715e">// 装饰类EntityDecorator
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EntityDecorator</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> Decorator
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">explicit</span> EntityDecorator(Sentence <span style="color:#f92672">*</span>sentence);
+
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ShowDecorate</span>() <span style="color:#66d9ef">override</span>;
+
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">void</span> ExtractEntity();
+};
+
+<span style="color:#75715e">// 装饰类RelationDecorator
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RelationDecorator</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> Decorator
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">explicit</span> RelationDecorator(Sentence <span style="color:#f92672">*</span>sentence);
+
+    <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ShowDecorate</span>() <span style="color:#66d9ef">override</span>;
+
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">void</span> ExtractRelation();
+};
+
+<span style="color:#66d9ef">void</span> Stem<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ShowDecorate()
+{
+    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">stem&#39;s decorator</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+}
+
+<span style="color:#66d9ef">void</span> Solution<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ShowDecorate()
+{
+    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">solution&#39;s decorator</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+}
+
+Decorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span>Decorator(Sentence <span style="color:#f92672">*</span>sentence)
+        <span style="color:#f92672">:</span> sentence_(sentence)
+{}
+
+Decorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#f92672">~</span>Decorator()
+{
+    <span style="color:#66d9ef">if</span> (sentence_) {
+        <span style="color:#66d9ef">delete</span> sentence_;
+        sentence_ <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+    }
+}
+
+<span style="color:#66d9ef">void</span> Decorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ShowDecorate()
+{
+    sentence_<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>ShowDecorate();
+}
+
+EntityDecorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span>EntityDecorator(Sentence <span style="color:#f92672">*</span>sentence)
+        <span style="color:#f92672">:</span> Decorator(sentence)
+{}
+
+<span style="color:#66d9ef">void</span> EntityDecorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ShowDecorate()
+{
+    Decorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ShowDecorate();
+    ExtractEntity();
+}
+
+<span style="color:#66d9ef">void</span> EntityDecorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ExtractEntity()
+{
+    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">extract some entities</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+}
+
+RelationDecorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span>RelationDecorator(Sentence <span style="color:#f92672">*</span>sentence)
+        <span style="color:#f92672">:</span> Decorator(sentence)
+{}
+
+<span style="color:#66d9ef">void</span> RelationDecorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ShowDecorate()
+{
+    Decorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ShowDecorate();
+    ExtractRelation();
+}
+
+<span style="color:#66d9ef">void</span> RelationDecorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ExtractRelation()
+{
+    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">extract some relations</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+}
+</code></pre></div><p>注意装饰器基类要继承Sentence接口的方法，现在我们的程序就可以这么写：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    Sentence <span style="color:#f92672">*</span>stem <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Stem;
+    <span style="color:#75715e">// 抽取实体，stem已经被接管
+</span><span style="color:#75715e"></span>    Sentence <span style="color:#f92672">*</span>stem_e <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> EntityDecorator(stem);
+    <span style="color:#75715e">// 抽取关系，stem_e已经被接管
+</span><span style="color:#75715e"></span>    Sentence <span style="color:#f92672">*</span>stem_e_r <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RelationDecorator(stem_e);
+
+    stem_e_r<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>ShowDecorate();
+
+    <span style="color:#75715e">// stem_e_r需要手动释放
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">delete</span> stem_e_r;
+
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p>装饰模式对于动态的添加一些组件可以非常方便地实现。</p>
 <h3 id="组合模式composite-pattern">组合模式(Composite Pattern)</h3>
+<p>GOF将组合模式定义为：将对象组合成树形结构以表示“部分整体”的层次结构，组合模式使得用户对单个对象和组合对象的使用具有一致性。</p>
+<p>树形结构就是数据结构中的树，从根节点开始的树和每个子树理应具备一致的结构与功能。一般来说，需要声明一个公有的接口类实现所有一致的行为。且对于所有的叶子节点，不能再有子节点。</p>
+<p>UML图来自Wikipedia：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/Kp25GW.jpg#center" alt="Kp25GW"></p>
+<p><a href="https://www.veaxen.com/c%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F10-%E7%BB%84%E5%90%88%E6%A8%A1%E5%BC%8F.html">Veaxen</a>的这篇博客中提到了一个总公司与分公司的案例，很贴切，我暂时没有想到这个设计模式一个比较好的现实案例，感兴趣的朋友可以去他的博客下面参考一下。</p>
+<h3 id="总结">总结</h3>
+<p>Decorator模式可以在不生成具体子类的情况下灵活添加新的功能组件，与之相对的是Composite模式则侧重构建、表示一些具体的类，这些类在部分和整体上保持了一致性。</p>
 
     
     
