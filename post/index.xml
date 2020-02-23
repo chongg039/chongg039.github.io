@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Sat, 22 Feb 2020 11:01:40 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 23 Feb 2020 09:30:35 +0800</lastBuildDate>
     
 	<atom:link href="https://chongg039.cn/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[设计模式系列]享元模式、外观模式与代理模式</title>
+      <link>https://chongg039.cn/post/design-pattern-series-6/</link>
+      <pubDate>Sun, 23 Feb 2020 09:30:35 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/post/design-pattern-series-6/</guid>
+      <description>不多啰嗦直奔主题，来看下GOF中结构型模式的最后三部分。
+享元模式(Flyweight Pattern) 过多的对象创建会造成很大的存储开销，而这其中有相当一部分可能是重复且不必要的。因此对于一个特定的对象我们可以将其分为”内部状态“和”外部状态“两部分。内部状态指可以被共享的、一般不会变化的状态，存储在类的内部；对于可能产生变化的外部状态，我们选择将其作为参数传递给对象。
+享元模式类似工厂模式，有一个工厂对象，这个工厂用于接收用户的每一次申请对象的请求。工厂内部有一个维护了所有对象的”仓库“。每一次会先检查这个仓库中是否存在了这个对象。若存在便返回，若不存在，就创建一个新的对象返回，并将其添加进这个仓库中。
+class Flyweight; // 工厂对象 class FlyweightFactory { public: FlyweightFactory(); ~FlyweightFactory(); Flyweight *GetFlyweight(const std::string &amp;amp;key); private: std::map&amp;lt;std::string, Flyweight *&amp;gt; store_; }; class Flyweight { public: virtual ~Flyweight() = default; virtual void Operation(int extrinsic_state) = 0; }; class ConcreteFlyweight : public Flyweight { public: void Operation(int extrinsic_state) override; }; class UnShareConcreteFlyweight : public Flyweight { public: void Operation(int extrinsic_state) override; }; FlyweightFactory::FlyweightFactory() = default; FlyweightFactory::~FlyweightFactory() = default; Flyweight *FlyweightFactory::GetFlyweight(const std::string &amp;amp;key) { if (store_.</description>
+    </item>
     
     <item>
       <title>[设计模式系列]装饰模式与组合模式</title>
