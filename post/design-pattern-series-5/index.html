@@ -92,21 +92,21 @@
     <span style="color:#66d9ef">void</span> ExtractRelation();
 };
 
-<span style="color:#66d9ef">void</span> Stem<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ShowDecorate()
+<span style="color:#66d9ef">void</span> Stem<span style="color:#f92672">::</span>ShowDecorate()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">stem&#39;s decorator</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;stem&#39;s decorator&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-<span style="color:#66d9ef">void</span> Solution<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ShowDecorate()
+<span style="color:#66d9ef">void</span> Solution<span style="color:#f92672">::</span>ShowDecorate()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">solution&#39;s decorator</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;solution&#39;s decorator&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-Decorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span>Decorator(Sentence <span style="color:#f92672">*</span>sentence)
+Decorator<span style="color:#f92672">::</span>Decorator(Sentence <span style="color:#f92672">*</span>sentence)
         <span style="color:#f92672">:</span> sentence_(sentence)
 {}
 
-Decorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#f92672">~</span>Decorator()
+Decorator<span style="color:#f92672">::~</span>Decorator()
 {
     <span style="color:#66d9ef">if</span> (sentence_) {
         <span style="color:#66d9ef">delete</span> sentence_;
@@ -114,39 +114,39 @@ Decorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span
     }
 }
 
-<span style="color:#66d9ef">void</span> Decorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ShowDecorate()
+<span style="color:#66d9ef">void</span> Decorator<span style="color:#f92672">::</span>ShowDecorate()
 {
-    sentence_<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>ShowDecorate();
+    sentence_<span style="color:#f92672">-&gt;</span>ShowDecorate();
 }
 
-EntityDecorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span>EntityDecorator(Sentence <span style="color:#f92672">*</span>sentence)
+EntityDecorator<span style="color:#f92672">::</span>EntityDecorator(Sentence <span style="color:#f92672">*</span>sentence)
         <span style="color:#f92672">:</span> Decorator(sentence)
 {}
 
-<span style="color:#66d9ef">void</span> EntityDecorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ShowDecorate()
+<span style="color:#66d9ef">void</span> EntityDecorator<span style="color:#f92672">::</span>ShowDecorate()
 {
-    Decorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ShowDecorate();
+    Decorator<span style="color:#f92672">::</span>ShowDecorate();
     ExtractEntity();
 }
 
-<span style="color:#66d9ef">void</span> EntityDecorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ExtractEntity()
+<span style="color:#66d9ef">void</span> EntityDecorator<span style="color:#f92672">::</span>ExtractEntity()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">extract some entities</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;extract some entities&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-RelationDecorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span>RelationDecorator(Sentence <span style="color:#f92672">*</span>sentence)
+RelationDecorator<span style="color:#f92672">::</span>RelationDecorator(Sentence <span style="color:#f92672">*</span>sentence)
         <span style="color:#f92672">:</span> Decorator(sentence)
 {}
 
-<span style="color:#66d9ef">void</span> RelationDecorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ShowDecorate()
+<span style="color:#66d9ef">void</span> RelationDecorator<span style="color:#f92672">::</span>ShowDecorate()
 {
-    Decorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ShowDecorate();
+    Decorator<span style="color:#f92672">::</span>ShowDecorate();
     ExtractRelation();
 }
 
-<span style="color:#66d9ef">void</span> RelationDecorator<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ExtractRelation()
+<span style="color:#66d9ef">void</span> RelationDecorator<span style="color:#f92672">::</span>ExtractRelation()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">extract some relations</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;extract some relations&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 </code></pre></div><p>注意装饰器基类要继承Sentence接口的方法，现在我们的程序就可以这么写：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
@@ -157,7 +157,7 @@ RelationDecorator<span style="color:#f92672">:</span><span style="color:#f92672"
     <span style="color:#75715e">// 抽取关系，stem_e已经被接管
 </span><span style="color:#75715e"></span>    Sentence <span style="color:#f92672">*</span>stem_e_r <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RelationDecorator(stem_e);
 
-    stem_e_r<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>ShowDecorate();
+    stem_e_r<span style="color:#f92672">-&gt;</span>ShowDecorate();
 
     <span style="color:#75715e">// stem_e_r需要手动释放
 </span><span style="color:#75715e"></span>    <span style="color:#66d9ef">delete</span> stem_e_r;

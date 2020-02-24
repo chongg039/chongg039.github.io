@@ -59,20 +59,20 @@
 <p>尽管计算机中内存是按照字节byte划分的，但不是寻址可以从任意的byte开始。一般来说计算机会对基本数据类型数据在内存中存放的位置加以限制，要求首地址必须是某个数（一般是4和8）的倍数，这就是内存对齐。</p>
 <p>因为虽然计算机按照字节划分存储空间，但处理器存取一次内存不是按照一个字节存取的，一般以双字节、4字节、8字节甚至到32字节存取。这被称为内存存取粒度。</p>
 <p>对32位处理器的int类型（4字节），若数据现在可以存放在任一字节开始处，会产生性能的损失。比如，现在从地址1字节开始存放int（1-5，左开右闭），读取时从0字节开始读取一个4字节大小的块，需要访问两次内存。第一步先读取0-4左开右闭字节快，剔除0地址字节；第二步访问4-8左开右闭字节快，剔除5、6、7三个字节块。然后将这两部分得到的合并放入寄存器，需要做很多工作。有了内存对齐，那么只能从规定的边界存放和读取，访问一次内存就可以了。</p>
-<p>设置编译器的”对齐系数(对齐模数)“的预处理指令为#pragma pack(n)，linux下gcc默认n=4。还有一个概念为”对齐单位“，也称有效对齐值，是指n和结构体中最长数据类型（基本数据类型）长度中较小的那一个值。</p>
+<p>设置编译器的”对齐系数(对齐模数)“的预处理指令为#pragma pack(n)，一般32位系统下对齐系数为n=4，64位系统下对齐系数为n=8。还有一个概念为”对齐单位“，也称有效对齐值，是指n和结构体中最长数据类型（基本数据类型）长度中较小的那一个值。</p>
 <p>下面说一下内存对齐规则，主要有两条：</p>
 <ol>
 <li>结构体中第一个成员的offset为0，之后每个成员都相对首地址的offset都是”该成员大小“和”对齐单位“中较小的那个的整数倍。如有需要可以添加进填充字节；</li>
 <li>结构体的总大小为”对齐单位“的整数倍，如有需要会在最末尾成员添加填充字节。</li>
 </ol>
 <p>分析下下面三个例子：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#</span><span style="color:#75715e">pragma pack(4)</span><span style="color:#75715e">
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#pragma pack(4)
 </span><span style="color:#75715e"></span><span style="color:#75715e">// 先使用第一条规则
-</span><span style="color:#75715e"></span><span style="color:#75715e">//  对x, 对齐单位min(4, 4) = 4, 按照4字节对齐, 不用偏移, 从0开始占用4个字节
-</span><span style="color:#75715e"></span><span style="color:#75715e">//  对c1, 对齐单位min(4, 1) = 1, 按照1字节对齐, 相对于首地址偏移min(1, 1) = 1的倍数, 从4开始占用1个字节
-</span><span style="color:#75715e"></span><span style="color:#75715e">//  对c2, 对齐单位min(4, 1) = 1, 按照1字节对齐, 相对于首地址偏移min(1, 1) = 1的倍数, 从5开始占用1个字节
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 再使用第二条规则, 结构体大小需要是对齐单位的整数倍, 补2个字节在末尾
-</span><span style="color:#75715e"></span><span style="color:#75715e">// sizeof(x1) = 8
+</span><span style="color:#75715e">//  对x, 对齐单位min(4, 4) = 4, 按照4字节对齐, 不用偏移, 从0开始占用4个字节
+</span><span style="color:#75715e">//  对c1, 对齐单位min(4, 1) = 1, 按照1字节对齐, 相对于首地址偏移min(1, 1) = 1的倍数, 从4开始占用1个字节
+</span><span style="color:#75715e">//  对c2, 对齐单位min(4, 1) = 1, 按照1字节对齐, 相对于首地址偏移min(1, 1) = 1的倍数, 从5开始占用1个字节
+</span><span style="color:#75715e">// 再使用第二条规则, 结构体大小需要是对齐单位的整数倍, 补2个字节在末尾
+</span><span style="color:#75715e">// sizeof(x1) = 8
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">x1</span>
 {
     <span style="color:#66d9ef">int</span> x;
@@ -81,11 +81,11 @@
 } x1;
 
 <span style="color:#75715e">// 先使用第一条规则
-</span><span style="color:#75715e"></span><span style="color:#75715e">//  对c1, 对齐单位min(4, 1) = 1, 按照1字节对齐, 不用偏移, 从0开始占用1个字节
-</span><span style="color:#75715e"></span><span style="color:#75715e">//  对c2, 对齐单位min(4, 1) = 1, 按照1字节对齐, 相对于首地址偏移min(1, 1) = 1的倍数, 从1开始占用1个字节
-</span><span style="color:#75715e"></span><span style="color:#75715e">//  对x, 对齐单位min(4, 4) = 4, 按照4字节对齐, 相对于首地址偏移min(4, 4) = 4的倍数, 需要先填充2位, 再从4开始占用4个字节
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 再使用第二条规则, 结构体大小需要是对齐单位的整数倍, 不用补填充字节
-</span><span style="color:#75715e"></span><span style="color:#75715e">// sizeof(x2) = 8
+</span><span style="color:#75715e">//  对c1, 对齐单位min(4, 1) = 1, 按照1字节对齐, 不用偏移, 从0开始占用1个字节
+</span><span style="color:#75715e">//  对c2, 对齐单位min(4, 1) = 1, 按照1字节对齐, 相对于首地址偏移min(1, 1) = 1的倍数, 从1开始占用1个字节
+</span><span style="color:#75715e">//  对x, 对齐单位min(4, 4) = 4, 按照4字节对齐, 相对于首地址偏移min(4, 4) = 4的倍数, 需要先填充2位, 再从4开始占用4个字节
+</span><span style="color:#75715e">// 再使用第二条规则, 结构体大小需要是对齐单位的整数倍, 不用补填充字节
+</span><span style="color:#75715e">// sizeof(x2) = 8
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">x2</span>
 {
     <span style="color:#66d9ef">char</span> c1;
@@ -94,18 +94,18 @@
 } x2;
 
 <span style="color:#75715e">// 先使用第一条规则
-</span><span style="color:#75715e"></span><span style="color:#75715e">//  对c1, 对齐单位min(4, 1) = 1, 按照1字节对齐, 不用偏移, 从0开始占用1个字节
-</span><span style="color:#75715e"></span><span style="color:#75715e">//  对x, 对齐单位min(4, 4) = 4, 按照4字节对齐, 相对于首地址偏移min(4, 4) = 1的倍数, 需要先填充3位, 再从4开始占用4个字节
-</span><span style="color:#75715e"></span><span style="color:#75715e">//  对c2, 对齐单位min(4, 1) = 1, 按照1字节对齐, 相对于首地址偏移min(1, 1) = 1的倍数, 从8开始占用1个字节
-</span><span style="color:#75715e"></span><span style="color:#75715e">// 再使用第二条规则, 结构体大小需要是对齐单位的整数倍, 补3个字节在末尾
-</span><span style="color:#75715e"></span><span style="color:#75715e">// sizeof(x3) = 12
+</span><span style="color:#75715e">//  对c1, 对齐单位min(4, 1) = 1, 按照1字节对齐, 不用偏移, 从0开始占用1个字节
+</span><span style="color:#75715e">//  对x, 对齐单位min(4, 4) = 4, 按照4字节对齐, 相对于首地址偏移min(4, 4) = 1的倍数, 需要先填充3位, 再从4开始占用4个字节
+</span><span style="color:#75715e">//  对c2, 对齐单位min(4, 1) = 1, 按照1字节对齐, 相对于首地址偏移min(1, 1) = 1的倍数, 从8开始占用1个字节
+</span><span style="color:#75715e">// 再使用第二条规则, 结构体大小需要是对齐单位的整数倍, 补3个字节在末尾
+</span><span style="color:#75715e">// sizeof(x3) = 12
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">typedef</span> <span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">x3</span>
 {
     <span style="color:#66d9ef">char</span> c1;
     <span style="color:#66d9ef">int</span> x;
     <span style="color:#66d9ef">char</span> c2;
 } x3;
-<span style="color:#75715e">#</span><span style="color:#75715e">pragma pack()</span><span style="color:#75715e">
+<span style="color:#75715e">#pragma pack()
 </span></code></pre></div><p>准确地讲这是属于内存的字节对齐。还有一个问题是大端对齐和小端对齐，这和处理器的架构有关系。大端对齐模式就是数据的低位保存在内存的高地址，内存的低地址存放着数据的高位。小端对齐模式就是数据的低位保存在内存的低地址中，而数据的高位保存在内存的高地址中。一般都是使用小端对齐的方式，大端对齐主要用在一些大型机的处理器中。</p>
 <h3 id="多态">多态</h3>
 <p>重载overload，重写override，重定义overwrite</p>
@@ -114,7 +114,149 @@
 重写：也叫做覆盖，一般发生在子类和父类继承关系之间。子类重新定义父类中有相同名称和参数的虚函数。(override)
 
 重定义：也叫做隐藏，子类重新定义父类中有相同名称的非虚函数(参数列表可以不同)，指派生类的函数屏蔽了与其同名的基类函数。可以理解成发生在继承中的重载。
-</code></pre>
+</code></pre><p>多态主要指静态多态和动态多态。静态多态就是函数重载，在编译期完成；动态多态是在程序运行时根据基类的指针或引用指向的对象来确定自己具体该调用哪一个类的虚函数，在运行期确定。</p>
+<p>构造函数不能被virtual修饰，基类的析构函数有必要声明为virtual，否则子类析构不能被正确调用。**将基类的析构函数声明为虚函数后，派生类的析构函数也会自动成为虚函数。**static成员函数不能声明为虚函数，因为它属于类而不属于某个对象。在C++11中，被final修饰的虚函数不能被子类重写。</p>
+<p>virtual + &quot; = 0&quot;形式上告诉了编译器这是一个纯虚函数，包含纯虚函数的类不能被实例化。对于纯虚析构函数，正常情况下子类是不能被实例化的，因为子类在析构时会调用基类的析构函数，而积累的析构函数纯虚，没有一个默认的实现，此时会报出链接错误。但事实上，一个纯虚析构函数我们仍可为其指定一个实现，这样子类的在析构时只会调用自己的析构函数。虽然看起来有些奇怪，但编译器并不会对此抱怨什么，不过很显然这里的实现就不能写成inline的了。<strong>上面说明了：可以有纯虚析构函数，但是必须有定义体。</strong></p>
+<p>为什么编译器可以在运行时通过指针指向的对象找到虚函数？如果一个类包含虚函数，编译器在编译阶段会额外增加一个数组，数组中的每个元素都是虚函数的入口地址。这个数组就是虚函数表vtable。虚函数表是属于类的，不属于任何一个对象。在代码的编译阶段这个虚函数表就可以构造出来。</p>
+<p>为了将实例化的对象和虚函数表关联起来，编译器在带有虚函数的对象中插入了一个指针vfptr，指向对应类的虚函数表的起始位置，这就是相似的带有虚函数的对象要比不带虚函数的对象要大的原因。同一个类的所有对象使用同一份虚函数表。注意，若一个类的基类包含虚函数，那这个类也拥有自己的虚表，类的对象拥有一个指向这个虚表的虚表指针。</p>
+<p>关于动态绑定可以看这个<a href="https://blog.csdn.net/lihao21/article/details/50688337">博客</a>。</p>
+<p>对于单继承的情况：</p>
+<ol>
+<li>基类的虚函数在vtable中的索引（下标）是固定的，不会随着继承层次的增加而改变，派生类新增的虚函数放在vtable的最后；</li>
+<li>如果派生类有同名的虚函数override了基类的虚函数，那么将使用派生类的虚函数替换基类的虚函数，这样具有override关系的虚函数在vtable中只会出现一次；</li>
+<li>当通过指针调用虚函数时，先根据指针找到vfptr，再根据vfptr找到虚函数的入口地址；对于不同的虚函数，仅仅改变索引（下标）即可。</li>
+</ol>
+<h4 id="插一句对象大小的计算">插一句对象大小的计算</h4>
+<ol>
+<li>非虚成员函数、静态成员函数、静态成员变量、静态常量成员变量均不影响对象的内存大小；</li>
+<li>虚函数影响对象大小，因为虚函数表指针；</li>
+<li>虚继承影响对象大小，因为虚基表指针；</li>
+<li>空类对象大小为1，空类是指既没有非静态数据成员，也没有虚函数，也不存在虚继承；</li>
+<li>继承一个空类有两种情况：一是派生类也是空类，派生类大小也为1；二是派生类不是空类，注意此时基类的一个字节大小并不会算进派生类的内存空间当中；</li>
+<li>包含一个空类，此时派生类的内存空间将包含这一个字节的大小（最终计算不要忘记考虑字节对齐）。</li>
+</ol>
+<h4 id="普通多继承菱形继承和虚继承">普通多继承、菱形继承和虚继承</h4>
+<p>有两个分属与不同集成体系的基类B1和B2，派生类同时继承这两个基类，这就是普通的多继承。由于多个基类分属不同的继承体系，一般不会出现什么问题，尽管不提倡使用多继承。</p>
+<p>菱形继承怎么产生的呢，看一张来自Wikipedia图片：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/yr9Dxf.jpg#center" alt="yr9Dxf"></p>
+<p>这会带来以下两个问题：</p>
+<ol>
+<li>若A中有非静态成员变量x，那么在D中最终将有两个x，不仅增大了内存，使用x也会产生二义性问题；</li>
+<li>若A中有一个成员函数，D调用该成员函数会产生二义性。若B和C中定义了同名（参数表可以不同）的两个成员函数，调用某一个也会产生二义性；</li>
+</ol>
+<p>先看普通的菱形继承的内存占用大小，在我的64位系统上对齐系数是8bytes：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    A() <span style="color:#f92672">:</span> a_(<span style="color:#ae81ff">0</span>)
+    {};
+
+    <span style="color:#66d9ef">virtual</span> <span style="color:#f92672">~</span>A() <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
+
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">int</span> a_;
+};
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">B</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> A
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    B() <span style="color:#f92672">:</span> b_(<span style="color:#ae81ff">1</span>)
+    {};
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">int</span> b_;
+};
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">C</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> A
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    C() <span style="color:#f92672">:</span> c_(<span style="color:#ae81ff">1</span>)
+    {};
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">int</span> c_;
+};
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">D</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> B, <span style="color:#66d9ef">public</span> C
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    D() <span style="color:#f92672">:</span> d_(<span style="color:#ae81ff">2</span>)
+    {};
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">int</span> d_;
+};
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">sizeof</span>(A) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl; <span style="color:#75715e">// 16
+</span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">sizeof</span>(B) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl; <span style="color:#75715e">// 16
+</span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">sizeof</span>(C) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl; <span style="color:#75715e">// 16
+</span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">sizeof</span>(D) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl; <span style="color:#75715e">// 36/40
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p>64位系统上int占4bytes，一个虚函数表指针占8bytes，最终A占用大小为12，算上8bytes对齐就是16；对于B，成员b_和a_各占4bytes，很幸运的不需要填充字节，然后因为里面有个继承来的虚函数，虚表指针占用8bytes，最终大小是16（如果不相信，可以将对齐系数改为4做个对比验证）；C和B的情况一样；对于D，情况有些特殊，计算方式为：</p>
+<pre><code>4(d_) + 4(c_) + 4(b_) + 4(a_) + 4(a_) + 8(vfptr) + 8(vfptr) + 4(尾字节对齐)= 40
+</code></pre><p>很显然，前面说过D中会有A中数据成员的两分拷贝。又因为D继承B、C两个分支，所以会有两个虚函数表指针。在这里说明一下，**带有虚函数的类，其大小和虚函数的个数无关，只与虚函数表指针的个数有关。**对于A，写再多的虚函数，虚函数表指针也只有一个。</p>
+<p>一个解决方案是使用using限定作用域来达到消歧的目的，但永远不会是最优。菱形继承问题引出了使用虚继承的解决方案：如果类B与C各自虚继承了类A，那么D的对象就只包含一套类A的实例数据。这一特性在多重继承应用中非常有用，可以使得虚基类对于由它直接或间接派生的类来说，拥有一个共同的基类对象实例。间接派生类D穿透了其父类B、C，实质上直接继承了虚基类A。</p>
+<p>再看看使用了虚继承后内存占用的大小，还是8bytes对齐：</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">A</span>
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    A() <span style="color:#f92672">:</span> a_(<span style="color:#ae81ff">0</span>)
+    {};
+
+    <span style="color:#66d9ef">virtual</span> <span style="color:#f92672">~</span>A() <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
+
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">int</span> a_;
+};
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">B</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">public</span> A
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    B() <span style="color:#f92672">:</span> b_(<span style="color:#ae81ff">1</span>)
+    {};
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">int</span> b_;
+};
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">C</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">virtual</span> <span style="color:#66d9ef">public</span> A
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    C() <span style="color:#f92672">:</span> c_(<span style="color:#ae81ff">1</span>)
+    {};
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">int</span> c_;
+};
+
+<span style="color:#66d9ef">class</span> <span style="color:#a6e22e">D</span> <span style="color:#f92672">:</span> <span style="color:#66d9ef">public</span> B, <span style="color:#66d9ef">public</span> C
+{
+<span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
+    D() <span style="color:#f92672">:</span> d_(<span style="color:#ae81ff">2</span>)
+    {};
+<span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
+    <span style="color:#66d9ef">int</span> d_;
+};
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
+{
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">sizeof</span>(A) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl; <span style="color:#75715e">// 16
+</span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">sizeof</span>(B) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl; <span style="color:#75715e">// 32
+</span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">sizeof</span>(C) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl; <span style="color:#75715e">// 32
+</span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#66d9ef">sizeof</span>(D) <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl; <span style="color:#75715e">// 48
+</span><span style="color:#75715e"></span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><p>对A没什么好说的，还是一样；对B，现在的计算方式为：</p>
+<pre><code>4(b_) + 4(a_) + 8(vfptr) + 8(vbptr) = 24
+</code></pre><p>这个vbptr就是虚基类表指针。至于为什么最终结果是32，我想是由于内存中存放顺序的原因，一般来说会先将两个虚表指针放在低位，再将数据成员放在后面，这样就会由于8bytes对齐导致填充字节后的最终结果是32。若将对齐系数改为4，最终大小就是24了。对于C，情况和B一样。</p>
+<p>对于D，现在应该这样计算：</p>
+<pre><code>8(vbptr) + 8(vbptr) + 8(vfptr) + 4(d_) + 4(c_) + +4(b_) + 4(a_) = 40
+</code></pre><p>使用了虚继承，D中只会保留一份a_的拷贝，但需要存储B和C两份虚基类表指针。至于为什么补齐了8个bytes呢，从下面g++给出的内存分布可以看出些端倪：</p>
+<p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/GBTuGB.png#center" alt="GBTuGB"></p>
+<p>实际的计算顺序我猜是这样的，未经仔细求证，仅做参考：</p>
+<pre><code>8(D::vfptr) + 4(B::b_) + 4(字节填充) + 8(B::vbptr) + 4(C::c_) + 4(字节填充) + 8(C::vbptr) + 4(A::a_) + 4(D::d_) = 48
+</code></pre><p>由于我对这部分不是很了解，只能做大概猜测。本人才疏学浅暂时也没有精力去详细查证编译器内部的具体存放顺序，请懂的朋友不吝赐教。这部分就先讨论到这里。</p>
+<p>由于虚基类是多个派生类共享的基类，因此由谁来初始化虚基类必须明确。C++标准规定，由最派生类直接初始化虚基类。因此，对间接继承了虚基类的类，也必须能直接访问其虚继承来的祖先类，也即应知道其虚继承来的祖先类的地址偏移值。在菱形继承中，两个派生类B、C，一个最派生类D的构造函数的初始化列表中都可以给出虚基类的初始化；但只由最派生类的构造函数实际执行虚基类的初始化。即首先初始化虚基类，再按照顺序带哦用非虚基类的构造函数。</p>
+<p>虚继承只是解决了菱形继承中派生类多个基类内存拷贝的问题，并没有解决多重继承的二义性问题。</p>
+
     
     
 <div id="gitalk-container"></div>

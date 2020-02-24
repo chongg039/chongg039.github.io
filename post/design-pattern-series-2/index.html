@@ -51,7 +51,7 @@
 <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
     <span style="color:#66d9ef">void</span> ShowMsg() <span style="color:#66d9ef">override</span>
     {
-        std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">this is a stem</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;this is a stem&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
     };
 };
 
@@ -61,7 +61,7 @@
 <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
     <span style="color:#66d9ef">void</span> ShowMsg() <span style="color:#66d9ef">override</span>
     {
-        std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">this is a sub_stem</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;this is a sub_stem&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
     };
 };
 
@@ -71,7 +71,7 @@
 <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
     <span style="color:#66d9ef">void</span> ShowMsg() <span style="color:#66d9ef">override</span>
     {
-        std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">this is an option</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;this is an option&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
     };
 };
 
@@ -81,7 +81,7 @@
 <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
     <span style="color:#66d9ef">void</span> ShowMsg() <span style="color:#66d9ef">override</span>
     {
-        std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">this is a solution</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;this is a solution&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
     };
 };
 </code></pre></div><h3 id="简单工厂模式simple-factory">简单工厂模式(Simple Factory)</h3>
@@ -101,7 +101,7 @@
     Sentence <span style="color:#f92672">*</span>GenerateSentence(SentenceType type);
 };
 
-Sentence <span style="color:#f92672">*</span>SimpleFactory<span style="color:#f92672">:</span><span style="color:#f92672">:</span>GenerateSentence(SentenceType type)
+Sentence <span style="color:#f92672">*</span>SimpleFactory<span style="color:#f92672">::</span>GenerateSentence(SentenceType type)
 {
     <span style="color:#66d9ef">switch</span> (type) {
         <span style="color:#66d9ef">case</span> kStem:
@@ -121,20 +121,20 @@ Sentence <span style="color:#f92672">*</span>SimpleFactory<span style="color:#f9
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SimpleFactorySmartPtr</span>
 {
 <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>unique_ptr<span style="color:#f92672">&lt;</span>Sentence<span style="color:#f92672">&gt;</span> GenerateSentence(SentenceType type);
+    std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>Sentence<span style="color:#f92672">&gt;</span> GenerateSentence(SentenceType type);
 };
 
-std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>unique_ptr<span style="color:#f92672">&lt;</span>Sentence<span style="color:#f92672">&gt;</span> SimpleFactorySmartPtr<span style="color:#f92672">:</span><span style="color:#f92672">:</span>GenerateSentence(SentenceType type)
+std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>Sentence<span style="color:#f92672">&gt;</span> SimpleFactorySmartPtr<span style="color:#f92672">::</span>GenerateSentence(SentenceType type)
 {
     <span style="color:#66d9ef">switch</span> (type) {
         <span style="color:#66d9ef">case</span> kStem:
-            <span style="color:#66d9ef">return</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>unique_ptr<span style="color:#f92672">&lt;</span>Sentence<span style="color:#f92672">&gt;</span>(<span style="color:#66d9ef">new</span> Stem);
+            <span style="color:#66d9ef">return</span> std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>Sentence<span style="color:#f92672">&gt;</span>(<span style="color:#66d9ef">new</span> Stem);
         <span style="color:#66d9ef">case</span> kSubStem:
-            <span style="color:#66d9ef">return</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>unique_ptr<span style="color:#f92672">&lt;</span>Sentence<span style="color:#f92672">&gt;</span>(<span style="color:#66d9ef">new</span> SubStem);
+            <span style="color:#66d9ef">return</span> std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>Sentence<span style="color:#f92672">&gt;</span>(<span style="color:#66d9ef">new</span> SubStem);
         <span style="color:#66d9ef">case</span> kOption:
-            <span style="color:#66d9ef">return</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>unique_ptr<span style="color:#f92672">&lt;</span>Sentence<span style="color:#f92672">&gt;</span>(<span style="color:#66d9ef">new</span> Option);
+            <span style="color:#66d9ef">return</span> std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>Sentence<span style="color:#f92672">&gt;</span>(<span style="color:#66d9ef">new</span> Option);
         <span style="color:#66d9ef">case</span> kSolution:
-            <span style="color:#66d9ef">return</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>unique_ptr<span style="color:#f92672">&lt;</span>Sentence<span style="color:#f92672">&gt;</span>(<span style="color:#66d9ef">new</span> Solution);
+            <span style="color:#66d9ef">return</span> std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>Sentence<span style="color:#f92672">&gt;</span>(<span style="color:#66d9ef">new</span> Solution);
         <span style="color:#66d9ef">default</span><span style="color:#f92672">:</span>
             <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">nullptr</span>;
     }

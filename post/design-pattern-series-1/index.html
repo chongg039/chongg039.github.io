@@ -62,30 +62,30 @@
     <span style="color:#66d9ef">static</span> Singleton <span style="color:#f92672">*</span>instance;
 };
 
-Singleton <span style="color:#f92672">*</span>Singleton<span style="color:#f92672">:</span><span style="color:#f92672">:</span>instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+Singleton <span style="color:#f92672">*</span>Singleton<span style="color:#f92672">::</span>instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
 
-Singleton <span style="color:#f92672">*</span>Singleton<span style="color:#f92672">:</span><span style="color:#f92672">:</span>GetInstance()
+Singleton <span style="color:#f92672">*</span>Singleton<span style="color:#f92672">::</span>GetInstance()
 {
-    <span style="color:#66d9ef">if</span> (instance <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>) {
+    <span style="color:#66d9ef">if</span> (instance <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>) {
         instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Singleton();
     }
     <span style="color:#66d9ef">return</span> instance;
 }
 
-Singleton<span style="color:#f92672">:</span><span style="color:#f92672">:</span>Singleton()
+Singleton<span style="color:#f92672">::</span>Singleton()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">singleton ctor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;singleton ctor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-Singleton<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#f92672">~</span>Singleton()
+Singleton<span style="color:#f92672">::~</span>Singleton()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">singleton dtor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;singleton dtor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 </code></pre></div><p>然后我们在main函数中观察一下实例化的时机：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">entry main</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
-    <span style="color:#66d9ef">auto</span> instance <span style="color:#f92672">=</span> Singleton<span style="color:#f92672">:</span><span style="color:#f92672">:</span>GetInstance();
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;entry main&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+    <span style="color:#66d9ef">auto</span> instance <span style="color:#f92672">=</span> Singleton<span style="color:#f92672">::</span>GetInstance();
     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }
 </code></pre></div><p>会发现输出结果是这样的顺序：</p>
@@ -101,9 +101,9 @@ Singleton<span style="color:#f92672">:</span><span style="color:#f92672">:</span
     <span style="color:#f92672">~</span>Singleton();
 }
 
-Singleton<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#f92672">~</span>Singleton()
+Singleton<span style="color:#f92672">::~</span>Singleton()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">singleton dtor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;singleton dtor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
     <span style="color:#66d9ef">if</span> (instance) {
         <span style="color:#66d9ef">delete</span> instance;
         instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
@@ -112,16 +112,16 @@ Singleton<span style="color:#f92672">:</span><span style="color:#f92672">:</span
 </code></pre></div><p>看到这里你可能就明白了，当你在外部调用delete删除一个Singleton实例指针时，将会调用该对象的析构函数，而在这个析构函数中将会无限次地递归调用自己的析构函数去删除这部分资源，根本原因就是这个单例类中的保存了堆上的资源就是自己的一个实例。那我们要是想用的话需要怎么办呢，首先虽然析构函数要被声明为public（因为要被delete调用），但析构函数中不能有任何释放堆上资源的行为，然后我们需要在外部使用delete手动删除由GetInstance获取的堆上的实例。：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">entry main</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
-    <span style="color:#66d9ef">auto</span> instance <span style="color:#f92672">=</span> Singleton<span style="color:#f92672">:</span><span style="color:#f92672">:</span>GetInstance();
-    <span style="color:#66d9ef">delete</span> Singleton<span style="color:#f92672">:</span><span style="color:#f92672">:</span>GetInstance();
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;entry main&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+    <span style="color:#66d9ef">auto</span> instance <span style="color:#f92672">=</span> Singleton<span style="color:#f92672">::</span>GetInstance();
+    <span style="color:#66d9ef">delete</span> Singleton<span style="color:#f92672">::</span>GetInstance();
     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }
 </code></pre></div><p>此时valgrind就不会报内存泄漏了。但有朋友说了，我不想每次都手动释放单例对象，毕竟是个“懒汉”方式，能不能一懒懒到底。当然可以，请出智能指针帮我们管理这份堆上的资源就可以了。但需要注意的是，析构函数同样需要声明为public：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SingletonSmartPtr</span>
 {
 <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
-    <span style="color:#66d9ef">static</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>unique_ptr<span style="color:#f92672">&lt;</span>SingletonSmartPtr<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>GetInstance();
+    <span style="color:#66d9ef">static</span> std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>SingletonSmartPtr<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>GetInstance();
 
     <span style="color:#75715e">// 禁止拷贝和赋值
 </span><span style="color:#75715e"></span>    SingletonSmartPtr(<span style="color:#66d9ef">const</span> SingletonSmartPtr <span style="color:#f92672">&amp;</span>) <span style="color:#f92672">=</span> <span style="color:#66d9ef">delete</span>;
@@ -133,27 +133,27 @@ Singleton<span style="color:#f92672">:</span><span style="color:#f92672">:</span
 <span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
     SingletonSmartPtr();
 
-    <span style="color:#66d9ef">static</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>unique_ptr<span style="color:#f92672">&lt;</span>SingletonSmartPtr<span style="color:#f92672">&gt;</span> instance;
+    <span style="color:#66d9ef">static</span> std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>SingletonSmartPtr<span style="color:#f92672">&gt;</span> instance;
 };
 
-std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>unique_ptr<span style="color:#f92672">&lt;</span>SingletonSmartPtr<span style="color:#f92672">&gt;</span> SingletonSmartPtr<span style="color:#f92672">:</span><span style="color:#f92672">:</span>instance{<span style="color:#66d9ef">nullptr</span>};
+std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>SingletonSmartPtr<span style="color:#f92672">&gt;</span> SingletonSmartPtr<span style="color:#f92672">::</span>instance{<span style="color:#66d9ef">nullptr</span>};
 
-std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>unique_ptr<span style="color:#f92672">&lt;</span>SingletonSmartPtr<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>SingletonSmartPtr<span style="color:#f92672">:</span><span style="color:#f92672">:</span>GetInstance()
+std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>SingletonSmartPtr<span style="color:#f92672">&gt;</span> <span style="color:#f92672">&amp;</span>SingletonSmartPtr<span style="color:#f92672">::</span>GetInstance()
 {
-    <span style="color:#66d9ef">if</span> (instance <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>) {
-        instance <span style="color:#f92672">=</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>unique_ptr<span style="color:#f92672">&lt;</span>SingletonSmartPtr<span style="color:#f92672">&gt;</span>(<span style="color:#66d9ef">new</span> SingletonSmartPtr());
+    <span style="color:#66d9ef">if</span> (instance <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>) {
+        instance <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>unique_ptr<span style="color:#f92672">&lt;</span>SingletonSmartPtr<span style="color:#f92672">&gt;</span>(<span style="color:#66d9ef">new</span> SingletonSmartPtr());
     }
     <span style="color:#66d9ef">return</span> instance;
 }
 
-SingletonSmartPtr<span style="color:#f92672">:</span><span style="color:#f92672">:</span>SingletonSmartPtr()
+SingletonSmartPtr<span style="color:#f92672">::</span>SingletonSmartPtr()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">singleton with smart ptr ctor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;singleton with smart ptr ctor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-SingletonSmartPtr<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#f92672">~</span>SingletonSmartPtr()
+SingletonSmartPtr<span style="color:#f92672">::~</span>SingletonSmartPtr()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">singleton with smart ptr dtor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;singleton with smart ptr dtor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 </code></pre></div><p>这里我的GetInstance方法返回的是这个智能指针的引用，可以达到帮我们自动管理堆上资源的效果。其实还有一个不使用智能指针方法，就是在内部声明一个静态的类，利用程序结束时自动调用静态成员析构函数的特点来释放堆上的这部分资源：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LazySingletonInnerClass</span>
@@ -179,9 +179,9 @@ SingletonSmartPtr<span style="color:#f92672">:</span><span style="color:#f92672"
     <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
         <span style="color:#f92672">~</span>Deleter()
         {
-            <span style="color:#66d9ef">if</span> (LazySingletonInnerClass<span style="color:#f92672">:</span><span style="color:#f92672">:</span>instance <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>) {
-                <span style="color:#66d9ef">delete</span> LazySingletonInnerClass<span style="color:#f92672">:</span><span style="color:#f92672">:</span>instance;
-                LazySingletonInnerClass<span style="color:#f92672">:</span><span style="color:#f92672">:</span>instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
+            <span style="color:#66d9ef">if</span> (LazySingletonInnerClass<span style="color:#f92672">::</span>instance <span style="color:#f92672">!=</span> <span style="color:#66d9ef">nullptr</span>) {
+                <span style="color:#66d9ef">delete</span> LazySingletonInnerClass<span style="color:#f92672">::</span>instance;
+                LazySingletonInnerClass<span style="color:#f92672">::</span>instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
             }
         }
     };
@@ -189,26 +189,26 @@ SingletonSmartPtr<span style="color:#f92672">:</span><span style="color:#f92672"
     <span style="color:#66d9ef">static</span> Deleter deleter;
 };
 
-LazySingletonInnerClass <span style="color:#f92672">*</span>LazySingletonInnerClass<span style="color:#f92672">:</span><span style="color:#f92672">:</span>instance{<span style="color:#66d9ef">nullptr</span>};
+LazySingletonInnerClass <span style="color:#f92672">*</span>LazySingletonInnerClass<span style="color:#f92672">::</span>instance{<span style="color:#66d9ef">nullptr</span>};
 <span style="color:#75715e">// 注意一定要实现这个静态的内部类, 不然没有效果
-</span><span style="color:#75715e"></span>LazySingletonInnerClass<span style="color:#f92672">:</span><span style="color:#f92672">:</span>Deleter LazySingletonInnerClass<span style="color:#f92672">:</span><span style="color:#f92672">:</span>deleter;
+</span><span style="color:#75715e"></span>LazySingletonInnerClass<span style="color:#f92672">::</span>Deleter LazySingletonInnerClass<span style="color:#f92672">::</span>deleter;
 
-LazySingletonInnerClass <span style="color:#f92672">*</span>LazySingletonInnerClass<span style="color:#f92672">:</span><span style="color:#f92672">:</span>GetInstance()
+LazySingletonInnerClass <span style="color:#f92672">*</span>LazySingletonInnerClass<span style="color:#f92672">::</span>GetInstance()
 {
-    <span style="color:#66d9ef">if</span> (instance <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>) {
+    <span style="color:#66d9ef">if</span> (instance <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>) {
         instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LazySingletonInnerClass();
     }
     <span style="color:#66d9ef">return</span> instance;
 }
 
-LazySingletonInnerClass<span style="color:#f92672">:</span><span style="color:#f92672">:</span>LazySingletonInnerClass()
+LazySingletonInnerClass<span style="color:#f92672">::</span>LazySingletonInnerClass()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">singleton ctor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;singleton ctor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-LazySingletonInnerClass<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#f92672">~</span>LazySingletonInnerClass()
+LazySingletonInnerClass<span style="color:#f92672">::~</span>LazySingletonInnerClass()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">singleton dtor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;singleton dtor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
 </code></pre></div><p>使用内部类的方式可以将析构函数声明为private的，比较符合逻辑，但带来的则是不优雅的编码方式。</p>
@@ -233,21 +233,21 @@ LazySingletonInnerClass<span style="color:#f92672">:</span><span style="color:#f
     <span style="color:#f92672">~</span>EagerSingleton();
 };
 
-EagerSingleton EagerSingleton<span style="color:#f92672">:</span><span style="color:#f92672">:</span>instance;
+EagerSingleton EagerSingleton<span style="color:#f92672">::</span>instance;
 
-EagerSingleton <span style="color:#f92672">&amp;</span>EagerSingleton<span style="color:#f92672">:</span><span style="color:#f92672">:</span>GetInstance()
+EagerSingleton <span style="color:#f92672">&amp;</span>EagerSingleton<span style="color:#f92672">::</span>GetInstance()
 {
     <span style="color:#66d9ef">return</span> instance;
 }
 
-EagerSingleton<span style="color:#f92672">:</span><span style="color:#f92672">:</span>EagerSingleton()
+EagerSingleton<span style="color:#f92672">::</span>EagerSingleton()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">eager singleton ctor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;eager singleton ctor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-EagerSingleton<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#f92672">~</span>EagerSingleton()
+EagerSingleton<span style="color:#f92672">::~</span>EagerSingleton()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">eager singleton dtor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;eager singleton dtor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 </code></pre></div><p>观察构造函数和析构函数被调用位置：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/PGgTgN.png#center" alt="PGgTgN"></p>
@@ -272,20 +272,20 @@ EagerSingleton<span style="color:#f92672">:</span><span style="color:#f92672">:<
     <span style="color:#f92672">~</span>LazySingletonLocalStatic();
 };
 
-LazySingletonLocalStatic <span style="color:#f92672">&amp;</span>LazySingletonLocalStatic<span style="color:#f92672">:</span><span style="color:#f92672">:</span>GetInstance()
+LazySingletonLocalStatic <span style="color:#f92672">&amp;</span>LazySingletonLocalStatic<span style="color:#f92672">::</span>GetInstance()
 {
     <span style="color:#66d9ef">static</span> LazySingletonLocalStatic instance;
     <span style="color:#66d9ef">return</span> instance;
 }
 
-LazySingletonLocalStatic<span style="color:#f92672">:</span><span style="color:#f92672">:</span>LazySingletonLocalStatic()
+LazySingletonLocalStatic<span style="color:#f92672">::</span>LazySingletonLocalStatic()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">lazy singleton with local static ctor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;lazy singleton with local static ctor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-LazySingletonLocalStatic<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#f92672">~</span>LazySingletonLocalStatic()
+LazySingletonLocalStatic<span style="color:#f92672">::~</span>LazySingletonLocalStatic()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">lazy singleton with local static dtor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;lazy singleton with local static dtor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 </code></pre></div><p>静态局部变量并不存储在栈上，而是存储在静态存储区。当离开它的作用域后并不会被销毁，仍然可以被访问得到，直到程序结束自动析构静态变量。因此这是一种更为优雅的单例实现方式，只不过是懒汉版的。</p>
 <p>我有疑惑的是这个静态局部变量的初始化方式，去查了查，编译器在编译时会给静态局部变量设置一个标识判断是否已经被初始化，并在每次运行调用的时候判断，如果需要则执行初始化操作，否则什么都不做。</p>
@@ -293,21 +293,21 @@ LazySingletonLocalStatic<span style="color:#f92672">:</span><span style="color:#
 <p>首先我要强调，我下面所说的线程安全仅仅在语言层面，并不涉及指令层面。事实上，真正的线程安全不是语言层面上能做到的，而是编译器规定了一套完整的线程安全的指令执行流程。Effective C++的作者Scott Meyers曾写过一篇文章详细的论述单例模式中的线程安全的实现、开发者在在语言层面做的一些尝试为什么不会改变编译器的优化行为、以及旧式的不支持线程安全的编译器在指令执行顺序上会带来的风险，建议朋友们阅读一下，附上<a href="https://www.aristeia.com/Papers/DDJ_Jul_Aug_2004_revised.pdf">链接</a>。</p>
 <p>先看饿汉版的单例，在main函数执行前初始化，所以一定是线程安全的。</p>
 <p>再来看懒汉版本，先看普通版本的单例实现。为了防止两个线程同时竞争资源的初始化（虽然产生两个对象没有什么错误，但已经符合单例模式的要求），我们首先想到的就是利用同步的方式加锁。当然，这个锁在超出作用域后会自动调用析构函数：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">LazySingleton <span style="color:#f92672">*</span>LazySingleton<span style="color:#f92672">:</span><span style="color:#f92672">:</span>GetInstance()
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">LazySingleton <span style="color:#f92672">*</span>LazySingleton<span style="color:#f92672">::</span>GetInstance()
 {
     Lock lock;
-    <span style="color:#66d9ef">if</span> (instance <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>) {
+    <span style="color:#66d9ef">if</span> (instance <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>) {
         instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LazySingleton();
     }
     <span style="color:#66d9ef">return</span> instance;
 }
 </code></pre></div><p>同步锁有个什么问题呢，就是在线程中的代价太高，每次调用GetInstance都会产生一次Lock的构造和析构。但你回想一下就能发现，我们只需要在第一次实例化的时候调用锁，若对象已存在，并不需要这些额外的开销。想象一下若有n次实例调用，其中有n-1次都是不必要的Lock的构造和析构。性能瓶颈就是从这些地方产生的。</p>
 <p>有了这些，就理应能想到所谓的双检测锁模式（Double-Checked Locking Pattern, DCLP）来避免这种情况。方法很简单，在加锁前检测一下实例对象是否存在即可：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">LazySingleton <span style="color:#f92672">*</span>LazySingleton<span style="color:#f92672">:</span><span style="color:#f92672">:</span>GetInstance()
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">LazySingleton <span style="color:#f92672">*</span>LazySingleton<span style="color:#f92672">::</span>GetInstance()
 {
-    <span style="color:#66d9ef">if</span> (instance <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>) {
+    <span style="color:#66d9ef">if</span> (instance <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>) {
         Lock lock;
-        <span style="color:#66d9ef">if</span> (instance <span style="color:#f92672">=</span><span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>) {
+        <span style="color:#66d9ef">if</span> (instance <span style="color:#f92672">==</span> <span style="color:#66d9ef">nullptr</span>) {
             instance <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> LazySingleton();
         }
     }
@@ -315,7 +315,7 @@ LazySingletonLocalStatic<span style="color:#f92672">:</span><span style="color:#
 }
 </code></pre></div><p>巧妙的实现方式。注意实际上在语言层面上实现了“线程安全”，并不代表是真正的线程安全。好在C++11已经在编译器层面保证了我们同步指令正确的顺序，使用DCLP的方式可以达到真正线程安全。</p>
 <p>更让人兴奋的是，C++11规定了局部静态变量在多线程条件下的初始化行为，要求编译器需保证局部静态变量的安全性。也就是说，使用我们上面的优雅版本的饿汉版单例（也可称其为Meyers单例模式），不需要添加同步锁，已经可以达到线程安全：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">LazySingletonLocalStatic <span style="color:#f92672">&amp;</span>LazySingletonLocalStatic<span style="color:#f92672">:</span><span style="color:#f92672">:</span>GetInstance()
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">LazySingletonLocalStatic <span style="color:#f92672">&amp;</span>LazySingletonLocalStatic<span style="color:#f92672">::</span>GetInstance()
 {
     <span style="color:#66d9ef">static</span> LazySingletonLocalStatic instance;
     <span style="color:#66d9ef">return</span> instance;

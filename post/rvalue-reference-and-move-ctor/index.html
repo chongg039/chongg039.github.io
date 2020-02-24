@@ -32,7 +32,7 @@
 <h4 id="左值lvalue">左值（lvalue）</h4>
 <p>左值（左值引用）是一个可被赋值的对象，通常出现在赋值表达式等号的左侧。有文章将左值定义为非临时的对象，即可以在后面被使用、被引用，如：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
-std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>string s{<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">hello</span><span style="color:#e6db74">&#34;</span>};
+std<span style="color:#f92672">::</span>string s{<span style="color:#e6db74">&#34;hello&#34;</span>};
 </code></pre></div><p>这里的<code>i</code>和<code>s</code>都是左值，后面都可以使用这两个非临时对象。</p>
 <h4 id="右值rvalue">右值（rvalue）</h4>
 <p>与之对应，右值不可以被赋值，通常是一个临时对象。如上面的<code>0</code>、<code>&quot;hello&quot;</code>就是右值，只在当前语句中生效，脱离了当前语句的话一般不能在下面的句子中获取到，一般也不具备实际意义。</p>
@@ -54,13 +54,13 @@ std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>strin
 <p>函数传参时，<code>&amp;</code>表示接受一个左值，为了与之区分，<code>&amp;&amp;</code>表示接受一个右值，看下面这个重载函数：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">RecvValue</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>i)
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">get a lvalue</span><span style="color:#e6db74">&#34;</span>;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;get a lvalue&#34;</span>;
 }
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">RecvValue</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span>i)
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">RecvValue</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;&amp;</span>i)
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">get a rvalue</span><span style="color:#e6db74">&#34;</span>;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;get a rvalue&#34;</span>;
 }
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Wapper</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span>i)
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Wapper</span>(<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;&amp;</span>i)
 {
     <span style="color:#75715e">// 注意这种情况，调用的是第一个
 </span><span style="color:#75715e"></span>   	<span style="color:#75715e">// 因为临时对象在参数传递时会变成命名对象（左值）
@@ -96,7 +96,7 @@ std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>strin
     <span style="color:#75715e">// copy assignment
 </span><span style="color:#75715e"></span>    T <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(<span style="color:#66d9ef">const</span> T <span style="color:#f92672">&amp;</span>rhs)
     {
-        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span> <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>rhs) {
+        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span> <span style="color:#f92672">!=</span> <span style="color:#f92672">&amp;</span>rhs) {
             ptr_ <span style="color:#f92672">=</span> rhs.ptr_;
             data_ <span style="color:#f92672">=</span> rhs.data_;
         }
@@ -124,7 +124,7 @@ std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>strin
 <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>
 	......
     <span style="color:#75715e">// move ctor
-</span><span style="color:#75715e"></span>    T(T <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span>rhs) <span style="color:#66d9ef">noexcept</span>
+</span><span style="color:#75715e"></span>    T(T <span style="color:#f92672">&amp;&amp;</span>rhs) <span style="color:#66d9ef">noexcept</span>
     {
         ptr_ <span style="color:#f92672">=</span> rhs.ptr_;
         data_ <span style="color:#f92672">=</span> rhs.data_;
@@ -133,9 +133,9 @@ std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>strin
     }
 
     <span style="color:#75715e">// move assignment
-</span><span style="color:#75715e"></span>    T <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(T <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span>rhs) <span style="color:#66d9ef">noexcept</span>
+</span><span style="color:#75715e"></span>    T <span style="color:#f92672">&amp;</span><span style="color:#66d9ef">operator</span><span style="color:#f92672">=</span>(T <span style="color:#f92672">&amp;&amp;</span>rhs) <span style="color:#66d9ef">noexcept</span>
     {
-        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span> <span style="color:#f92672">!</span><span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>rhs) {
+        <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">this</span> <span style="color:#f92672">!=</span> <span style="color:#f92672">&amp;</span>rhs) {
             ptr_ <span style="color:#f92672">=</span> rhs.ptr_;
             data_ <span style="color:#f92672">=</span> rhs.data_;
             rhs.ptr_ <span style="color:#f92672">=</span> <span style="color:#66d9ef">nullptr</span>;
@@ -158,16 +158,16 @@ std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>strin
 <p>使用这个修改过后的<code>T</code>，再执行上面那条语句时由于等号右边是一个将亡值（右值），会调用移动赋值操作而非拷贝赋值操作。临时对象在析构时由于指向原本资源的指针已经被置为空，所以不会去释放原本的资源。换句话说，也就实现了资源管理权的“移动”。</p>
 <h3 id="移动语义stdmove">移动语义std::move</h3>
 <p>来看一个和容器有关的例子：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>vector<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> vec;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">std<span style="color:#f92672">::</span>vector<span style="color:#f92672">&lt;</span>T<span style="color:#f92672">&gt;</span> vec;
 vec.push_back(Process());
 </code></pre></div><p>STL容器类在执行添加或插入操作时，会调用被插入元素的拷贝构造函数生成一个一模一样的对象，并将其插入到容器中。比如<code>std::vector</code>的<code>push_back</code>函数：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">push_back</span>(<span style="color:#66d9ef">const</span> T <span style="color:#f92672">&amp;</span>x)
 {
-    <span style="color:#66d9ef">if</span> (finish <span style="color:#f92672">!</span><span style="color:#f92672">=</span> end_of_storage) {
+    <span style="color:#66d9ef">if</span> (finish <span style="color:#f92672">!=</span> end_of_storage) {
         <span style="color:#75715e">// 全局构造函数
 </span><span style="color:#75715e"></span>        construct(finish, x);
         <span style="color:#75715e">// finish 为 T*
-</span><span style="color:#75715e"></span>        <span style="color:#f92672">+</span><span style="color:#f92672">+</span>finish;
+</span><span style="color:#75715e"></span>        <span style="color:#f92672">++</span>finish;
     } <span style="color:#66d9ef">else</span> {
         <span style="color:#75715e">// 当备用空间不够时的辅助函数
 </span><span style="color:#75715e"></span>        insert_aux(end(), x);
@@ -186,7 +186,7 @@ vec.push_back(Process());
 </span><span style="color:#75715e"></span>vec.push_back(t); <span style="color:#75715e">// use copy ctor
 </span></code></pre></div><p>这样操作是不行的，因为移动构造函数只能接受右值引用作为参数，传入左支一定会调用拷贝构造函数。那么能不能把一个左值变换成右值引用，调用移动构造函数呢？答案是用移动语义<code>std::move()</code>：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">T t; <span style="color:#75715e">// t is a lvalue
-</span><span style="color:#75715e"></span>vec.push_back(std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>move(t)); <span style="color:#75715e">// use move ctor
+</span><span style="color:#75715e"></span>vec.push_back(std<span style="color:#f92672">::</span>move(t)); <span style="color:#75715e">// use move ctor
 </span></code></pre></div><p>这样就避免了没有必要的拷贝操作，提高了效率。</p>
 <p>再来看一个<code>swap</code>函数的例子，这个例子是在参考文献中看到的，首先是一个普通的<code>swap</code>：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>
@@ -200,9 +200,9 @@ vec.push_back(Process());
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">template</span> <span style="color:#f92672">&lt;</span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">T</span><span style="color:#f92672">&gt;</span>
 <span style="color:#66d9ef">void</span> swap(T <span style="color:#f92672">&amp;</span>a, T <span style="color:#f92672">&amp;</span>b)
 {
-	T <span style="color:#a6e22e">tmp</span>(std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>move(a));   <span style="color:#75715e">// move a to tmp 
-</span><span style="color:#75715e"></span>	a <span style="color:#f92672">=</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>move(b);      <span style="color:#75715e">// move b to a 
-</span><span style="color:#75715e"></span>	b <span style="color:#f92672">=</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>move(tmp);    <span style="color:#75715e">// move tmp to b 
+	T <span style="color:#a6e22e">tmp</span>(std<span style="color:#f92672">::</span>move(a));   <span style="color:#75715e">// move a to tmp 
+</span><span style="color:#75715e"></span>	a <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>move(b);      <span style="color:#75715e">// move b to a 
+</span><span style="color:#75715e"></span>	b <span style="color:#f92672">=</span> std<span style="color:#f92672">::</span>move(tmp);    <span style="color:#75715e">// move tmp to b 
 </span><span style="color:#75715e"></span>}
 </code></pre></div><p>一个<code>swap</code>函数就避免了三次不必要的拷贝操作。</p>
 <h3 id="完美转发perfect-forwarding">完美转发（Perfect forwarding）</h3>

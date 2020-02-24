@@ -33,9 +33,9 @@
 <p>我有这种想法：因为我这个函数既要支持左值实参，也要支持右值实参，所以要对这个构造函数进行重载。但Clang-Tidy会给出这样一条建议：</p>
 <pre><code>Clang-Tidy: Pass by value and use std::move
 </code></pre><p>这让我很疑惑，一般不是会建议传引用减少拷贝对象产生的开销吗。当我点击了这条建议，第一个构造函数被替换成了：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">explicit</span> <span style="color:#a6e22e">Obj</span>(std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>string s) <span style="color:#f92672">:</span> s_(std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>move(s))
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">explicit</span> <span style="color:#a6e22e">Obj</span>(std<span style="color:#f92672">::</span>string s) <span style="color:#f92672">:</span> s_(std<span style="color:#f92672">::</span>move(s))
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">copy</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;copy&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 };
 </code></pre></div><p>传入了一个值，为了防止引发拷贝，直接对这个值使用移动语义，首先这里的形参看起来是没有规定是左值还是右值的，但前面说过，移动语义是将一个左值引用转换为一个右值引用，从而引发<code>std::string</code>的移动构造，那这样看起来这个构造函数还是只能接受左值实参，因为对右值使用移动语义会引发什么，现在不得而知。</p>
 <p>所以这条建议也只是将第一个构造函数替换掉了，第二个还是保留。我现在构造一个临时对象理论上会调用第二个构造函数，但实际上不是这样：</p>
@@ -58,8 +58,8 @@
 <p>为了方便移动构造和移动赋值，C++11便对这类右值赋予了一个新的值类别“将亡值”，用以和纯粹的字面量做区分。事实上，我们有时候没必要区分的这么细。</p>
 <p>再回到这个小标题，右值引用是一个左值。事实上这句话应该是：具名的右值引用是左值。什么是具名呢，看几个例子：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// 自增自减
-</span><span style="color:#75715e"></span><span style="color:#f92672">+</span><span style="color:#f92672">+</span>i; <span style="color:#75715e">// 左值，先加再返回，返回的是i，具名，所以是左值
-</span><span style="color:#75715e"></span>i<span style="color:#f92672">+</span><span style="color:#f92672">+</span>; <span style="color:#75715e">// 右值，先返回一个临时的副本在加，这份拷贝不具有名字
+</span><span style="color:#75715e"></span><span style="color:#f92672">++</span>i; <span style="color:#75715e">// 左值，先加再返回，返回的是i，具名，所以是左值
+</span><span style="color:#75715e"></span>i<span style="color:#f92672">++</span>; <span style="color:#75715e">// 右值，先返回一个临时的副本在加，这份拷贝不具有名字
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e">// 解引用和取地址
 </span><span style="color:#75715e"></span><span style="color:#f92672">*</span>p; <span style="color:#75715e">// 左值，获取的是一个存在的实体，&amp;(*p)也成立
@@ -67,12 +67,12 @@
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e">// 其他一些操作符
 </span><span style="color:#75715e"></span>a<span style="color:#f92672">+</span>b; <span style="color:#75715e">// 右值
-</span><span style="color:#75715e"></span>a<span style="color:#f92672">=</span><span style="color:#f92672">=</span>b; <span style="color:#75715e">// 右值
+</span><span style="color:#75715e"></span>a<span style="color:#f92672">==</span>b; <span style="color:#75715e">// 右值
 </span><span style="color:#75715e"></span>
 <span style="color:#75715e">// 例外，字符串字面量是一个左值，可以取地址
-</span><span style="color:#75715e"></span><span style="color:#f92672">&amp;</span><span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">hello</span><span style="color:#e6db74">&#34;</span>; <span style="color:#75715e">// 成立，是左值
+</span><span style="color:#75715e"></span><span style="color:#f92672">&amp;</span><span style="color:#e6db74">&#34;hello&#34;</span>; <span style="color:#75715e">// 成立，是左值
 </span><span style="color:#75715e"></span>
-<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">test</span>(Obj <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span>a)
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">test</span>(Obj <span style="color:#f92672">&amp;&amp;</span>a)
 {
     Obj b <span style="color:#f92672">=</span> a;
     <span style="color:#75715e">// 继续访问a
@@ -86,7 +86,7 @@
 <p>首先看移动构造函数，因为要修改原来对象中的资源管理权，所以形参不能为const，且需要为右值引用：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Obj</span>
 {
-    Obj(Obj <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span>rhs) {
+    Obj(Obj <span style="color:#f92672">&amp;&amp;</span>rhs) {
         ...
     }
 }
@@ -94,7 +94,7 @@
 <p>再看普通的拷贝构造函数：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Obj</span>
 {
-    Obj(<span style="color:#66d9ef">const</span> Obj <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span>rhs) {
+    Obj(<span style="color:#66d9ef">const</span> Obj <span style="color:#f92672">&amp;&amp;</span>rhs) {
         ...
     }
 }
@@ -123,12 +123,12 @@
 
     Obj(<span style="color:#66d9ef">const</span> Obj <span style="color:#f92672">&amp;</span>rhs)
     {
-        std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">copy ctor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;copy ctor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
     }
     
-    Obj(Obj <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span>rhs) <span style="color:#66d9ef">noexcept</span>
+    Obj(Obj <span style="color:#f92672">&amp;&amp;</span>rhs) <span style="color:#66d9ef">noexcept</span>
     {
-        std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">move ctor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;move ctor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
     }
 };
 
@@ -143,7 +143,7 @@ Obj <span style="color:#a6e22e">out</span>()
     Obj a;
     Obj b(a);
     Obj c(out());
-	Obj d(std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>move(a));
+	Obj d(std<span style="color:#f92672">::</span>move(a));
     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }
 </code></pre></div><p>理想情况下对于b、c、d，会分别调用拷贝构造、移动构造和移动构造，而事实上只有b和d有了正确的调用，对于c，没有任何输出，看起来像是编译器根本没有调用我们自定义的移动构造，这是为什么？</p>
@@ -151,7 +151,7 @@ Obj <span style="color:#a6e22e">out</span>()
 <p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/DB0Pj1.png#center" alt="DB0Pj1"></p>
 <p>可以看出，inner和c压根就是栈上的同一个东西，说明编译器根本就没有调用我们自定义的移动构造函数。</p>
 <p>这其实是编译器对于移动临时对象做的一次优化。在编译时使用参数<code>-fno-elide-constructors</code>可以关掉编译器优化，在CMake中对应的则是：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">set(CMAKE_CXX_FLAGS <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">-fno-elide-constructors ${CMAKE_CXX_FLAGS}</span><span style="color:#e6db74">&#34;</span>)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++">set(CMAKE_CXX_FLAGS <span style="color:#e6db74">&#34;-fno-elide-constructors ${CMAKE_CXX_FLAGS}&#34;</span>)
 </code></pre></div><p>关掉后再来看看结果：</p>
 <p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/f9l8aY.png#center" alt="f9l8aY"></p>
 <p>可以看到，inner和c的地址变量已经不同了，而且也正确调用了移动构造函数，印证了我们上面的猜想。但为什么会调用两次呢？</p>
@@ -176,12 +176,12 @@ Obj <span style="color:#a6e22e">out</span>()
 
     A(<span style="color:#66d9ef">const</span> A <span style="color:#f92672">&amp;</span>rhs)
     {
-        std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">A copy ctor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;A copy ctor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
     };
 
-    A(A <span style="color:#f92672">&amp;</span><span style="color:#f92672">&amp;</span>rhs) <span style="color:#66d9ef">noexcept</span>
+    A(A <span style="color:#f92672">&amp;&amp;</span>rhs) <span style="color:#66d9ef">noexcept</span>
     {
-        std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">A move ctor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+        std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;A move ctor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
     };
 };
 
@@ -201,7 +201,7 @@ Obj <span style="color:#a6e22e">out</span>()
 {
     A a;
     B b1(a);
-    B b2(std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>move(a));
+    B b2(std<span style="color:#f92672">::</span>move(a));
 
     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }

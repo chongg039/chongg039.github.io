@@ -41,10 +41,10 @@
 
     <span style="color:#f92672">~</span>FlyweightFactory();
 
-    Flyweight <span style="color:#f92672">*</span><span style="color:#a6e22e">GetFlyweight</span>(<span style="color:#66d9ef">const</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>string <span style="color:#f92672">&amp;</span>key);
+    Flyweight <span style="color:#f92672">*</span><span style="color:#a6e22e">GetFlyweight</span>(<span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>string <span style="color:#f92672">&amp;</span>key);
 
 <span style="color:#66d9ef">private</span><span style="color:#f92672">:</span>
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>map<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>string, Flyweight <span style="color:#f92672">*</span><span style="color:#f92672">&gt;</span> store_;
+    std<span style="color:#f92672">::</span>map<span style="color:#f92672">&lt;</span>std<span style="color:#f92672">::</span>string, Flyweight <span style="color:#f92672">*&gt;</span> store_;
 };
 
 <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Flyweight</span>
@@ -67,28 +67,28 @@
     <span style="color:#66d9ef">void</span> Operation(<span style="color:#66d9ef">int</span> extrinsic_state) <span style="color:#66d9ef">override</span>;
 };
 
-FlyweightFactory<span style="color:#f92672">:</span><span style="color:#f92672">:</span>FlyweightFactory()
+FlyweightFactory<span style="color:#f92672">::</span>FlyweightFactory()
 <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
 
-FlyweightFactory<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#f92672">~</span>FlyweightFactory()
+FlyweightFactory<span style="color:#f92672">::~</span>FlyweightFactory()
 <span style="color:#f92672">=</span> <span style="color:#66d9ef">default</span>;
 
-Flyweight <span style="color:#f92672">*</span>FlyweightFactory<span style="color:#f92672">:</span><span style="color:#f92672">:</span>GetFlyweight(<span style="color:#66d9ef">const</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>string <span style="color:#f92672">&amp;</span>key)
+Flyweight <span style="color:#f92672">*</span>FlyweightFactory<span style="color:#f92672">::</span>GetFlyweight(<span style="color:#66d9ef">const</span> std<span style="color:#f92672">::</span>string <span style="color:#f92672">&amp;</span>key)
 {
-    <span style="color:#66d9ef">if</span> (store_.find(key) <span style="color:#f92672">=</span><span style="color:#f92672">=</span> store_.end()) {
+    <span style="color:#66d9ef">if</span> (store_.find(key) <span style="color:#f92672">==</span> store_.end()) {
         store_[key] <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ConcreteFlyweight();
     }
     <span style="color:#66d9ef">return</span> store_[key];
 }
 
-<span style="color:#66d9ef">void</span> ConcreteFlyweight<span style="color:#f92672">:</span><span style="color:#f92672">:</span>Operation(<span style="color:#66d9ef">int</span> extrinsic_state)
+<span style="color:#66d9ef">void</span> ConcreteFlyweight<span style="color:#f92672">::</span>Operation(<span style="color:#66d9ef">int</span> extrinsic_state)
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">ConcreteFlyweight: </span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> extrinsic_state <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;ConcreteFlyweight: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> extrinsic_state <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-<span style="color:#66d9ef">void</span> UnShareConcreteFlyweight<span style="color:#f92672">:</span><span style="color:#f92672">:</span>Operation(<span style="color:#66d9ef">int</span> extrinsic_state)
+<span style="color:#66d9ef">void</span> UnShareConcreteFlyweight<span style="color:#f92672">::</span>Operation(<span style="color:#66d9ef">int</span> extrinsic_state)
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">UnShareConcreteFlyweight: </span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> extrinsic_state <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;UnShareConcreteFlyweight: &#34;</span> <span style="color:#f92672">&lt;&lt;</span> extrinsic_state <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 </code></pre></div><p>测试状态输出：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
@@ -98,15 +98,15 @@ Flyweight <span style="color:#f92672">*</span>FlyweightFactory<span style="color
 
     FlyweightFactory <span style="color:#f92672">*</span>ff <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> FlyweightFactory();
 
-    Flyweight <span style="color:#f92672">*</span>f1 <span style="color:#f92672">=</span> ff<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>GetFlyweight(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">test1</span><span style="color:#e6db74">&#34;</span>);
-    f1<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>Operation(<span style="color:#f92672">-</span><span style="color:#f92672">-</span>extrinsic_state);
+    Flyweight <span style="color:#f92672">*</span>f1 <span style="color:#f92672">=</span> ff<span style="color:#f92672">-&gt;</span>GetFlyweight(<span style="color:#e6db74">&#34;test1&#34;</span>);
+    f1<span style="color:#f92672">-&gt;</span>Operation(<span style="color:#f92672">--</span>extrinsic_state);
 
-    Flyweight <span style="color:#f92672">*</span>f2 <span style="color:#f92672">=</span> ff<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>GetFlyweight(<span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">test2</span><span style="color:#e6db74">&#34;</span>);
-    f2<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>Operation(<span style="color:#f92672">-</span><span style="color:#f92672">-</span>extrinsic_state);
+    Flyweight <span style="color:#f92672">*</span>f2 <span style="color:#f92672">=</span> ff<span style="color:#f92672">-&gt;</span>GetFlyweight(<span style="color:#e6db74">&#34;test2&#34;</span>);
+    f2<span style="color:#f92672">-&gt;</span>Operation(<span style="color:#f92672">--</span>extrinsic_state);
 
     <span style="color:#75715e">// 理论上也可共享
 </span><span style="color:#75715e"></span>    UnShareConcreteFlyweight <span style="color:#f92672">*</span>f3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> UnShareConcreteFlyweight();
-    f3<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>Operation(<span style="color:#f92672">-</span><span style="color:#f92672">-</span>extrinsic_state);
+    f3<span style="color:#f92672">-&gt;</span>Operation(<span style="color:#f92672">--</span>extrinsic_state);
 
     <span style="color:#66d9ef">delete</span> f3;
     <span style="color:#66d9ef">delete</span> f2;
@@ -153,26 +153,26 @@ Flyweight <span style="color:#f92672">*</span>FlyweightFactory<span style="color
     ClsC <span style="color:#f92672">*</span>cls_c_;
 };
 
-<span style="color:#66d9ef">void</span> ClsA<span style="color:#f92672">:</span><span style="color:#f92672">:</span>Method()
+<span style="color:#66d9ef">void</span> ClsA<span style="color:#f92672">::</span>Method()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">this is class A&#39;s method, do something...</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;this is class A&#39;s method, do something...&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-<span style="color:#66d9ef">void</span> ClsB<span style="color:#f92672">:</span><span style="color:#f92672">:</span>Method()
+<span style="color:#66d9ef">void</span> ClsB<span style="color:#f92672">::</span>Method()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">this is class B&#39;s method, do something...</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;this is class B&#39;s method, do something...&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-<span style="color:#66d9ef">void</span> ClsC<span style="color:#f92672">:</span><span style="color:#f92672">:</span>Method()
+<span style="color:#66d9ef">void</span> ClsC<span style="color:#f92672">::</span>Method()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">this is class C&#39;s method, do something...</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;this is class C&#39;s method, do something...&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-Facade<span style="color:#f92672">:</span><span style="color:#f92672">:</span>Facade()
+Facade<span style="color:#f92672">::</span>Facade()
         <span style="color:#f92672">:</span> cls_a_(<span style="color:#66d9ef">new</span> ClsA()), cls_b_(<span style="color:#66d9ef">new</span> ClsB()), cls_c_(<span style="color:#66d9ef">new</span> ClsC())
 {}
 
-Facade<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#f92672">~</span>Facade()
+Facade<span style="color:#f92672">::~</span>Facade()
 {
     <span style="color:#66d9ef">if</span> (cls_a_) {
         <span style="color:#66d9ef">delete</span> cls_a_;
@@ -188,18 +188,18 @@ Facade<span style="color:#f92672">:</span><span style="color:#f92672">:</span><s
     }
 }
 
-<span style="color:#66d9ef">void</span> Facade<span style="color:#f92672">:</span><span style="color:#f92672">:</span>FuncA()
+<span style="color:#66d9ef">void</span> Facade<span style="color:#f92672">::</span>FuncA()
 {
-    cls_a_<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>Method();
-    cls_b_<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>Method();
-    cls_c_<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>Method();
+    cls_a_<span style="color:#f92672">-&gt;</span>Method();
+    cls_b_<span style="color:#f92672">-&gt;</span>Method();
+    cls_c_<span style="color:#f92672">-&gt;</span>Method();
 }
 
-<span style="color:#66d9ef">void</span> Facade<span style="color:#f92672">:</span><span style="color:#f92672">:</span>FuncB()
+<span style="color:#66d9ef">void</span> Facade<span style="color:#f92672">::</span>FuncB()
 {
-    cls_b_<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>Method();
-    cls_c_<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>Method();
-    cls_a_<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>Method();
+    cls_b_<span style="color:#f92672">-&gt;</span>Method();
+    cls_c_<span style="color:#f92672">-&gt;</span>Method();
+    cls_a_<span style="color:#f92672">-&gt;</span>Method();
 }
 </code></pre></div><p>对外接口FuncA和FuncB一般是不变的，内部逻辑则不需要客户端关心：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
@@ -242,16 +242,16 @@ Facade<span style="color:#f92672">:</span><span style="color:#f92672">:</span><s
     RealSubject <span style="color:#f92672">*</span>real_;
 };
 
-<span style="color:#66d9ef">void</span> RealSubject<span style="color:#f92672">:</span><span style="color:#f92672">:</span>DoAction()
+<span style="color:#66d9ef">void</span> RealSubject<span style="color:#f92672">::</span>DoAction()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">real subject do some work...</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;real subject do some work...&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-Proxy<span style="color:#f92672">:</span><span style="color:#f92672">:</span>Proxy()
+Proxy<span style="color:#f92672">::</span>Proxy()
         <span style="color:#f92672">:</span> real_(<span style="color:#66d9ef">new</span> RealSubject())
 {}
 
-Proxy<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#f92672">~</span>Proxy()
+Proxy<span style="color:#f92672">::~</span>Proxy()
 {
     <span style="color:#66d9ef">if</span> (real_) {
         <span style="color:#66d9ef">delete</span> real_;
@@ -259,20 +259,20 @@ Proxy<span style="color:#f92672">:</span><span style="color:#f92672">:</span><sp
     }
 }
 
-Proxy<span style="color:#f92672">:</span><span style="color:#f92672">:</span>Proxy(RealSubject <span style="color:#f92672">*</span>real)
+Proxy<span style="color:#f92672">::</span>Proxy(RealSubject <span style="color:#f92672">*</span>real)
         <span style="color:#f92672">:</span> real_(real)
 {}
 
-<span style="color:#66d9ef">void</span> Proxy<span style="color:#f92672">:</span><span style="color:#f92672">:</span>DoAction()
+<span style="color:#66d9ef">void</span> Proxy<span style="color:#f92672">::</span>DoAction()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">proxy now works as real...</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
-    real_<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>DoAction();
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;proxy now works as real...&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+    real_<span style="color:#f92672">-&gt;</span>DoAction();
 }
 </code></pre></div><p>这里用单参构造函数看一下：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
 {
     RealSubject <span style="color:#f92672">*</span>real_subject <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RealSubject();
-    real_subject<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>DoAction();
+    real_subject<span style="color:#f92672">-&gt;</span>DoAction();
 
     Proxy proxy(real_subject);
     proxy.DoAction();

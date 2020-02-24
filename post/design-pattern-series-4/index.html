@@ -74,26 +74,26 @@
     <span style="color:#66d9ef">void</span> Install(OS <span style="color:#f92672">*</span>os) <span style="color:#66d9ef">override</span>;
 };
 
-<span style="color:#66d9ef">void</span> Linux<span style="color:#f92672">:</span><span style="color:#f92672">:</span>Run()
+<span style="color:#66d9ef">void</span> Linux<span style="color:#f92672">::</span>Run()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Linux running...</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Linux running...&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-<span style="color:#66d9ef">void</span> Windows<span style="color:#f92672">:</span><span style="color:#f92672">:</span>Run()
+<span style="color:#66d9ef">void</span> Windows<span style="color:#f92672">::</span>Run()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Windows running...</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Windows running...&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-<span style="color:#66d9ef">void</span> Dell<span style="color:#f92672">:</span><span style="color:#f92672">:</span>Install(OS <span style="color:#f92672">*</span>os)
+<span style="color:#66d9ef">void</span> Dell<span style="color:#f92672">::</span>Install(OS <span style="color:#f92672">*</span>os)
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Dell install os...</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
-    os<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>Run();
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Dell install os...&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+    os<span style="color:#f92672">-&gt;</span>Run();
 }
 
-<span style="color:#66d9ef">void</span> Apple<span style="color:#f92672">:</span><span style="color:#f92672">:</span>Install(OS <span style="color:#f92672">*</span>os)
+<span style="color:#66d9ef">void</span> Apple<span style="color:#f92672">::</span>Install(OS <span style="color:#f92672">*</span>os)
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">Apple install os...</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
-    os<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>Run();
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;Apple install os...&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
+    os<span style="color:#f92672">-&gt;</span>Run();
 }
 </code></pre></div><p>这不是简单的继承层次，也不像Builder模式一样侧重构建的过程，而是采用了合理的方式将多种继承层次组合，降低了耦合度。用好Bridge模式是一件很不容易的事情。</p>
 <h3 id="adapter模式">Adapter模式</h3>
@@ -135,31 +135,31 @@
     Parrot <span style="color:#f92672">*</span>parrot_;
 };
 
-<span style="color:#66d9ef">void</span> Duck<span style="color:#f92672">:</span><span style="color:#f92672">:</span>DuckWalk()
+<span style="color:#66d9ef">void</span> Duck<span style="color:#f92672">::</span>DuckWalk()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">duck walking</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;duck walking&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-<span style="color:#66d9ef">void</span> Duck<span style="color:#f92672">:</span><span style="color:#f92672">:</span>DuckQuack()
+<span style="color:#66d9ef">void</span> Duck<span style="color:#f92672">::</span>DuckQuack()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">duck saying: gaga</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;duck saying: gaga&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-<span style="color:#66d9ef">void</span> Parrot<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ParrotFly()
+<span style="color:#66d9ef">void</span> Parrot<span style="color:#f92672">::</span>ParrotFly()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">parrot flying</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;parrot flying&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-<span style="color:#66d9ef">void</span> Parrot<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ParrotSay()
+<span style="color:#66d9ef">void</span> Parrot<span style="color:#f92672">::</span>ParrotSay()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">actually im a parrot</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;actually im a parrot&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-ParrotAdapter<span style="color:#f92672">:</span><span style="color:#f92672">:</span>ParrotAdapter(Parrot <span style="color:#f92672">*</span>parrot)
+ParrotAdapter<span style="color:#f92672">::</span>ParrotAdapter(Parrot <span style="color:#f92672">*</span>parrot)
         <span style="color:#f92672">:</span> parrot_(parrot)
 {}
 
-ParrotAdapter<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#f92672">~</span>ParrotAdapter()
+ParrotAdapter<span style="color:#f92672">::~</span>ParrotAdapter()
 {
     <span style="color:#66d9ef">if</span> (parrot_) {
         <span style="color:#66d9ef">delete</span> parrot_;
@@ -167,14 +167,14 @@ ParrotAdapter<span style="color:#f92672">:</span><span style="color:#f92672">:</
     }
 }
 
-<span style="color:#66d9ef">void</span> ParrotAdapter<span style="color:#f92672">:</span><span style="color:#f92672">:</span>DuckWalk()
+<span style="color:#66d9ef">void</span> ParrotAdapter<span style="color:#f92672">::</span>DuckWalk()
 {
-    parrot_<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>ParrotFly();
+    parrot_<span style="color:#f92672">-&gt;</span>ParrotFly();
 }
 
-<span style="color:#66d9ef">void</span> ParrotAdapter<span style="color:#f92672">:</span><span style="color:#f92672">:</span>DuckQuack()
+<span style="color:#66d9ef">void</span> ParrotAdapter<span style="color:#f92672">::</span>DuckQuack()
 {
-    parrot_<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>ParrotSay();
+    parrot_<span style="color:#f92672">-&gt;</span>ParrotSay();
 }
 </code></pre></div><p>然后生成一个适配器实例，可以调用鸭子接口的方法了：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()

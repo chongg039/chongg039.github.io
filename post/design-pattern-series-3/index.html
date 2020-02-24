@@ -77,31 +77,31 @@
     InfoBuilder <span style="color:#f92672">*</span>info_builder_;
 };
 
-<span style="color:#66d9ef">void</span> StemInfoBuilder<span style="color:#f92672">:</span><span style="color:#f92672">:</span>BuildEntityPart()
+<span style="color:#66d9ef">void</span> StemInfoBuilder<span style="color:#f92672">::</span>BuildEntityPart()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">now build entity part for stem</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;now build entity part for stem&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-<span style="color:#66d9ef">void</span> StemInfoBuilder<span style="color:#f92672">:</span><span style="color:#f92672">:</span>BuildRelationPart()
+<span style="color:#66d9ef">void</span> StemInfoBuilder<span style="color:#f92672">::</span>BuildRelationPart()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">now build relation part for stem</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;now build relation part for stem&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-<span style="color:#66d9ef">void</span> SubStemInfoBuilder<span style="color:#f92672">:</span><span style="color:#f92672">:</span>BuildEntityPart()
+<span style="color:#66d9ef">void</span> SubStemInfoBuilder<span style="color:#f92672">::</span>BuildEntityPart()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">now build entity part for sub_stem</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;now build entity part for sub_stem&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-<span style="color:#66d9ef">void</span> SubStemInfoBuilder<span style="color:#f92672">:</span><span style="color:#f92672">:</span>BuildRelationPart()
+<span style="color:#66d9ef">void</span> SubStemInfoBuilder<span style="color:#f92672">::</span>BuildRelationPart()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">now build relation part for sub_stem</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;now build relation part for sub_stem&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-InfoDirector<span style="color:#f92672">:</span><span style="color:#f92672">:</span>InfoDirector(InfoBuilder <span style="color:#f92672">*</span>info_builder)
+InfoDirector<span style="color:#f92672">::</span>InfoDirector(InfoBuilder <span style="color:#f92672">*</span>info_builder)
         <span style="color:#f92672">:</span> info_builder_(info_builder)
 {}
 
-InfoDirector<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#f92672">~</span>InfoDirector()
+InfoDirector<span style="color:#f92672">::~</span>InfoDirector()
 {
     <span style="color:#66d9ef">if</span> (info_builder_) {
         <span style="color:#66d9ef">delete</span> info_builder_;
@@ -109,10 +109,10 @@ InfoDirector<span style="color:#f92672">:</span><span style="color:#f92672">:</s
     }
 }
 
-<span style="color:#66d9ef">void</span> InfoDirector<span style="color:#f92672">:</span><span style="color:#f92672">:</span>Construct()
+<span style="color:#66d9ef">void</span> InfoDirector<span style="color:#f92672">::</span>Construct()
 {
-    info_builder_<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>BuildEntityPart();
-    info_builder_<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>BuildRelationPart();
+    info_builder_<span style="color:#f92672">-&gt;</span>BuildEntityPart();
+    info_builder_<span style="color:#f92672">-&gt;</span>BuildRelationPart();
 }
 </code></pre></div><p>注意我这个析构函数使用了delete，也就是代表指针指向的一定是堆上new出来的资源，不能是构造出来的对象再取地址。即：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>()
@@ -166,42 +166,42 @@ InfoDirector<span style="color:#f92672">:</span><span style="color:#f92672">:</s
     Prototype <span style="color:#f92672">*</span><span style="color:#a6e22e">Clone</span>() <span style="color:#66d9ef">override</span>;
 };
 
-DerivedA<span style="color:#f92672">:</span><span style="color:#f92672">:</span>DerivedA()
+DerivedA<span style="color:#f92672">::</span>DerivedA()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">DerivedA ctor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;DerivedA ctor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-DerivedA<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#f92672">~</span>DerivedA()
+DerivedA<span style="color:#f92672">::~</span>DerivedA()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">DerivedA dtor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;DerivedA dtor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-DerivedA<span style="color:#f92672">:</span><span style="color:#f92672">:</span>DerivedA(<span style="color:#66d9ef">const</span> DerivedA <span style="color:#f92672">&amp;</span>)
+DerivedA<span style="color:#f92672">::</span>DerivedA(<span style="color:#66d9ef">const</span> DerivedA <span style="color:#f92672">&amp;</span>)
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">DerivedA copy ctor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;DerivedA copy ctor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-Prototype <span style="color:#f92672">*</span>DerivedA<span style="color:#f92672">:</span><span style="color:#f92672">:</span>Clone()
+Prototype <span style="color:#f92672">*</span>DerivedA<span style="color:#f92672">::</span>Clone()
 {
     <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DerivedA</span>(<span style="color:#f92672">*</span><span style="color:#66d9ef">this</span>);
 }
 
-DerivedB<span style="color:#f92672">:</span><span style="color:#f92672">:</span>DerivedB()
+DerivedB<span style="color:#f92672">::</span>DerivedB()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">DerivedB ctor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;DerivedB ctor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-DerivedB<span style="color:#f92672">:</span><span style="color:#f92672">:</span><span style="color:#f92672">~</span>DerivedB()
+DerivedB<span style="color:#f92672">::~</span>DerivedB()
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">DerivedB dtor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;DerivedB dtor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-DerivedB<span style="color:#f92672">:</span><span style="color:#f92672">:</span>DerivedB(<span style="color:#66d9ef">const</span> DerivedB <span style="color:#f92672">&amp;</span>)
+DerivedB<span style="color:#f92672">::</span>DerivedB(<span style="color:#66d9ef">const</span> DerivedB <span style="color:#f92672">&amp;</span>)
 {
-    std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>cout <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">DerivedB copy ctor</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">&lt;</span><span style="color:#f92672">&lt;</span> std<span style="color:#f92672">:</span><span style="color:#f92672">:</span>endl;
+    std<span style="color:#f92672">::</span>cout <span style="color:#f92672">&lt;&lt;</span> <span style="color:#e6db74">&#34;DerivedB copy ctor&#34;</span> <span style="color:#f92672">&lt;&lt;</span> std<span style="color:#f92672">::</span>endl;
 }
 
-Prototype <span style="color:#f92672">*</span>DerivedB<span style="color:#f92672">:</span><span style="color:#f92672">:</span>Clone()
+Prototype <span style="color:#f92672">*</span>DerivedB<span style="color:#f92672">::</span>Clone()
 {
     <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">DerivedB</span>(<span style="color:#f92672">*</span><span style="color:#66d9ef">this</span>);
 }
@@ -211,11 +211,11 @@ Prototype <span style="color:#f92672">*</span>DerivedB<span style="color:#f92672
     <span style="color:#75715e">// 原型a
 </span><span style="color:#75715e"></span>    Prototype <span style="color:#f92672">*</span>prototype_a <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DerivedA();
     <span style="color:#75715e">// clone原型a
-</span><span style="color:#75715e"></span>    Prototype <span style="color:#f92672">*</span>copy_a <span style="color:#f92672">=</span> prototype_a<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>Clone();
+</span><span style="color:#75715e"></span>    Prototype <span style="color:#f92672">*</span>copy_a <span style="color:#f92672">=</span> prototype_a<span style="color:#f92672">-&gt;</span>Clone();
     <span style="color:#75715e">// 原型b
 </span><span style="color:#75715e"></span>    Prototype <span style="color:#f92672">*</span>prototype_b <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DerivedB();
     <span style="color:#75715e">// clone原型a
-</span><span style="color:#75715e"></span>    Prototype <span style="color:#f92672">*</span>copy_b <span style="color:#f92672">=</span> prototype_b<span style="color:#f92672">-</span><span style="color:#f92672">&gt;</span>Clone();
+</span><span style="color:#75715e"></span>    Prototype <span style="color:#f92672">*</span>copy_b <span style="color:#f92672">=</span> prototype_b<span style="color:#f92672">-&gt;</span>Clone();
 
     <span style="color:#66d9ef">delete</span> prototype_a;
     <span style="color:#66d9ef">delete</span> copy_a;
