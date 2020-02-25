@@ -7,10 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Mon, 24 Feb 2020 17:12:56 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 25 Feb 2020 10:22:41 +0800</lastBuildDate>
     
 	<atom:link href="https://chongg039.cn/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[设计模式系列]模板模式、状态模式和观察者模式</title>
+      <link>https://chongg039.cn/post/design-pattern-series-8/</link>
+      <pubDate>Tue, 25 Feb 2020 10:22:41 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/post/design-pattern-series-8/</guid>
+      <description>模板模式(Template Pattern) 模板模式类似策略模式，都是将算法接口定义在抽象类中，具体的实现细节交给派生类去做。但是策略模式偏重组合，模板模式侧重继承。模板方法模式将重复的代码交给了父类，各自的子类只负责算法不同的细节部分。
+class Abstract { public: virtual ~Abstract() = default; void TemplateMethod(); protected: virtual void Method1() = 0; virtual void Method2() = 0; }; class ConcreteA : public Abstract { public: void Method1() override; void Method2() override; }; class ConcreteB : public Abstract { public: void Method1() override; void Method2() override; }; void Abstract::TemplateMethod() { Method1(); Method2(); } void ConcreteA::Method1() { std::cout &amp;lt;&amp;lt; &amp;#34;concrete A use method 1&amp;#34; &amp;lt;&amp;lt; std::endl; } void ConcreteA::Method2() { std::cout &amp;lt;&amp;lt; &amp;#34;concrete A use method 2&amp;#34; &amp;lt;&amp;lt; std::endl; } void ConcreteB::Method1() { std::cout &amp;lt;&amp;lt; &amp;#34;concrete B use method 1&amp;#34; &amp;lt;&amp;lt; std::endl; } void ConcreteB::Method2() { std::cout &amp;lt;&amp;lt; &amp;#34;concrete B use method 2&amp;#34; &amp;lt;&amp;lt; std::endl; } 状态模式(State Pattern) 有限状态自动机就是这样一个案例，对不同的状态执行不同的动作。一个很典型的就是switch/case语句，但switch/case没有实现状态逻辑和动作的分离，导致若条件很多时将会维护很冗长且复杂的代码。</description>
+    </item>
     
     <item>
       <title>[设计模式系列]职责链模式与策略模式</title>

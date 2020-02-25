@@ -7,10 +7,31 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Sat, 22 Feb 2020 11:01:40 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 25 Feb 2020 10:22:41 +0800</lastBuildDate>
     
 	<atom:link href="https://chongg039.cn/categories/c++/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[设计模式系列]模板模式、状态模式和观察者模式</title>
+      <link>https://chongg039.cn/post/design-pattern-series-8/</link>
+      <pubDate>Tue, 25 Feb 2020 10:22:41 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/post/design-pattern-series-8/</guid>
+      <description>模板模式(Template Pattern) 模板模式类似策略模式，都是将算法接口定义在抽象类中，具体的实现细节交给派生类去做。但是策略模式偏重组合，模板模式侧重继承。模板方法模式将重复的代码交给了父类，各自的子类只负责算法不同的细节部分。
+class Abstract { public: virtual ~Abstract() = default; void TemplateMethod(); protected: virtual void Method1() = 0; virtual void Method2() = 0; }; class ConcreteA : public Abstract { public: void Method1() override; void Method2() override; }; class ConcreteB : public Abstract { public: void Method1() override; void Method2() override; }; void Abstract::TemplateMethod() { Method1(); Method2(); } void ConcreteA::Method1() { std::cout &amp;lt;&amp;lt; &amp;#34;concrete A use method 1&amp;#34; &amp;lt;&amp;lt; std::endl; } void ConcreteA::Method2() { std::cout &amp;lt;&amp;lt; &amp;#34;concrete A use method 2&amp;#34; &amp;lt;&amp;lt; std::endl; } void ConcreteB::Method1() { std::cout &amp;lt;&amp;lt; &amp;#34;concrete B use method 1&amp;#34; &amp;lt;&amp;lt; std::endl; } void ConcreteB::Method2() { std::cout &amp;lt;&amp;lt; &amp;#34;concrete B use method 2&amp;#34; &amp;lt;&amp;lt; std::endl; } 状态模式(State Pattern) 有限状态自动机就是这样一个案例，对不同的状态执行不同的动作。一个很典型的就是switch/case语句，但switch/case没有实现状态逻辑和动作的分离，导致若条件很多时将会维护很冗长且复杂的代码。</description>
+    </item>
+    
+    <item>
+      <title>[设计模式系列]职责链模式与策略模式</title>
+      <link>https://chongg039.cn/post/design-pattern-series-7/</link>
+      <pubDate>Mon, 24 Feb 2020 17:12:56 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/post/design-pattern-series-7/</guid>
+      <description>进入GOF中的最后一部分，行为模式。
+职责链模式(Chain-of-Responsibility Pattern) 职责链模式也不难理解，就是用户提交一个请求，允许这个请求沿着一条多个具体行为对象组成的链流动，直到有某个对象处理后（或是一个最终的处理对象处理完成）返回对应的结果，用户并不知道是哪个具体的行为人处理的，用户也不需要关心这个。考虑到这个层面，所有的行为对象应该继承一个公有的接口类：
+class Handler { public: virtual ~Handler() = default; virtual void HandleRequest(int request) = 0; // 设置继任者  void SetSuccessor(std::shared_ptr&amp;lt;Handler&amp;gt; successor); protected: std::shared_ptr&amp;lt;Handler&amp;gt; successor_; }; class ConcreteA : public Handler { public: void HandleRequest(int request) override; }; class ConcreteB : public Handler { public: void HandleRequest(int request) override; }; class DefaultConcrete : public Handler { public: void HandleRequest(int request) override; }; void Handler::SetSuccessor(std::shared_ptr&amp;lt;Handler&amp;gt; successor) { successor_ = std::move(successor); } void ConcreteA::HandleRequest(int request) { if (1 == request) { std::cout &amp;lt;&amp;lt; &amp;#34;concrete A handle something&amp;#34; &amp;lt;&amp;lt; std::endl; } else if (successor_) { successor_-&amp;gt;HandleRequest(request); } } void ConcreteB::HandleRequest(int request) { if (2 == request) { std::cout &amp;lt;&amp;lt; &amp;#34;concrete B handle something&amp;#34; &amp;lt;&amp;lt; std::endl; } else if (successor_) { successor_-&amp;gt;HandleRequest(request); } } void DefaultConcrete::HandleRequest(int request) { std::cout &amp;lt;&amp;lt; &amp;#34;default concrete final handle something&amp;#34; &amp;lt;&amp;lt; std::endl; } 设置了两个处理实例和一个默认处理实例，将它们连接起来：</description>
+    </item>
     
     <item>
       <title>[设计模式系列]装饰模式与组合模式</title>
