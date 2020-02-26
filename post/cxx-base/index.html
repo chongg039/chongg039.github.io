@@ -360,6 +360,17 @@
 <p>不能通过一个原始指针构造多个std::shared_ptr，每次通过 raw pointer 来构造shared_ptr时候就会分配一个控制块，这时存在两个控制块，也就是说存在两个引用计数。这显然是错误的，因为当这两个shared_ptr被销毁时，对象将会被delete两次。注意this也是原始指针，这种情况尤其要在构造一个std::shared_ptr数组的时候注意。解决这个问题很简单，只要让std::enable_shared_from_this&lt;&hellip;&gt;作为基类即可，但是不能在构造函数中调用shared_from_this()。</p>
 <p>针对循环引用的问题，C++11引入的weak_ptr指针可以使计数区域的生命周期受weak_ptr控制，从而能使weak_ptr获取被管理资源的shared计数，从而判断被管理对象是否已被释放。（可以实时动态地知道指向的对象是否被释放,从而有效解决空悬指针问题）。weak_ptr一般配合shared_ptr使用，不会占用引用计数。它的成员函数expired()就是判断指向的对象是否存活。std::weak_ptr需要从一个std::shared_ptr构造。</p>
 <p>这部分内容可以参考这篇<a href="http://senlinzhan.github.io/2015/04/24/%E6%B7%B1%E5%85%A5shared-ptr/">文章</a>。</p>
+<h3 id="子类以私有继承的方式继承父类">子类以私有继承的方式继承父类</h3>
+<p>一个典型的例子就是noncopyable可以以私有继承的方式继承，有以下原因：</p>
+<pre><code>若父类没有virtual析构，那么就不应将其派生类视为一个“is-a”的public继承，反而应该视为private的实现继承。
+</code></pre><p>但是可能存在的问题就是对一个private继承：</p>
+<ol>
+<li>父类的私有的成员变量和函数子类无法访问;</li>
+<li>父类的公有的以及保护的成员变量都变成了子类的私有成员变量和函数。</li>
+</ol>
+<p>那理论上派生类是不能再去调用父类的构造函数了，也就是派生类不能构造。但实际上却是可以的，Effective C++中提到：</p>
+<pre><code>在子类对象(derived class)对象的base class构造期间,该子类对象的类型是父类(base calss),而不是子类(derived class).在子类对象析构的时候这一条也成立.
+</code></pre><p>因此绝不在构造和析构过程中调用virtual函数。建议阅读<a href="https://www.zybuluo.com/lishuhuakai/note/556513">链接</a>。</p>
 
     
     
