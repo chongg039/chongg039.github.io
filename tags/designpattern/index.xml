@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Tue, 25 Feb 2020 10:22:41 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 26 Feb 2020 19:44:52 +0800</lastBuildDate>
     
 	<atom:link href="https://chongg039.cn/tags/designpattern/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[设计模式系列]备忘录模式、中介者模式</title>
+      <link>https://chongg039.cn/post/design-pattern-series-9/</link>
+      <pubDate>Wed, 26 Feb 2020 19:44:52 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/post/design-pattern-series-9/</guid>
+      <description>闲话少说直接进入正题。
+备忘录模式(Memento Pattern) 备忘录模式就是可以维护一个对象的内部状态，并在对象的外部保存这个状态。这样就可以随时将对象恢复成保存的那个状态，就像吃后悔药一样，属于一个&amp;quot;undo&amp;quot;操作。
+看下UML图，来源：
+class Memento { public: explicit Memento(std::string state); const std::string &amp;amp;get_state() const; void set_state(const std::string &amp;amp;state); private: std::string state_; }; // 管理者 class Caretaker { public: ~Caretaker(); public: Memento *get_memento() const; void set_memento(Memento *memento); private: Memento *memento_; }; // 发起人 class Originator { public: const std::string &amp;amp;get_state() const; void set_state(const std::string &amp;amp;state); Memento *CreateMemento(); void SetMemento(Memento *memento); void Show(); private: std::string state_; }; Memento::Memento(std::string state) : state_(std::move(state)) {} const std::string &amp;amp;Memento::get_state() const { return state_; } void Memento::set_state(const std::string &amp;amp;state) { state_ = state; } Caretaker::~Caretaker() { if (memento_) { delete memento_; memento_ = nullptr; } } Memento *Caretaker::get_memento() const { return memento_; } void Caretaker::set_memento(Memento *memento) { memento_ = memento; } const std::string &amp;amp;Originator::get_state() const { return state_; } void Originator::set_state(const std::string &amp;amp;state) { state_ = state; } Memento *Originator::CreateMemento() { return new Memento(state_); } void Originator::SetMemento(Memento *memento) { state_ = memento-&amp;gt;get_state(); } void Originator::Show() { std::cout &amp;lt;&amp;lt; &amp;#34;state is: &amp;#34; &amp;lt;&amp;lt; state_ &amp;lt;&amp;lt; std::endl; } 看下效果：</description>
+    </item>
     
     <item>
       <title>[设计模式系列]模板模式、状态模式和观察者模式</title>
