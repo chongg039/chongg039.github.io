@@ -20,7 +20,7 @@
       <guid>https://chongg039.cn/post/design-pattern-series-11/</guid>
       <description>来看下行为模式的最后两个部分。
 迭代器模式(Iterator Pattern) STL里面的迭代器就是这个。迭代器模式主要就是为了解决对一个聚合对象的遍历问题，将遍历行为封装到一个类型中，避免了过度暴露聚合类内部表示。
-来看下Wikipedia上的UNL图：
+来看下Wikipedia上的UML图：
 class Iterator; // 聚合对象 class Aggregate { public: virtual ~Aggregate() = default; virtual Iterator *CreateIterator() = 0; virtual int GetSize() const = 0; virtual int GetItem(int idx) const = 0; }; class ConcreteAggregate : public Aggregate { public: explicit ConcreteAggregate(std::vector&amp;lt;int&amp;gt; nums); Iterator *CreateIterator() override; int GetSize() const override; int GetItem(int idx) const override; private: std::vector&amp;lt;int&amp;gt; nums_; }; // 迭代器抽象类 class Iterator { public: virtual ~Iterator() = default; virtual bool HasNext() = 0; virtual void Next() = 0; virtual int operator*() = 0; }; class ConcreteIterator : public Iterator { public: explicit ConcreteIterator(Aggregate *aggregate, int idx = 0); bool HasNext() override; void Next() override; int operator*() override; private: Aggregate *aggregate_; int idx_; }; ConcreteAggregate::ConcreteAggregate(std::vector&amp;lt;int&amp;gt; nums) : nums_(std::move(nums)) {} Iterator *ConcreteAggregate::CreateIterator() { return new ConcreteIterator(this); } int ConcreteAggregate::GetSize() const { return nums_.</description>
     </item>
     
@@ -66,6 +66,18 @@ class Abstract { public: virtual ~Abstract() = default; void TemplateMethod(); p
       <description>进入GOF中的最后一部分，行为模式。
 职责链模式(Chain-of-Responsibility Pattern) 职责链模式也不难理解，就是用户提交一个请求，允许这个请求沿着一条多个具体行为对象组成的链流动，直到有某个对象处理后（或是一个最终的处理对象处理完成）返回对应的结果，用户并不知道是哪个具体的行为人处理的，用户也不需要关心这个。考虑到这个层面，所有的行为对象应该继承一个公有的接口类：
 class Handler { public: virtual ~Handler() = default; virtual void HandleRequest(int request) = 0; // 设置继任者  void SetSuccessor(std::shared_ptr&amp;lt;Handler&amp;gt; successor); protected: std::shared_ptr&amp;lt;Handler&amp;gt; successor_; }; class ConcreteA : public Handler { public: void HandleRequest(int request) override; }; class ConcreteB : public Handler { public: void HandleRequest(int request) override; }; class DefaultConcrete : public Handler { public: void HandleRequest(int request) override; }; void Handler::SetSuccessor(std::shared_ptr&amp;lt;Handler&amp;gt; successor) { successor_ = std::move(successor); } void ConcreteA::HandleRequest(int request) { if (1 == request) { std::cout &amp;lt;&amp;lt; &amp;#34;concrete A handle something&amp;#34; &amp;lt;&amp;lt; std::endl; } else if (successor_) { successor_-&amp;gt;HandleRequest(request); } } void ConcreteB::HandleRequest(int request) { if (2 == request) { std::cout &amp;lt;&amp;lt; &amp;#34;concrete B handle something&amp;#34; &amp;lt;&amp;lt; std::endl; } else if (successor_) { successor_-&amp;gt;HandleRequest(request); } } void DefaultConcrete::HandleRequest(int request) { std::cout &amp;lt;&amp;lt; &amp;#34;default concrete final handle something&amp;#34; &amp;lt;&amp;lt; std::endl; } 设置了两个处理实例和一个默认处理实例，将它们连接起来：</description>
+    </item>
+    
+    <item>
+      <title>[设计模式系列]享元模式、外观模式与代理模式</title>
+      <link>https://chongg039.cn/post/design-pattern-series-6/</link>
+      <pubDate>Sun, 23 Feb 2020 09:30:35 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/post/design-pattern-series-6/</guid>
+      <description>不多啰嗦直奔主题，来看下GOF中结构型模式的最后三部分。
+享元模式(Flyweight Pattern) 过多的对象创建会造成很大的存储开销，而这其中有相当一部分可能是重复且不必要的。因此对于一个特定的对象我们可以将其分为”内部状态“和”外部状态“两部分。内部状态指可以被共享的、一般不会变化的状态，存储在类的内部；对于可能产生变化的外部状态，我们选择将其作为参数传递给对象。
+享元模式类似工厂模式，有一个工厂对象，这个工厂用于接收用户的每一次申请对象的请求。工厂内部有一个维护了所有对象的”仓库“。每一次会先检查这个仓库中是否存在了这个对象。若存在便返回，若不存在，就创建一个新的对象返回，并将其添加进这个仓库中。
+class Flyweight; // 工厂对象 class FlyweightFactory { public: FlyweightFactory(); ~FlyweightFactory(); Flyweight *GetFlyweight(const std::string &amp;amp;key); private: std::map&amp;lt;std::string, Flyweight *&amp;gt; store_; }; class Flyweight { public: virtual ~Flyweight() = default; virtual void Operation(int extrinsic_state) = 0; }; class ConcreteFlyweight : public Flyweight { public: void Operation(int extrinsic_state) override; }; class UnShareConcreteFlyweight : public Flyweight { public: void Operation(int extrinsic_state) override; }; FlyweightFactory::FlyweightFactory() = default; FlyweightFactory::~FlyweightFactory() = default; Flyweight *FlyweightFactory::GetFlyweight(const std::string &amp;amp;key) { if (store_.</description>
     </item>
     
     <item>
