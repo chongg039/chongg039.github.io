@@ -7,10 +7,22 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Thu, 27 Feb 2020 09:08:40 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 28 Feb 2020 09:33:01 +0800</lastBuildDate>
     
 	<atom:link href="https://chongg039.cn/categories/c++/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[设计模式系列]迭代器模式与解释器模式</title>
+      <link>https://chongg039.cn/post/design-pattern-series-11/</link>
+      <pubDate>Fri, 28 Feb 2020 09:33:01 +0800</pubDate>
+      
+      <guid>https://chongg039.cn/post/design-pattern-series-11/</guid>
+      <description>来看下行为模式的最后两个部分。
+迭代器模式(Iterator Pattern) STL里面的迭代器就是这个。迭代器模式主要就是为了解决对一个聚合对象的遍历问题，将遍历行为封装到一个类型中，避免了过度暴露聚合类内部表示。
+来看下Wikipedia上的UNL图：
+class Iterator; // 聚合对象 class Aggregate { public: virtual ~Aggregate() = default; virtual Iterator *CreateIterator() = 0; virtual int GetSize() const = 0; virtual int GetItem(int idx) const = 0; }; class ConcreteAggregate : public Aggregate { public: explicit ConcreteAggregate(std::vector&amp;lt;int&amp;gt; nums); Iterator *CreateIterator() override; int GetSize() const override; int GetItem(int idx) const override; private: std::vector&amp;lt;int&amp;gt; nums_; }; // 迭代器抽象类 class Iterator { public: virtual ~Iterator() = default; virtual bool HasNext() = 0; virtual void Next() = 0; virtual int operator*() = 0; }; class ConcreteIterator : public Iterator { public: explicit ConcreteIterator(Aggregate *aggregate, int idx = 0); bool HasNext() override; void Next() override; int operator*() override; private: Aggregate *aggregate_; int idx_; }; ConcreteAggregate::ConcreteAggregate(std::vector&amp;lt;int&amp;gt; nums) : nums_(std::move(nums)) {} Iterator *ConcreteAggregate::CreateIterator() { return new ConcreteIterator(this); } int ConcreteAggregate::GetSize() const { return nums_.</description>
+    </item>
     
     <item>
       <title>[设计模式系列]命令模式与访问者模式</title>
@@ -24,7 +36,7 @@
     </item>
     
     <item>
-      <title>[设计模式系列]备忘录模式、中介者模式</title>
+      <title>[设计模式系列]备忘录模式与中介者模式</title>
       <link>https://chongg039.cn/post/design-pattern-series-9/</link>
       <pubDate>Wed, 26 Feb 2020 19:44:52 +0800</pubDate>
       
@@ -36,7 +48,7 @@ class Memento { public: explicit Memento(std::string state); const std::string &
     </item>
     
     <item>
-      <title>[设计模式系列]模板模式、状态模式和观察者模式</title>
+      <title>[设计模式系列]模板模式、状态模式与观察者模式</title>
       <link>https://chongg039.cn/post/design-pattern-series-8/</link>
       <pubDate>Tue, 25 Feb 2020 10:22:41 +0800</pubDate>
       
@@ -120,7 +132,7 @@ SJF短作业优先 优先调度短作业，长作业可能会产生”饥饿“�
     </item>
     
     <item>
-      <title>[设计模式系列]建造者模式和原型模式</title>
+      <title>[设计模式系列]建造者模式与原型模式</title>
       <link>https://chongg039.cn/post/design-pattern-series-3/</link>
       <pubDate>Thu, 20 Feb 2020 10:32:08 +0800</pubDate>
       

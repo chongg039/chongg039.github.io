@@ -371,6 +371,11 @@
 <p>那理论上派生类是不能再去调用父类的构造函数了，也就是派生类不能构造。但实际上却是可以的，Effective C++中提到：</p>
 <pre><code>在子类对象(derived class)对象的base class构造期间,该子类对象的类型是父类(base calss),而不是子类(derived class).在子类对象析构的时候这一条也成立.
 </code></pre><p>因此绝不在构造和析构过程中调用virtual函数。建议阅读<a href="https://www.zybuluo.com/lishuhuakai/note/556513">链接</a>。</p>
+<h3 id="默认行为">默认行为</h3>
+<ol>
+<li>class默认继承是private，struct默认继承是public；</li>
+<li>class默认访问修饰符private，struct默认访问修饰符public。</li>
+</ol>
 
     
     
