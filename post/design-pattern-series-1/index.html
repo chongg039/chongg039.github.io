@@ -255,7 +255,7 @@ EagerSingleton<span style="color:#f92672">::~</span>EagerSingleton()
 <p>如果你仔细回忆一下Effective C++中的内容，就知道非局部静态变量的初始化顺序是不一定的（尽管同一个编译单元内部的顺序由于编译器的某些行为一般会固定下来）。想象一下在两个不同的编译单元内，一个调用了你所写的这个饿汉版单例，但是恰好这个单例所在的编译单元还没有被初始化，就会进入未定义行为的世界。</p>
 <h3 id="更好的解决方案">更好的解决方案</h3>
 <p>Effective C++的Item04中提到了一种更优雅的实现方案，相信看完上面的分析你也能想到。既然静态变量这么方便，非局部的静态变量初始化顺序又不固定，那我使用局部静态变量保存这个实例，不是一种更优雅的解决方案了吗：</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// 使用静态局部变量的优雅饿汉版单例
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// 使用静态局部变量的优雅懒汉版单例
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LazySingletonLocalStatic</span>
 {
 <span style="color:#66d9ef">public</span><span style="color:#f92672">:</span>

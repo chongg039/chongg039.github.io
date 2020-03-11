@@ -18,7 +18,7 @@
       <pubDate>Thu, 20 Feb 2020 20:32:59 +0800</pubDate>
       
       <guid>https://chongg039.cn/post/network-base/</guid>
-      <description></description>
+      <description>TCP拥塞控制：慢开始、拥塞避免、快重传、快恢复 建议阅读博客。</description>
     </item>
     
   </channel>
