@@ -3,8 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://chongg039.cn/categories/</loc>
+    <lastmod>2020-05-03T10:29:04+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chongg039.cn/tags/diary/</loc>
+    <lastmod>2020-05-03T10:29:04+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chongg039.cn/categories/life/</loc>
+    <lastmod>2020-05-03T10:29:04+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chongg039.cn/post/change-mouse-micro-switch/</loc>
+    <lastmod>2020-05-03T10:29:04+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://chongg039.cn/post/</loc>
-    <lastmod>2020-03-12T16:02:41+08:00</lastmod>
+    <lastmod>2020-05-03T10:29:04+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://chongg039.cn/tags/</loc>
+    <lastmod>2020-05-03T10:29:04+08:00</lastmod>
   </url>
   
   <url>
@@ -23,11 +48,6 @@
   </url>
   
   <url>
-    <loc>https://chongg039.cn/categories/</loc>
-    <lastmod>2020-03-06T16:41:17+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://chongg039.cn/post/map_vs_hashmap/</loc>
     <lastmod>2020-03-06T16:41:17+08:00</lastmod>
   </url>
@@ -39,11 +59,6 @@
   
   <url>
     <loc>https://chongg039.cn/tags/designpattern/</loc>
-    <lastmod>2020-02-28T09:33:01+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://chongg039.cn/tags/</loc>
     <lastmod>2020-02-28T09:33:01+08:00</lastmod>
   </url>
   
