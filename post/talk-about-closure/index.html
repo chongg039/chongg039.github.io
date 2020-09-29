@@ -100,7 +100,7 @@
      
     &lt;/body&gt;
 &lt;/html&gt;
-</code></pre><p>上面这个函数理应返回一个函数数组，每个函数都返回自己索引值（0~9）。<strong>但是！<strong>因为每个函数的作用域链都保存着<code>createFunctions()</code>函数的活动对象，所以</strong>他们引用的是同一个变量</strong><code>i</code>。<strong>当</strong><code>createFunctions()</code><strong>函数返回后，得到变量</strong><code>i</code><strong>的值为10。<strong>此时，<strong>每个函数都引用着保存变量</strong><code>i</code></strong>的同一个变量对象，所以每个函数内部的</strong><code>i</code><strong>值都为10。</strong></p>
+</code></pre><p>上面这个函数理应返回一个函数数组，每个函数都返回自己索引值（0~9）。<strong>但是！<strong>因为每个函数的作用域链都保存着<code>createFunctions()</code>函数的活动对象，所以</strong>他们引用的是同一个变量</strong><code>i</code>。<strong>当</strong><code>createFunctions()</code><strong>函数返回后，得到变量</strong><code>i</code>**的值为10。**此时，<strong>每个函数都引用着保存变量</strong><code>i</code><strong>的同一个变量对象，所以每个函数内部的</strong><code>i</code><strong>值都为10。</strong></p>
 <blockquote>
 <p>下面通过创建另一个匿名函数强制让闭包行为符合预期</p>
 </blockquote>

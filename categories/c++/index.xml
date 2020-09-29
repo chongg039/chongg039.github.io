@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Fri, 06 Mar 2020 16:41:17 +0800</lastBuildDate>
-    
-	<atom:link href="https://chongg039.cn/categories/c++/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 06 Mar 2020 16:41:17 +0800</lastBuildDate><atom:link href="https://chongg039.cn/categories/c++/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>STL中的map与hash_map</title>
       <link>https://chongg039.cn/post/map_vs_hashmap/</link>

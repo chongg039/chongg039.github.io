@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Thu, 02 Aug 2018 22:02:09 +0800</lastBuildDate>
-    
-	<atom:link href="https://chongg039.cn/tags/fmam/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 02 Aug 2018 22:02:09 +0800</lastBuildDate><atom:link href="https://chongg039.cn/tags/fmam/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>FMAM - 1.6：PH 分布的参数估计</title>
       <link>https://chongg039.cn/post/fmam-content-1.6/</link>

@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Fri, 28 Feb 2020 09:33:01 +0800</lastBuildDate>
-    
-	<atom:link href="https://chongg039.cn/tags/designpattern/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 28 Feb 2020 09:33:01 +0800</lastBuildDate><atom:link href="https://chongg039.cn/tags/designpattern/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>[设计模式系列]迭代器模式与解释器模式</title>
       <link>https://chongg039.cn/post/design-pattern-series-11/</link>

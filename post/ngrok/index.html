@@ -63,7 +63,7 @@ cp base.pem assets/client/tls/ngrokroot.crt
 <p>客户端就是生成的ngrok，这里参考了<a href="https://imququ.com/post/self-hosted-ngrokd.html">Jerry Qu</a>的方法，在ngrok/bin下写了一个启动配置文件 ngrok.cfg：</p>
 <pre><code>server_addr: cmweb.top:4443
 trust_host_root_certs: false
-</code></pre><p>4443 端口是服务端ngrokd 开的用来跟客户端通讯的端口，并可通过 -tunnelAddr=&rdquo;:xxx&rdquo; 指定。</p>
+</code></pre><p>4443 端口是服务端ngrokd 开的用来跟客户端通讯的端口，并可通过 -tunnelAddr=&quot;:xxx&quot; 指定。</p>
 <h3 id="运行">运行</h3>
 <p>指定子域、要转发的协议和端口、配置文件，在服务器端运行后，运行客户端：</p>
 <pre><code>./ngrok -subdomain pub -proto=http -config=ngrok.cfg 80

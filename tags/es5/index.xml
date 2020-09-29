@@ -7,11 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Copyright 2014-{year}</copyright>
-    <lastBuildDate>Mon, 18 Apr 2016 19:26:22 -0700</lastBuildDate>
-    
-	<atom:link href="https://chongg039.cn/tags/es5/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 18 Apr 2016 19:26:22 -0700</lastBuildDate><atom:link href="https://chongg039.cn/tags/es5/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>说说es5中的闭包</title>
       <link>https://chongg039.cn/post/talk-about-closure/</link>
