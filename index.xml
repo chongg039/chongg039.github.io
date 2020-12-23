@@ -31,15 +31,6 @@ opkg install fdisk 查看是否正确识别设备：  lsusb 或 fdisk -l 格式�
     </item>
     
     <item>
-      <title>到处瞎拍</title>
-      <link>https://chongg039.cn/photo/</link>
-      <pubDate>Fri, 18 Dec 2020 14:30:03 -0700</pubDate>
-      
-      <guid>https://chongg039.cn/photo/</guid>
-      <description>设备: Nikon D750 Nikkor 50mm 1.8d Nikkor 24-85mm</description>
-    </item>
-    
-    <item>
       <title>My Road to Photography</title>
       <link>https://chongg039.cn/post/my-road-to-photography/</link>
       <pubDate>Thu, 15 Oct 2020 15:52:08 +0800</pubDate>
