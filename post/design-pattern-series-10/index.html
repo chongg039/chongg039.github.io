@@ -27,7 +27,7 @@
 
     <h1>[设计模式系列]命令模式与访问者模式</h1>
     <h4>Thu, Feb 27, 2020</h4>
-    <p><img class="mx-auto" alt="GjXaHFnIOn0" src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/GjXaHFnIOn0.jpg#center" /></p>
+    <p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/GjXaHFnIOn0.jpg#center" alt="GjXaHFnIOn0"></p>
 <p>命令模式和访问者模式也是两种常见的行为模式。</p>
 <h3 id="命令模式command-pattern">命令模式(Command Pattern)</h3>
 <p>Command模式结构图中，将请求的接收者（处理者）放到Command的具体子类ConcreteCommand中，当请求到来时（Invoker发出Notify消息激活 Command对象），ConcreteCommand将处理请求交给Receiver对象进行处理。</p>
@@ -115,7 +115,7 @@
 </code></pre></div><h3 id="访问者模式visitor-pattern">访问者模式(Visitor Pattern)</h3>
 <p>访问者模式就是保证不改变一个类的前提下，对这个类的元素定义一种新的操作，非常适用于不断变更系统需求的情况&hellip;</p>
 <p>看下Wikipedia上的UML图：</p>
-<p><img class="mx-auto" alt="dNZMTl" src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/dNZMTl.jpg#center" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/dNZMTl.jpg#center" alt="dNZMTl"></p>
 <p>该模式的关键就是accept操作是一个&quot;Double-Dispatch&quot;的，即具体调用哪个accept有两个因素决定，一是动态绑定的具体的Element类型，而是accept的参数Visitor的类型，也是一个动态绑定的型别参数。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Element</span>;
 
@@ -223,7 +223,7 @@
 
     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }
-</code></pre></div><p><img class="mx-auto" alt="bRaSYf" src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/bRaSYf.png#center" /></p>
+</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/bRaSYf.png#center" alt="bRaSYf"></p>
 <p>理解访问者模式的关键就是使用&quot;Double-Dispatch&quot;，单继承多态可以认为是&quot;One-Dispatch&quot;的，做到这样需要将另一个动态绑定体现在参数中。</p>
 
     

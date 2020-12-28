@@ -27,7 +27,7 @@
 
     <h1>[设计模式系列]职责链模式与策略模式</h1>
     <h4>Mon, Feb 24, 2020</h4>
-    <p><img class="mx-auto" alt="Q1p7bh3SHj8" src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/Q1p7bh3SHj8.jpg#center" /></p>
+    <p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/Q1p7bh3SHj8.jpg#center" alt="Q1p7bh3SHj8"></p>
 <p>进入GOF中的最后一部分，行为模式。</p>
 <h3 id="职责链模式chain-of-responsibility-pattern">职责链模式(Chain-of-Responsibility Pattern)</h3>
 <p>职责链模式也不难理解，就是用户提交一个请求，允许这个请求沿着一条多个具体行为对象组成的链流动，直到有某个对象处理后（或是一个最终的处理对象处理完成）返回对应的结果，用户并不知道是哪个具体的行为人处理的，用户也不需要关心这个。考虑到这个层面，所有的行为对象应该继承一个公有的接口类：</p>
@@ -109,7 +109,7 @@
     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }
 </code></pre></div><p>最终将在这条链上不同的位置得到处理：</p>
-<p><img class="mx-auto" alt="XKcIPc" src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/XKcIPc.png#center" /></p>
+<p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/XKcIPc.png#center" alt="XKcIPc"></p>
 <h3 id="策略模式strategy-pattern">策略模式(Strategy Pattern)</h3>
 <p>策略模式定义了一个算法族，使用者在调用接口时，算法的变化不会影响对外接口的变化。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// 算法族

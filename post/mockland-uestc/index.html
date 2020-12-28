@@ -40,14 +40,14 @@
 <p>难度主要是模拟登陆到所需页面和解析相关内容上，封装好了接口，以后就方便使用了。</p>
 <h3 id="分析报文">分析报文</h3>
 <p>为了完成模拟登陆这一目的，先尝试获取登录主界面<code>http://portal.uestc.edu.cn/</code>的内容。分析一波登陆过程中的 HTTP 行为：</p>
-<p><img class="mx-auto" alt="HTTPAnalysis" src="https://c1.staticflickr.com/1/664/33546049616_08658fcd69_b.jpg#center" /></p>
+<p><img src="https://c1.staticflickr.com/1/664/33546049616_08658fcd69_b.jpg#center" alt="HTTPAnalysis"></p>
 <p>可以发现在正文<code>portal.uestc.edu.cn/</code>前有两个页面，分别打开看一看：</p>
 <p><code>login?service=http%3A%2F%2Fportal.uestc.edu.cn%2F</code>页面：</p>
-<p><img class="mx-auto" alt="" src="https://c1.staticflickr.com/4/3816/32743728994_a16798c664_b.jpg#center" /></p>
+<p><img src="https://c1.staticflickr.com/4/3816/32743728994_a16798c664_b.jpg#center" alt=""></p>
 <p><code>?ticket=ST-199833-BbDvk6q57cmNFtJkBJNL1481032281383-zATy-cas</code>页面：</p>
-<p><img class="mx-auto" alt="" src="https://c1.staticflickr.com/4/3671/32743729674_a3846b6f00_b.jpg#center" /></p>
+<p><img src="https://c1.staticflickr.com/4/3671/32743729674_a3846b6f00_b.jpg#center" alt=""></p>
 <p>最终页面：</p>
-<p><img class="mx-auto" alt="" src="https://c1.staticflickr.com/4/3752/32743728154_d255046c53_b.jpg#center" /></p>
+<p><img src="https://c1.staticflickr.com/4/3752/32743728154_d255046c53_b.jpg#center" alt=""></p>
 <p>理论上是获取到最终页面的<code>JSESSIONID</code>，这是服务器用来唯一标识用户信息的<code>session</code>。带着这个 cookie 去访问其他相关页面，就能获取到对应数据。</p>
 <p>那么怎么解决重定向问题呢？</p>
 <p>查到 request 方法自身是支持跟随10次页面重定向的，但是我们现在需要禁止重定向，单独访问并获取每个302界面内 header 中的数据。就可以修改 request 的默认 Redirect 方法，禁止重定向跳转或者设置最大跳转次数：</p>
@@ -222,20 +222,20 @@
 </ul>
 <p>cookie 有：<code>JSESSIONID, semester.id, iPlanetDirectoryPro</code> 。可以看出表单中含有的前面都是常量，处理的粗糙一些的话就可以直接输入。只有一个<code>ids</code>，应该是学校用来标示学生身份的唯一码（事实上也确实如此），这个怎么需要获取呢？</p>
 <p>凭经验来看<code>ids</code>肯定是在前文的响应 body 里服务器已经返回的数据。果然，在请求这个地址之前已经请求了一个地址：<code>http://eams.uestc.edu.cn/eams/courseTableForStd.action?_=1481077999393</code></p>
-<p><img class="mx-auto" alt="ids" src="https://c1.staticflickr.com/4/3907/32772354773_5a8581b019_b.jpg" /></p>
+<p><img src="https://c1.staticflickr.com/4/3907/32772354773_5a8581b019_b.jpg" alt="ids"></p>
 <p>解析这个 Response，就可以得到对应的ids值。</p>
 <p><strong>这里面的<code>_=1481077999393</code>可能是个时间戳一类而的东西（猜的），每次访问都是会变的，实际测试的时候应该用什么都可以，都会转到自己所需的内容。</strong></p>
 <p>获取到了对应的 form 内容，POST 之后用正则解析就得到了想要的课程表。但 UESTC 信息门户的课程表是用页面脚本加载到表格里去展示，而我们用模拟请求的方法就比较麻烦了。因此就先统一拿出来所有的课程信息，暂时没有想到很好的解决办法。</p>
 <p>获取成绩和期末考试安排都是类似的方法，难度都不高。</p>
 <h3 id="放一下效果">放一下效果：</h3>
 <p>主界面：</p>
-<p><img class="mx-auto" alt="" src="https://c1.staticflickr.com/1/567/32772355483_07c82b1c94_b.jpg" /></p>
+<p><img src="https://c1.staticflickr.com/1/567/32772355483_07c82b1c94_b.jpg" alt=""></p>
 <p>课程表：</p>
-<p><img class="mx-auto" alt="" src="https://c1.staticflickr.com/4/3844/33546051106_05d777eeac_b.jpg" /></p>
+<p><img src="https://c1.staticflickr.com/4/3844/33546051106_05d777eeac_b.jpg" alt=""></p>
 <p>考试安排：</p>
-<p><img class="mx-auto" alt="" src="https://c1.staticflickr.com/4/3684/33546052326_839c5dfb38_b.jpg" /></p>
+<p><img src="https://c1.staticflickr.com/4/3684/33546052326_839c5dfb38_b.jpg" alt=""></p>
 <p>成绩垃圾就打上码了：</p>
-<p><img class="mx-auto" alt="" src="https://c1.staticflickr.com/4/3845/32772353723_7322eb585e_b.jpg" /></p>
+<p><img src="https://c1.staticflickr.com/4/3845/32772353723_7322eb585e_b.jpg" alt=""></p>
 <p>虽然效果粗糙了一些，但就结果而言还是好的，达到了目的。</p>
 <h3 id="几个注意的问题">几个注意的问题</h3>
 <ul>
