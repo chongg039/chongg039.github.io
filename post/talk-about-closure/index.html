@@ -48,7 +48,7 @@
 </blockquote>
 <ul>
 <li>在一个函数内部定义一个函数会将包含的函数（即外部函数）的活动对象添加到他的作用域链中。就是说，某一个函数内部定义的匿名函数的作用域链中，实际上会包含外部函数（即定义这个匿名函数的函数）的活动对象&mdash;&ndash;&gt;所以匿名函数从定义它的函数中返回后，匿名函数的作用域链被初始化为包含在定义它的函数的活动对象和全局变量对象&mdash;&mdash;&gt;匿名函数就可以访问在定义它的函数中的所有变量&mdash;&mdash;&ndash;&gt;更重要的是，定义他的函数在执行完毕后其活动对象不会被销毁（<strong>因为匿名函数的作用域链仍在引用这个活动对象</strong>），即 即使定义它的函数返回后，其执行环境的作用域链被销毁了，但活动对象仍在内存中&mdash;&mdash;&mdash;-&gt;因此，<strong>直到匿名函数被销毁后，定义它的函数的活动对象才会被销毁</strong>
-<img src="https://c1.staticflickr.com/1/579/33457488141_24d2d58c5e_b.jpg#center" alt="closure"></li>
+<img class="mx-auto" alt="closure" src="https://c1.staticflickr.com/1/579/33457488141_24d2d58c5e_b.jpg#center" /></li>
 </ul>
 <blockquote>
 <p>解除对匿名函数的引用（来释放内存）

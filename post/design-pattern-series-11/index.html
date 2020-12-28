@@ -27,12 +27,12 @@
 
     <h1>[设计模式系列]迭代器模式与解释器模式</h1>
     <h4>Fri, Feb 28, 2020</h4>
-    <p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/prULhL339cE.jpg#center" alt="prULhL339cE"></p>
+    <p><img class="mx-auto" alt="prULhL339cE" src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/prULhL339cE.jpg#center" /></p>
 <p>来看下行为模式的最后两个部分。</p>
 <h3 id="迭代器模式iterator-pattern">迭代器模式(Iterator Pattern)</h3>
 <p>STL里面的迭代器就是这个。迭代器模式主要就是为了解决对一个聚合对象的遍历问题，将遍历行为封装到一个类型中，避免了过度暴露聚合类内部表示。</p>
 <p>来看下Wikipedia上的UML图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/3cML0j.jpg#center" alt="3cML0j"></p>
+<p><img class="mx-auto" alt="3cML0j" src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/3cML0j.jpg#center" /></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Iterator</span>;
 
 <span style="color:#75715e">// 聚合对象
@@ -133,7 +133,7 @@ ConcreteIterator<span style="color:#f92672">::</span>ConcreteIterator(Aggregate 
 }
 </code></pre></div><h3 id="解释器模式interpreter-patter">解释器模式(Interpreter Patter)</h3>
 <p>先看这样一张Wikipedia上的UML图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/RKkIYQ.jpg#center" alt="RKkIYQ"></p>
+<p><img class="mx-auto" alt="RKkIYQ" src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/RKkIYQ.jpg#center" /></p>
 <p>解释器模式有点象bash等解释性语言的解释器，对于一种特定的文法表示，定义一个专门的解释器去解释它。如上面这张图，首先我们需要有一个Context类保存一些全文的信息，然后声明一个抽象解释类AbstractExpression，再声明一些继承这个基类的、针对不同文法表示的子类操作。比如图片中就声明了一个终结符表达式派生类TerminalExpression和非终结符表达式派生类NonterminalExpression，分别处理与终结符相关的操作和与非终结符相关的操作。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// 全局信息
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Context</span>

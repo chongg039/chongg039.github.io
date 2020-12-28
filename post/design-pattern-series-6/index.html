@@ -27,7 +27,7 @@
 
     <h1>[设计模式系列]享元模式、外观模式与代理模式</h1>
     <h4>Sun, Feb 23, 2020</h4>
-    <p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/5ZeooCGNw3s.jpg#center" alt="5ZeooCGNw3s"></p>
+    <p><img class="mx-auto" alt="5ZeooCGNw3s" src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/5ZeooCGNw3s.jpg#center" /></p>
 <p>不多啰嗦直奔主题，来看下GOF中结构型模式的最后三部分。</p>
 <h3 id="享元模式flyweight-pattern">享元模式(Flyweight Pattern)</h3>
 <p>过多的对象创建会造成很大的存储开销，而这其中有相当一部分可能是重复且不必要的。因此对于一个特定的对象我们可以将其分为”内部状态“和”外部状态“两部分。内部状态指可以被共享的、一般不会变化的状态，存储在类的内部；对于可能产生变化的外部状态，我们选择将其作为参数传递给对象。</p>
@@ -116,7 +116,7 @@ Flyweight <span style="color:#f92672">*</span>FlyweightFactory<span style="color
 
     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }
-</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/Gp7joC.png#center" alt="Gp7joC"></p>
+</code></pre></div><p><img class="mx-auto" alt="Gp7joC" src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/Gp7joC.png#center" /></p>
 <h3 id="外观模式facade-pattern">外观模式(Facade Pattern)</h3>
 <p>外观模式就是提供一个Facade接口类，负责与客户端直接交互。外观类管理各个功能组件的对外接口，屏蔽内部各个组件的功能细节和相互联系。Facade模式实现了子系统和客户端之间的松耦合关系，而子系统的内部各个部件通常都是紧耦合的。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ClsA</span>
@@ -212,7 +212,7 @@ Facade<span style="color:#f92672">::~</span>Facade()
 }
 </code></pre></div><h3 id="代理模式proxy-pattern">代理模式(Proxy Pattern)</h3>
 <p>先来看下Wikipedia中代理模式的UML图：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/oPcmCP.jpg#center" alt="oPcmCP"></p>
+<p><img class="mx-auto" alt="oPcmCP" src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/oPcmCP.jpg#center" /></p>
 <p>实际上代理模式的想法很简单，Proxy中存放了RealSubject的引用或指针来完成对其实例的访问。同时Proxy继承Subject，提供了一个相同的接口，这样就可以完整RealSubject接口提供的任务。</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Subject</span>
 {
@@ -280,7 +280,7 @@ Proxy<span style="color:#f92672">::</span>Proxy(RealSubject <span style="color:#
 
     <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
 }
-</code></pre></div><p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/57sTdk.png#center" alt="57sTdk"></p>
+</code></pre></div><p><img class="mx-auto" alt="57sTdk" src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/57sTdk.png#center" /></p>
 <p>一般来说以下情景可以用到Proxy模式：</p>
 <ol>
 <li>创建开销较大的对象的过程，交给Proxy去做，称为虚代理；</li>

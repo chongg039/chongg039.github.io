@@ -141,7 +141,7 @@
 <h4 id="普通多继承菱形继承和虚继承">普通多继承、菱形继承和虚继承</h4>
 <p>有两个分属与不同集成体系的基类B1和B2，派生类同时继承这两个基类，这就是普通的多继承。由于多个基类分属不同的继承体系，一般不会出现什么问题，尽管不提倡使用多继承。</p>
 <p>菱形继承怎么产生的呢，看一张来自Wikipedia图片：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/yr9Dxf.jpg#center" alt="yr9Dxf"></p>
+<p><img class="mx-auto" alt="yr9Dxf" src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/yr9Dxf.jpg#center" /></p>
 <p>这会带来以下两个问题：</p>
 <ol>
 <li>若A中有非静态成员变量x，那么在D中最终将有两个x，不仅增大了内存，使用x也会产生二义性问题；</li>
@@ -253,7 +253,7 @@
 <p>对于D，现在应该这样计算：</p>
 <pre><code>8(vbptr) + 8(vbptr) + 8(vfptr) + 4(d_) + 4(c_) + +4(b_) + 4(a_) = 40
 </code></pre><p>使用了虚继承，D中只会保留一份a_的拷贝，但需要存储B和C两份虚基类表指针。至于为什么补齐了8个bytes呢，从下面g++给出的内存分布可以看出些端倪：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/GBTuGB.png#center" alt="GBTuGB"></p>
+<p><img class="mx-auto" alt="GBTuGB" src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/GBTuGB.png#center" /></p>
 <p>实际的计算顺序我猜是这样的，未经仔细求证，仅做参考：</p>
 <pre><code>8(D::vfptr) + 4(B::b_) + 4(字节填充) + 8(B::vbptr) + 4(C::c_) + 4(字节填充) + 8(C::vbptr) + 4(A::a_) + 4(D::d_) = 48
 </code></pre><p>由于我对这部分不是很了解，只能做大概猜测。本人才疏学浅暂时也没有精力去详细查证编译器内部的具体存放顺序，请懂的朋友不吝赐教。这部分就先讨论到这里。</p>
@@ -336,7 +336,7 @@
 </span><span style="color:#75715e"></span>    Op op2 <span style="color:#f92672">=</span> <span style="color:#f92672">++</span>op1; <span style="color:#75715e">// 一次拷贝构造
 </span><span style="color:#75715e"></span>    Op op3 <span style="color:#f92672">=</span> op1<span style="color:#f92672">++</span>; <span style="color:#75715e">// 一次拷贝构造、两次移动构造
 </span></code></pre></div><p>至于先增在赋值还是先赋值在增就不说了，主要是注意一点<strong>后缀自增得到的是一个右值，运算符是右结合的</strong>，就会出现以下情况：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/HDt1YM.png#center" alt="HDt1YM"></p>
+<p><img class="mx-auto" alt="HDt1YM" src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/HDt1YM.png#center" /></p>
 <p>为什么op3可以，而c却不行呢？Effective C++中提到过这个原因，就是因为我们的后缀自增的返回值不是const。这便和内置类型有了不一致的行为，容易使人迷惑。因此我们需要将后缀自增返回一个const：</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">// 后缀自增，参数类型需要是int，返回值需要是const，与内建类型保持一致
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> Op <span style="color:#66d9ef">operator</span><span style="color:#f92672">++</span>(<span style="color:#66d9ef">int</span>)
@@ -348,7 +348,7 @@
     <span style="color:#66d9ef">return</span> tmp;
 }
 </code></pre></div><p>再看下结果：</p>
-<p><img src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/Cwq4VU.png#center" alt="Cwq4VU"></p>
+<p><img class="mx-auto" alt="Cwq4VU" src="https://cdn.jsdelivr.net/gh/chongg039/blog-pic-repo@master/uPic/Cwq4VU.png#center" /></p>
 <p>很显然我们不能再对一个const对象进行自增操作，对op4也是一样的，因为运算符的右结合性。</p>
 <h3 id="悬垂指针野指针哑指针">悬垂指针、野指针、哑指针</h3>
 <p>哑指针就是普通的指针，只有指向的功能。</p>

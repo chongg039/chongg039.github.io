@@ -43,7 +43,7 @@
     <span style="color:#f92672">&#34;日最低温度（单位：℃）&#34;</span>: <span style="color:#e6db74">&#34;day_low_temp&#34;</span>
 }
 </code></pre></div><p>以2017年区县id为16的地区为例：</p>
-<p><img src="https://live.staticflickr.com/65535/48793272876_f8194965a1_z.jpg#center" alt="2017年county16的某些天气特征"></p>
+<p><img class="mx-auto" alt="2017年county16的某些天气特征" src="https://live.staticflickr.com/65535/48793272876_f8194965a1_z.jpg#center" /></p>
 <p>可以得出：</p>
 <ol>
 <li>一个地区一年的日平均温度、日最高温度和日最低温度呈正相关；</li>
@@ -80,14 +80,14 @@
 <p>实际项目中，考虑到总体特征的维度关系，不使用风向特征。</p>
 <h4 id="eda-of-label">EDA of label</h4>
 <p>下图为 2015、2016、2017 三年的产量分布图，左侧为早稻，右侧为晚稻：</p>
-<p><img src="https://live.staticflickr.com/65535/48793328157_a193b6c824.jpg" alt="三年早稻产量分布"><img src="https://live.staticflickr.com/65535/48792821458_9f5d49791e.jpg" alt="三年晚稻产量分布"></p>
+<p><img class="mx-auto" alt="三年早稻产量分布" src="https://live.staticflickr.com/65535/48793328157_a193b6c824.jpg" /><img class="mx-auto" alt="三年晚稻产量分布" src="https://live.staticflickr.com/65535/48792821458_9f5d49791e.jpg" /></p>
 <p>可以看出：</p>
 <ol>
 <li>每年早稻、晚稻绝对产量的分布变化不大；</li>
 <li>早晚稻的分布都近似一个右偏的高斯分布，不适合模型学习；</li>
 </ol>
 <p>针对以上问题，需要让模型学习到两年产量的一个差值，并且让分布趋近标准正态分布。分别对早稻和晚稻做两年的差值：</p>
-<p><img src="https://live.staticflickr.com/65535/48793186206_9d436c4b6c.jpg" alt="2016-2015和2017-2016早稻产量"><img src="https://live.staticflickr.com/65535/48793327762_a83e076304.jpg" alt="2016-2015和2017-2016晚稻产量"></p>
+<p><img class="mx-auto" alt="2016-2015和2017-2016早稻产量" src="https://live.staticflickr.com/65535/48793186206_9d436c4b6c.jpg" /><img class="mx-auto" alt="2016-2015和2017-2016晚稻产量" src="https://live.staticflickr.com/65535/48793327762_a83e076304.jpg" /></p>
 <p>让模型去学习两年之间早稻（或晚稻）的差异，这个差异的分布也要更接近于对称的正态分布。因此预测 2018 年数据得到的结果需要加上 2017 年的产量才是真实预测出的 2018 年的产量。</p>
 <h3 id="数据预处理与特征选取">数据预处理与特征选取</h3>
 <p>首先去掉了原始数据中的脏数据。</p>
@@ -104,7 +104,7 @@
 <p>得到一年的特征则主要有两个方案，一种是将早稻（或晚稻）对应几个月份的各个特征取平均作为该县该年的天气特征（5维），另一种是分别对每个月份的各个特征取平均，再将所有月份的特征拼接起来（25维）作为该县该年的天气特征。经过初赛的多次试验后发现差别不大，为了减少特征纬度过高带来的过拟合的影响，最终采用的是 5 维的特征。</p>
 <p>对于任意两年晚稻的差异，由下图可以看出，2015 年和 2016 年各个区县自己的晚稻产量差异不大，而 2016 年和 2017 年晚稻的差异中可以发现，区县 id 为 16 的地区发生了明显的波动。继续将 2015 年和 2017 年晚稻产量对比，仍然出现了异常波动的情况。</p>
 <p>通过检查该地区的具体晚稻产量的值，发现 2017 年该地区晚稻的产量有大幅的下滑。在查询广西这三年的天气报告后，我们将其视为一个其他原因导致的异常值，并在训练时对其做了处理，将其转换为该地区前两年晚稻的均值。</p>
-<p><img src="https://live.staticflickr.com/65535/48792821613_5f067dc7ae.jpg" alt="2015和2016各个县的晚稻产量"><img src="https://live.staticflickr.com/65535/48793327947_d08346fdf3.jpg" alt="2015和2017各个县的晚稻产量"><img src="https://live.staticflickr.com/65535/48793327877_0b9376a3e2.jpg" alt="2016和2017各个县的晚稻产量"></p>
+<p><img class="mx-auto" alt="2015和2016各个县的晚稻产量" src="https://live.staticflickr.com/65535/48792821613_5f067dc7ae.jpg" /><img class="mx-auto" alt="2015和2017各个县的晚稻产量" src="https://live.staticflickr.com/65535/48793327947_d08346fdf3.jpg" /><img class="mx-auto" alt="2016和2017各个县的晚稻产量" src="https://live.staticflickr.com/65535/48793327877_0b9376a3e2.jpg" /></p>
 <h3 id="模型选择">模型选择</h3>
 <p>在 ./code/model.py 文件中有 Models 类，支持以下几种回归模型：</p>
 <ol>

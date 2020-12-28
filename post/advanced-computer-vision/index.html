@@ -96,7 +96,7 @@ I_xI_y &amp; I_y^2
 \end{bmatrix}
 $$</p>
 <p>但是 Harris 不是直接使用 $E(u, v)$ 的值判断角点存在与否，而是使用了一个技巧，通过对窗口中每个像素 x 方向和 y 方向上的梯度进行统计分析，每个像素的梯度坐标可以表示为 $(I_x, I_y)$ 。下面先来看一张图：</p>
-<p><img src="https://live.staticflickr.com/65535/32893623777_8b57140cea_o.jpg" alt="图源：David G.Lowe"></p>
+<p><img class="mx-auto" alt="图源：David G.Lowe" src="https://live.staticflickr.com/65535/32893623777_8b57140cea_o.jpg" /></p>
 <p>图中的 $\lambda_1, \lambda_2$ 是矩阵 M 的特征值，将 $\lambda_1$ 放在 x 轴方向，$\lambda_2$ 放在 y 轴方向，这个正方形区域中根据统计分为四个部分：</p>
 <ol>
 <li>左下方的 flat 区域：这个区域中 $\lambda_1$ 和 $\lambda_2$ 都非常小而且接近，落在此区域中的像素点在图像中多坐落在灰度变化不剧烈的平坦区域。</li>
@@ -156,7 +156,7 @@ $$</p>
 </li>
 <li>
 <p>非极大值抑制：高斯滤波有可能放大了边缘，通过过滤非最大值来使边缘宽度尽可能为1像素。看下面这张图：</p>
-<p><img src="https://live.staticflickr.com/65535/33960532348_ee4332fba0_n.jpg" alt="图源：Justin Liang"></p>
+<p><img class="mx-auto" alt="图源：Justin Liang" src="https://live.staticflickr.com/65535/33960532348_ee4332fba0_n.jpg" /></p>
 <p>从像素 q 的地图方向查找，若 q 的梯度值同时大于 p 和 r 的梯度值，则认为 q 是极大值，将其作为边缘上的像素点。反之不是极大值，将 q 的灰度值置为 0 。</p>
 </li>
 <li>
@@ -188,7 +188,7 @@ $$</p>
 <p>首先理解什么是图像金字塔，基本就是一个图像不断下采样降低分辨率和尺寸的过程，从小到大生成一个类似金字塔的结构，这里就不再详细说明。</p>
 <p>关于高斯金字塔和拉普拉斯金字塔 LoG 这里也不作详细说明，因为不是我们关注的重点（虽然理解很重要），补充内容请看 <a href="https://zhuanlan.zhihu.com/p/32815143">高斯金字塔与拉普拉斯金字塔</a> 。</p>
 <p>这里的一个重点是 LoG 被证明了有真正的尺度不变性，SIFT 的作者 Lowe 在构建尺度空间时使用了高斯差分金字塔 DoG 来近似 LoG 算子，用于在尺度空间检测关键点。看下面这张图：</p>
-<p><img src="https://live.staticflickr.com/65535/32894172277_07a195ac9b_z.jpg" alt="图源：https://sensblogs.wordpress.com"></p>
+<p><img class="mx-auto" alt="图源：https://sensblogs.wordpress.com" src="https://live.staticflickr.com/65535/32894172277_07a195ac9b_z.jpg" /></p>
 <p>构建 DoG 的过程：</p>
 <ol>
 <li>对图像作不同程度的高斯模糊；</li>
@@ -198,7 +198,7 @@ $$</p>
 <p>即每一层的多个图片尺寸一样，平滑系数不同，同一尺度下一组图片的模糊程度逐渐变大。</p>
 <h4 id="初步探查关键点">初步探查关键点</h4>
 <p>寻找 DoG 金字塔中的极值点，要和每个像素点周围所有相邻的点做比较，如图：</p>
-<p><img src="https://live.staticflickr.com/65535/47838189761_01afdab438_o.jpg" alt="图源：Opencv"></p>
+<p><img class="mx-auto" alt="图源：Opencv" src="https://live.staticflickr.com/65535/47838189761_01afdab438_o.jpg" /></p>
 <ol>
 <li>同一图片内该像素和周围 3x3 邻域内的 8 个像素点比较；</li>
 <li>在同一组图片内，该点和上下相邻两层图像的 2x9 个像素点比较。</li>
@@ -224,7 +224,7 @@ $$
 <p>这样便为每个关键点分配了方向信息。</p>
 <h4 id="关键点描述">关键点描述</h4>
 <p>描述是实现下一步关键点匹配的关键步骤，对关键点的描述不仅应包含关键点的信息，而且也应包含关键点周围对其有贡献的邻域点。思路和上一步有些像，看下面这张图：</p>
-<p><img src="https://live.staticflickr.com/65535/33961228178_76292310b2_z.jpg" alt="图源：Zeynep Akata"></p>
+<p><img class="mx-auto" alt="图源：Zeynep Akata" src="https://live.staticflickr.com/65535/33961228178_76292310b2_z.jpg" /></p>
 <p>这张图片可以这样理解：对关键点周围的像素区域分块，计算块内的梯度方向直方图，这个直方图从 36 个方向归一化到了 8 个方向，从而生成了一个独特的向量来描述该区域的图像信息。图片中将关键点周围信息分成了 2x2 的块来描述该区域信息，每个块内是 4x4 的像素区域，方向归一化到了 8 个。</p>
 <p>Lowe 的实验表明，当采用 4x4 的块，8 个方向信息描述关键点时效果最佳，此时向量长度为 4x4x8=128 。</p>
 <h4 id="关键点匹配">关键点匹配</h4>
